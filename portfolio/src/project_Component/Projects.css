@@ -1,0 +1,140 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap');
+
+:root {
+    --Darkgrey: #2A2C39;
+    --Lightgray: #858792;
+    --white: #FFFFFF
+}
+
+.all {
+    height: 710px;
+    background-color: var(--Darkgrey);
+    /* background-repeat: no-repeat;
+    background-size: cover; */
+    position: relative;
+}
+
+.box_content{
+    position: absolute;
+    height: 400px;
+    width: 1000px;
+    right: 7%;
+    top: 20%;
+    display: flex;
+    align-items: center;
+    animation-name:example;
+    animation-duration: 2s;
+}
+@keyframes example {
+    0% {top:0px; bottom:200px}
+}
+.box{
+    width: 100px;
+    height: 400px;
+    margin-right:20px;
+    transition: all 1s;
+
+}
+img {
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    box-shadow: 3px 3px 3px black;
+}
+.box:hover{
+    width: 600px;
+}
+
+
+.box p {
+    font-size: 15px;
+    background-color: var(--Lightgray);
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    
+    box-shadow: 3px 3px 3px black;
+}
+.box p:hover{
+    height: 120px;
+}
+.side_bar nav {
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position:absolute;
+    top: 30%;
+    left: 0px;
+    height: 300px;
+    width: 90px;
+    justify-content: space-around;
+    background-color: var(--Lightgray);
+    align-items: center;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 3px 3px 3px black;
+    
+}
+nav a{
+    
+    text-decoration: none;
+    font-size:16px;
+    font-family:"Raleway";
+    color: var(--white);
+
+}
+nav hr {
+    width: 88px;
+    background-color: black;
+
+}
+nav a:first-child{
+    padding-top: 20px;
+}
+nav a:last-child{
+    padding-bottom: 20px;
+}
+.des{
+    position: absolute;
+    left: 20%;
+    top: 5%;
+    animation-name: project;
+    animation-duration: 3s;
+}
+.des h2{
+    font-size: 40px;
+    font-family: "Raleway";
+    color: var(--white);
+
+
+}
+@keyframes project {
+    0%{right:100px; left: 1000px;}
+    
+}
+.menu{
+    position: absolute;
+    top: 15%;
+    width: 90px;
+    height: 90px;
+    background-color: var(--white);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 3px 3px 3px black;
+
+}
+/* .active{
+    width: 500px;
+    margin-left: 10px ;
+} */
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .box_content {
+      width: 100%;
+      height: 200px;
+    }
+  }
+  
+/*******************************************************************************************/

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import emailjs from 'emailjs-com';
 import "./Contact.css"
 export default class Contact extends Component {
   constructor(props) {
@@ -19,8 +20,16 @@ export default class Contact extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log(this.state);
-    // Submit the form data to a server, etc.
+    // console.log(event);
+    
+    // console.log();
+    emailjs.send('service_6ai8gt3', 'template_cme4c8k', this.state,'KHAxhaan_i50DPSlc')
+      .then((response) => {
+        console.log('SUCCESS!', response.status, response.text);
+      }, (err) => {
+        console.log('FAILED...', err);
+      });
+  
   }
 
   render() {
@@ -72,15 +81,15 @@ export default class Contact extends Component {
               onChange={this.handleChange}
             />
           </label>
-          <label htmlFor="project-info">
+          <label htmlFor="messageinfo">
             <span className="input-name">
               Tell about your project:
             </span>
             <textarea
-              name="projectInfo"
-              id="project-info"
-              className="project-info"
-              value={this.state.description}
+              name="message"
+              id="messageinfo"
+              className="messageinfo"
+              // value={this.state.description}
               onChange={this.handleChange}
             />
           </label>

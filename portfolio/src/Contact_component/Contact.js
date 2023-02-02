@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import emailjs from 'emailjs-com';
 import "./Contact.css"
+import  Swal from "sweetalert"
 export default class Contact extends Component {
   constructor(props) {
     super(props);
@@ -8,7 +9,8 @@ export default class Contact extends Component {
       name: '',
       subject: '',
       email: '',
-      description: ''
+      subject: '',
+      status: '',
     };
   }
 
@@ -18,20 +20,33 @@ export default class Contact extends Component {
     });
   }
 
+ 
   handleSubmit = (event) => {
     event.preventDefault();
     emailjs.send('service_71z4ebl', 'template_jzjfp3t', this.state,'2Z71ko7VLhOKMSIV6')
       .then((response) => {
+        this.setState({ status: response.status });
         console.log('SUCCESS!', response.status, response.text);
-      }, (err) => {
-        console.log('FAILED...', err);
+        Swal({
+          title: 'Success',
+          text: 'The email was sent successfully!',
+          icon: 'success',
+        });
+      }, (error) => {
+        this.setState({ status: error });
+        console.log(this.state.status);
+        console.log('FAILED...', error);
+        Swal({
+          title: 'Error',
+          text: 'There was an error sending the email. Please try again later.',
+          icon: 'error',
+        });
       });
-  
   }
-
   render() {
     return (
       <div className="contact">
+ 
         <h2 className="contact-title typing">
           Do you have a project?
           <br />

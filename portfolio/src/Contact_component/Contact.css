@@ -102,7 +102,20 @@ label textarea{
   border-radius: .5rem;
   cursor: pointer;
 }
-
+.success {
+  background-color: cadetblue;
+  color: whitesmoke;
+  border: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 7px;
+  padding: 15px 35px;
+  cursor: pointer;
+  white-space: nowrap;
+  margin: 10px;
+}
 label input:hover,
 label textarea:hover,
 label input:focus,

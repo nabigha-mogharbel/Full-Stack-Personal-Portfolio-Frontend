@@ -20,10 +20,7 @@ export default class Contact extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    // console.log(event);
-    
-    // console.log();
-    emailjs.send('service_6ai8gt3', 'template_cme4c8k', this.state,'KHAxhaan_i50DPSlc')
+    emailjs.send('service_71z4ebl', 'template_jzjfp3t', this.state,'2Z71ko7VLhOKMSIV6')
       .then((response) => {
         console.log('SUCCESS!', response.status, response.text);
       }, (err) => {
@@ -89,7 +86,7 @@ export default class Contact extends Component {
               name="message"
               id="messageinfo"
               className="messageinfo"
-              // value={this.state.description}
+              value={this.state.description}
               onChange={this.handleChange}
             />
           </label>

@@ -1,34 +1,29 @@
-import '../Login_component/Login.css'
-import React, { Component } from 'react';
+import "../Login_component/Login.css";
+import React, { Component } from "react";
 
 class Login extends Component {
-    state = {  } 
-    render() { 
-        return (
-            <>
-            <div class="login-box">
-  <h2>Login</h2>
-  <form>
-    <div className="user-box">
-      <input type="text" name="" required=""/>
-      <label>Username</label>
-    </div>
-    <div className="user-box">
-      <input type="password" name="" required=""/>
-      <label>Password</label>
-    </div>
-    <button>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      Submit
-    </button>
-  </form>
-</div>
-            </>
-        );
-    }
+  state = {};
+  render() {
+    return (
+      <>
+        <div className="container">
+          <form>
+            <input type="text" placeholder="Username" required />
+            <input type="password" placeholder="Password" required />
+            <input type="submit" placeholder="Submit" required />
+          </form>
+
+          <div className="drops">
+            <div className="drop drop-1"></div>
+            <div className="drop drop-2"></div>
+            <div className="drop drop-3"></div>
+            <div className="drop drop-4"></div>
+            <div className="drop drop-5"></div>
+          </div>
+        </div>
+      </>
+    );
+  }
 }
- 
+
 export default Login;

@@ -63,6 +63,7 @@ export default class Contact extends Component {
               name="name"
               id="name"
               className="name"
+              required
               value={this.state.name}
               onChange={this.handleChange}
             />
@@ -77,6 +78,7 @@ export default class Contact extends Component {
               id="subject"
               className="subject"
               value={this.state.subject}
+              required
               onChange={this.handleChange}
             />
           </label>
@@ -90,6 +92,7 @@ export default class Contact extends Component {
               id="email"
               className="email"
               value={this.state.email}
+              required
               onChange={this.handleChange}
             />
           </label>
@@ -102,6 +105,7 @@ export default class Contact extends Component {
               id="messageinfo"
               className="messageinfo"
               value={this.state.description}
+              required
               onChange={this.handleChange}
             />
           </label>

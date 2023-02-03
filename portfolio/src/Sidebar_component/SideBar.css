@@ -13,7 +13,7 @@
     background-color: var(--white);
     border-radius: 50%;
     box-shadow: 3px 3px 3px black;
-
+  margin-left: 3px
 }
 .side_bar .nav {
     display:flex;

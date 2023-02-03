@@ -1,0 +1,65 @@
+.about{
+        background-color: #191818f3;
+        height: 100vh;
+        position: relative;
+}
+.content_info{
+position: absolute;
+height: 550px;
+width: 68%;
+background-color: rgb(119, 143, 161);
+
+bottom: 0;
+left: 20%;
+transition: all 2s;
+}
+.imageone img{
+    position: absolute;
+    height: 630px;
+    bottom: 0;
+
+}
+.content_info:hover{
+ transform: rotate(1deg);
+ position:absolute;
+ bottom: -20px;
+}
+.facebook img , .github img , .insta img , .linkedin img{
+    position: absolute;
+    height: 50px;
+    transition: all 1s;
+}
+.facebook img{
+    top: 5%; 
+    right: 17%;
+}
+.github img{
+    top: 19%; 
+    right: 9%;
+}
+.insta img{
+    top: 35%; 
+    right: 5%;
+}
+.linkedin img{
+    top: 50%; 
+    right: 1%;
+}
+.links{
+    height: 400px;
+    width: 300px;
+}
+
+.facebook img:hover , .github img:hover {
+    height: 60px;
+    background-color: var(--white);
+    border-radius:50%;
+}
+.insta img:hover , .linkedin img:hover{
+    height: 60px;
+    background-color: var(--white);
+    border-radius:10px;
+}
+
+
+    

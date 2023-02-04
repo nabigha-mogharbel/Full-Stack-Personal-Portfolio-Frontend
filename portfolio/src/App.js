@@ -5,17 +5,28 @@ import './App.css';
 // import Projects from "./Projects_component/Projects"
 // import Resume from "./Resume_component/Resume"
 // import SideBar from "./Sidebar_component/SideBar"
-import Contact from "./Contact_component/Contact"
-import { Component } from 'react';
+// import Contact from "./Contact_component/Contact"
 
-export default class App extends Component {
-  render(){
-    return(
-  <>
-  <Contact/>
-  </>
-    )
-  }
-};
 
-// export default App;
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
+}
+
+export default App;

@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap');
+
+:root {
+    --Darkgrey: #2A2C39;
+    --Lightgray: #858792;
+    --white: #FFFFFF
+}
+.about{
+        background-color: var(--Darkgrey);
+        height: 100vh;
+        position: relative;
+}
+.content_info{
+position: absolute;
+height: 550px;
+width: 68%;
+background-color: rgb(119, 143, 161);
+
+bottom: 0;
+left: 20%;
+transition: all 2s;
+}
+.imageone img{
+    position: absolute;
+    height: 630px;
+    bottom: 0;
+
+}
+.content_info:hover{
+ transform: rotate(1deg);
+ position:absolute;
+ bottom: -7px;
+}
+.facebook img , .github img , .insta img , .linkedin img{
+    position: absolute;
+    height: 50px;
+    transition: all 1s;
+}
+.facebook img{
+    top: 5%; 
+    right: 17%;
+}
+.github img{
+    top: 19%; 
+    right: 9%;
+}
+.insta img{
+    top: 35%; 
+    right: 5%;
+}
+.linkedin img{
+    top: 50%; 
+    right: 1%;
+}
+.links{
+    height: 400px;
+    width: 300px;
+}
+
+.facebook img:hover , .github img:hover {
+    height: 60px;
+    background-color: var(--white);
+    border-radius:50%;
+}
+.insta img:hover , .linkedin img:hover{
+    height: 60px;
+    background-color: var(--white);
+    border-radius:10px;
+}
+.findme{
+    width: 100px;
+    height: 100px;
+    background-color: var(--Darkgrey);
+    border-radius: 50%;
+    position:absolute;
+    bottom: 70px;
+    left:100px;
+    transition: all 1s;
+}
+.findme span{
+    font-size: 20px;
+    display: flex;
+    padding-top: 35%;
+    justify-content: center;
+    font-family: "Raleway";
+    color: var(--white);
+    transition: all 0.5s;
+}
+.findme:hover{
+    box-shadow: 1px 3px 3px  var(--white);
+    
+}
+.findme span:hover{
+    color: var(--Lightgray);
+}

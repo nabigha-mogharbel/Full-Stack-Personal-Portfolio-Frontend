@@ -21,7 +21,11 @@ class About extends React.Component {
         return (<div className="about">
             <div className="content_info">
                 <div className="imageone" >
-                    <img src='http://clipart-library.com/images_k/harry-potter-transparent-background/harry-potter-transparent-background-12.png'onClick={this.toggleVisibility} alt=""></img>
+                    <img src='http://clipart-library.com/images_k/harry-potter-transparent-background/harry-potter-transparent-background-12.png'alt=""></img>
+                    
+                    <div className="findme" onClick={this.toggleVisibility} >
+                        <span> Find Me</span>
+                    </div>
                     <CSSTransition
                     in={!isVisible}
                     timeout={300}

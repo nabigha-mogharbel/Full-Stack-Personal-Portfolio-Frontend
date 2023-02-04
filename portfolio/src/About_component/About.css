@@ -1,5 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap');
+
+:root {
+    --Darkgrey: #2A2C39;
+    --Lightgray: #858792;
+    --white: #FFFFFF
+}
 .about{
-        background-color: #191818f3;
+        background-color: var(--Darkgrey);
         height: 100vh;
         position: relative;
 }
@@ -60,6 +67,29 @@ transition: all 2s;
     background-color: var(--white);
     border-radius:10px;
 }
-
-
+.findme{
+    width: 100px;
+    height: 100px;
+    background-color: var(--Darkgrey);
+    border-radius: 50%;
+    position:absolute;
+    bottom: 70px;
+    left:100px;
+    transition: all 1s;
+}
+.findme span{
+    font-size: 20px;
+    display: flex;
+    padding-top: 35%;
+    justify-content: center;
+    font-family: "Raleway";
+    color: var(--white);
+    transition: all 0.5s;
+}
+.findme:hover{
+    box-shadow: 1px 3px 3px  var(--white);
     
+}
+.findme span:hover{
+    color: var(--Lightgray);
+}

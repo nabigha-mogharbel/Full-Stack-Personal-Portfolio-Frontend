@@ -7,15 +7,17 @@ import './App.css';
 // import SideBar from "./Sidebar_component/SideBar"
 // import Contact from "./Contact_component/Contact"
 import DashboardAbout from './pages/DashboardAbout';
-// import DashboardProject from './pages/DashboardProjects';
+import DashboardProject from './pages/DashboardProjects';
 import DashboardEducation from './Dashboard_education/Dashboardeducation';
+import Dashboardskills from './Dashboard_skills/Dashboard_skills';
 
 function App() {
   return (
     <div className="App">
-     {/* <DashboardProject /> */}
-     <DashboardAbout/>
+     <DashboardProject />
+     {/* <DashboardAbout/> */}
      <DashboardEducation/>
+     <Dashboardskills/>
     </div>
   );
 }

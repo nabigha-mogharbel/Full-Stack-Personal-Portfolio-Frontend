@@ -10,14 +10,18 @@ import DashboardAbout from './pages/DashboardAbout';
 import DashboardProject from './pages/DashboardProjects';
 import DashboardEducation from './Dashboard_education/Dashboardeducation';
 import Dashboardskills from './Dashboard_skills/Dashboard_skills';
+import DashboardExpirience from './Dashboard_Expirence/Dashboard_Expirence';
+import DashboardAdmin from "./Dashboard_Admin/Admin"
 
 function App() {
   return (
     <div className="App">
      <DashboardProject />
-     {/* <DashboardAbout/> */}
+     <DashboardAbout/>
      <DashboardEducation/>
      <Dashboardskills/>
+     <DashboardExpirience/>
+     <DashboardAdmin/>
     </div>
   );
 }

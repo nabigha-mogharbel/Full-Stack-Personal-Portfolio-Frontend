@@ -18,7 +18,7 @@ class DashboardEducation extends React.Component {
             enddate:8+"/"+3+"/"+2022
         },
         {
-            _id: "63cfe11a916be585e47fc9ae",
+            _id: "63cfe11a916be585e47fc9a1",
             major: "hii",
             institute: "bro",
             degre: "ts2",
@@ -34,7 +34,7 @@ class DashboardEducation extends React.Component {
             <h1>Education</h1><hr />
             <div className="container">
                 {this.state.education.map((ele) => {
-                    return <Education education={this.state.education}  key={ele._id} id={ele._id} />;
+                    return <Education edu={ele}  key={ele._id}/>;
                 })}
             </div>
         </div>);

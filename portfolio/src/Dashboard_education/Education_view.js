@@ -9,7 +9,6 @@ class Education extends React.Component {
         super(props);
     
     this.state = {
-        major:"",
         isvisible: true
     };
 }
@@ -25,10 +24,7 @@ class Education extends React.Component {
         <div className="educationcard">
             <div className="information">
                 <div className="info">
-                {this.props.education.map((ele) => {
-                return <h3>{ele.major}<br></br>{ele.degre}<br></br>{ele.institute}<br></br>{ele.startdate}<br></br>{ele.enddate}</h3>;
-                
-              })}
+                <h3>{this.props.edu.major}<br></br>{this.props.edu.degre}<br></br>{this.props.edu.institute}<br></br>{this.props.edu.startdate}<br></br>{this.props.edu.enddate}</h3>
                 </div>
                 <div className="editanddelet">
                     <button onClick={this.toggelvisible}>

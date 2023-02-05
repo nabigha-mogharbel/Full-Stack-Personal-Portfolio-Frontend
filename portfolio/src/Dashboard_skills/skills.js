@@ -23,9 +23,10 @@ class Skills extends React.Component {
             <div className="educationcard">
             <div className="information">
                 <div className="info">
-                 {this.props.skills.map((ele)=>{
-                    return<h3>{ele.name}<br></br>{ele.percentage}</h3>
-                 })}
+                    <h3>
+                        {this.props.skil.name} <br></br><br></br>
+                        {this.props.skil.percentage}
+                    </h3>
                 </div>
                 <div className="editanddelet">
                     <button onClick={this.toggelvisible}>

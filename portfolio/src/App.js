@@ -8,7 +8,6 @@ import Portfolio from './pages/Portfolio';
 // import SideBar from "./Sidebar_component/SideBar"
 // import Contact from "./Contact_component/Contact"
 
-
 function App() {
   return (
     <div className="App">

@@ -1,0 +1,53 @@
+.educationcard{
+    box-shadow: 1px 1px 3px 1px black;
+    background-color: rgb(239,239,239);
+    border-radius: 20px;
+    display:flex;
+    gap: 30px;
+}
+.education{
+ background-color: rgb(239,239,239) ;
+ margin: 0 auto;
+}
+.education h1{
+    margin: 0 auto;
+    padding-right: 45%;
+    padding-bottom: 20px;
+}
+.education hr {
+    width: 55%;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 20px;
+    background-color: rgb(239,239,239);
+}
+.info h3{
+    text-align: left;
+    padding-left: 30px;
+    font-size: 20px;
+    padding-bottom:10px;
+    padding-top: 10px;
+}
+.editanddelet{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+.information{
+    display: flex;
+
+    gap: 100px;
+    padding-right: 50px;
+}
+.editanddelet button ,.submit button{
+    background-color: gray;
+    border-radius: 50%;
+}
+.allinfo{
+    display: flex;
+    flex-direction: column;
+}

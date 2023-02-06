@@ -1,0 +1,39 @@
+
+.education{
+ background-color: rgb(239,239,239) ;
+ margin: 0 auto;
+ height: 70vh ; 
+}
+.education h1{
+    margin: 0 auto;
+    padding-right: 45%;
+    padding-bottom: 20px;
+}
+.education hr {
+    width: 55%;
+}
+.userpassedit{
+
+    padding-top: 20px;
+    width: 20%;
+    padding-left: 24%;
+
+}
+.infopassuser{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.userpassedit button{
+    border-radius: 50%;
+    height: 27px;
+    background-color: rgb(42,44,57);
+    color: white;
+    border: transparent;
+    margin-top: 20px;
+    margin-left: 100px;
+}
+.editpassuser{
+    display: flex;
+    flex-direction: column;
+}

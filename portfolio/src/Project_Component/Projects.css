@@ -128,12 +128,6 @@
     
   }  */
 /*******************************************************************************************/
-
-:root {
-    --Darkgrey: #2A2C39;
-    --Lightgray: #858792;
-    --white: #FFFFFF
-}
 .slider{
     display: flex;
     flex-direction: row;

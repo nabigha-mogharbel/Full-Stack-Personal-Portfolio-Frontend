@@ -19,6 +19,7 @@ class About extends React.Component {
     render() {
         const { isVisible } = this.state; 
         return (<div className="about">
+            <h1>Ahmad Badawi</h1>
             <div className="content_info">
                 <div className="imageone" >
                     <img src='http://clipart-library.com/images_k/harry-potter-transparent-background/harry-potter-transparent-background-12.png'alt=""></img>

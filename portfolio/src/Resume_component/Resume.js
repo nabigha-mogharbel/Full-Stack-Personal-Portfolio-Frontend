@@ -71,6 +71,8 @@ export default class Resume extends React.Component {
               major: "ithg",
               institute: "LT",
               degree: "hfhg",
+              startDate:"2018-05-13T00:00:00.000Z",
+              endDate:"2019-05-13T00:00:00.000Z",
               __v: 0,
             },
             {
@@ -78,6 +80,8 @@ export default class Resume extends React.Component {
               major: "ithg",
               institute: "LT",
               degree: "hfhg",
+              startDate:"2016-05-13T00:00:00.000Z",
+              endDate:"2018-05-13T00:00:00.000Z",
               __v: 0,
             },
             {
@@ -85,6 +89,8 @@ export default class Resume extends React.Component {
               major: "ithg",
               institute: "LT",
               degree: "hfhg",
+              startDate:"2014-05-13T00:00:00.000Z",
+              endDate:"2016-05-13T00:00:00.000Z",
               __v: 0,
             },
           ],
@@ -99,7 +105,7 @@ export default class Resume extends React.Component {
     this.experienceToggle = this.experienceToggle.bind(this);
   }
 
-  converter() {
+  incrementer(number) {
     console.log(this.state);
   }
   educationToggle() {
@@ -178,18 +184,3 @@ export default class Resume extends React.Component {
     );
   }
 }
-
-
-/*
-              <div className="resume-experience">
-                {this.state.response[0].experience.map((ele) => {
-                  return (
-                    <div className="resume-element" key={ele._id}>
-                      <p>{ele.name}</p>
-                      <p>{ele.companyName}</p>
-                      <p>{ele.startDate}</p>
-                    </div>
-                  );
-                })}
-              </div>
-*/

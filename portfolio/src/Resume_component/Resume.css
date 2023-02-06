@@ -1,7 +1,10 @@
 .resume-section{
-    --marked:#FA8072;
-    background-color: var(--primary);
-   /* background-image: url("https://thumbs.dreamstime.com/b/dark-grey-black-slate-texture-high-resolution-pattern-stone-brick-wall-background-design-art-work-165711969.jpg");
+    background: rgba(255, 255, 255, 0.16);
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(8px);
+-webkit-backdrop-filter: blur(8px);
+    /*background-color: var(--primary);
+    background-image: url("https://thumbs.dreamstime.com/b/dark-grey-black-slate-texture-high-resolution-pattern-stone-brick-wall-background-design-art-work-165711969.jpg");
     background-image: url("https://i.pinimg.com/736x/e6/2a/5b/e62a5b843c0b62c4164c57e93ac7e1b8.jpg");
     background-image: url("https://media.istockphoto.com/id/1190671385/vector/grunge-black-background.jpg?s=612x612&w=0&k=20&c=p72Xip_eITl98rdfuslNyyNXc66TFtxPOHAMA1ck7yY=");
     background-image: url("https://www.shutterstock.com/image-vector/black-background-overlap-dimension-grey-260nw-1095377891.jpg");*/
@@ -152,7 +155,6 @@ ul p{
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
     .resume-section{
-        background-color: var(--primary);
         width:100vw;
         height: 100vh;
         padding: 40px 60px;

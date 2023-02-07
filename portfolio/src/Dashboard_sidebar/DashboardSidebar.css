@@ -1,8 +1,6 @@
-#dashboard-nav{
+.dashboard-nav{
     background-color: var(--primary);
-    min-width: 15%;
     width: fit-content;
-    padding-right: 20px;
     padding-right: 40px;
     height:100vh;
     --marked:rgb(220, 14, 48);
@@ -12,17 +10,20 @@
     padding-top: 60px;
     padding-left: 40px;
     box-sizing: border-box;
+
     border-radius: 0px 50px 50px 0px;
-    position:sticky;
 }
-#dashboard-nav hr{
+.navbar-toggler, #side-hider{
+    display: none;
+}
+.dashboard-nav hr{
     border:1px solid var(--accent);
     width:50%;
     text-align: left;
     margin:60px 60px 60px 0px;
 }
 
-#dashboard-nav nav{
+.dashboard-nav nav{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -48,4 +49,48 @@
 .nav-link.active{
  border-bottom: 2px solid var(--marked);
  text-shadow: 3px;
+}
+.dashboard-nav .navbar-toggler{
+    background-color: transparent;
+    text-align: right;
+    color:var(--accent)
+}
+#nav-close:hover{
+    color:var(--marked);
+}
+@media only screen and (max-width:800px){
+    #side-hider{
+        position:absolute;
+        top:0;
+        width:100vw;
+        height:50px;
+        background-color: var(--primary);
+        padding: 10px;
+        border: 0px;
+    }
+    .dashboard-nav{
+        position: absolute;
+        top:0;
+        width: 100vw;
+        height: fit-content;
+        border-radius: 0px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 20px;
+        padding-bottom:20px ;
+    }
+    .dashboard-nav nav{
+        margin-top: auto;
+    }
+    .dashboard-nav nav>hr{
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    #nav-close{
+        color:var(--marked);
+    }
+    .navbar-toggler, #side-hider{
+        display: block;
+    }
 }

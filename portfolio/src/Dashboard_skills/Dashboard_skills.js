@@ -33,7 +33,7 @@ class DashbordSkills extends React.Component {
     render() { 
         return ( <div className="education">
         <h1>Skills</h1><hr />
-        <div className="container">{this.state.skills.map((ele)=>{
+        <div className="container-skills">{this.state.skills.map((ele)=>{
             return   <Skills skil={ele} key={ele._id}/>
         })}
           

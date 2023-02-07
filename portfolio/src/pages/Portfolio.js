@@ -1,6 +1,6 @@
 import React from "react";
 import About from "../About_component/About";
-import Projects from "../Project_Component/Projects";
+import Project from "../Project_Component/Project";
 import Resume from "../Resume_component/Resume";
 import Contact from "../Contact_component/Contact";
 import "./Portfolio.css";
@@ -55,7 +55,7 @@ export default class Portfolio extends React.Component {
       touchStart={this.captureStart}
       touchEnd={this.captureEnd}
     />,
-    <Projects
+    <Project
       scroll={this.handleScroll}
       touchStart={this.captureStart}
       touchEnd={this.captureEnd}

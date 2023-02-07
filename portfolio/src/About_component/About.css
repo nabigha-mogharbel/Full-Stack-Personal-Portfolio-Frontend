@@ -22,6 +22,7 @@ backdrop-filter: blur(8px);
 .imageone img {
     position: absolute;
     height: 630px;
+    right:50px;
     bottom: 0;
 
 }

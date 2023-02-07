@@ -28,11 +28,7 @@ backdrop-filter: blur(8px);
     font-size: large;
     align-items: flex-end;
 }
-.container{
-    display: flex;
-    flex-direction: row;
-    margin: 0;
-}
+
 .resume-element{
     color: var(--accent);
     margin:0px;

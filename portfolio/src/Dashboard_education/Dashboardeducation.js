@@ -32,7 +32,7 @@ class DashboardEducation extends React.Component {
 
         return (<div className="dashboard-section">
             <h1>Education</h1><hr />
-            <div className="container">
+            <div className="container-education">
                 {this.state.education.map((ele) => {
                     return <Education edu={ele}  key={ele._id}/>;
                 })}

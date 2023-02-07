@@ -164,19 +164,19 @@ export default class Resume extends React.Component {
             </div>
           </div>
           <div className="resume-summary">
-            <div className="resume-bubble top-middle">
-            <p>9+</p>
-            <p>Years</p>
-            <p>Experience</p>
+            <div className="">
+            <p>9+
+            Years
+            Experience</p>
             </div>
-            <div className="resume-bubble middle-left">
-              <p>9+</p>
-              <p>Completed</p>
-              <p>Projects</p>
+            <div className="">
+              <p>9+
+              Completed
+              Projects</p>
             </div>
-            <div className="resume-bubble bottom-middle">
-            <p>3+</p>
-            <p>Companies</p>
+            <div className=" ">
+            <p>3+
+            Companies</p>
             </div>
           </div>
         </section>

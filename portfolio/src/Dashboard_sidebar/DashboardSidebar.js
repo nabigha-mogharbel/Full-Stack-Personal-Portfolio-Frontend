@@ -1,5 +1,6 @@
 import React from "react";
 import "./DashboardSidebar.css"
+import {Link} from "react-router-dom"
 export default class DashboardSidebar extends React.Component {
     constructor(props){
         super(props)
@@ -30,14 +31,14 @@ export default class DashboardSidebar extends React.Component {
      {this.state.isShown && <div id="dashboard-nav" className="dum">
         <button className="navbar-toggler" onClick={this.toggleSidebar}>Hide</button>
         <nav>
-            <a className="nav-link" href="#">About</a>
-            <a className="nav-link" href="#">Projects</a>
-            <a className="nav-link" href="#">Experience</a>
-            <a className="nav-link" href="#">Education</a>
-            <a className="nav-link" href="#">Skills</a>
+            <Link className="nav-link" to="/dashboard/about">About</Link>
+            <Link className="nav-link" to="/dashboard/projects">Projects</Link>
+            <Link className="nav-link" to="/dashboard/experience">Experience</Link>
+            <Link className="nav-link" to="/dashboard/education">Education</Link>
+            <Link className="nav-link" to="/dashboard/skills">Skills</Link>
         </nav>
         <hr />
-        <a className="nav-link" href="#">My Account</a>
+        <Link className="nav-link" to="/dashboard/admin">My Account</Link>
     </div>}
     {!this.state.isShown && <button className="navbar-toggler hidden" id="side-hider" onClick={this.toggleSidebar}> Show</button>}
     </>;

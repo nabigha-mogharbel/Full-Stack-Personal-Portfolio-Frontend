@@ -10,6 +10,7 @@
     top: 19%;
     width: 60px;
     height: 60px;
+    left:20px;
     background-color: var(--white);
     border-radius: 50%;
     box-shadow: 3px 3px 3px black;
@@ -21,7 +22,7 @@
     align-items: flex-start;
     position:fixed;
     top: 30%;
-    left: 0px;
+    left: 20px;
     height: 300px;
     width: 60px;
     justify-content: space-around;

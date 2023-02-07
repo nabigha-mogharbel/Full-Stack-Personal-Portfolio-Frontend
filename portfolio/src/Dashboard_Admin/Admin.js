@@ -6,18 +6,20 @@ class Admin extends React.Component {
   state = {
     password: "",
     username: "",
-    newpassword1:""
+    newpassword1:"",
+    success:false
   };
 
   handleSubmit = async (event) => {
-    event.preventDefault();
+    // event.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:5000/admin/create", {
-        username: this.state.username,
-        password: this.state.password,
+      const response = await axios.put(`http://localhost:5005/admin/update/${this.state.username}`, {
+    
+        password: this.state.password
       });
-
+this.setState({success: true});
+console.log("success");
       console.log(response.data);
     } catch (error) {
       console.error(error);
@@ -29,6 +31,13 @@ class Admin extends React.Component {
       [event.target.name]: event.target.value,
     });
   };
+   /*toggelvisible = () => {
+        this.setState({ isvisible: false })
+        if (this.state.isvisible == false){
+            this.setState({isvisible:true})
+        }
+        
+    }*/
   confirmations = (e) => {
     const { password, newpassword1 } = this.state;
     if (password !== newpassword1) {
@@ -41,34 +50,21 @@ class Admin extends React.Component {
     }
   };
   render() {
+
     return (
-      //   <form onSubmit={this.handleSubmit}>
-      //     <label htmlFor="username">Username:</label>
-      //     <input
-      //       type="text"
-      //       id="username"
-      //       name="username"
-      //   value={this.state.username}
-      //   onChange={this.handleChange}
-      //     />
-      //     <br />
-      //     <label htmlFor="password">Password:</label>
-      //     <input
-      //       type="password"
-      //       id="password"
-      //       name="password"
-      //   value={this.state.password}
-      //   onChange={this.handleChange}
-      //     />
-      //     <br />
-      //     <button type="submit">Create</button>
-      //   </form>
+    
       <div className="dashboard-section">
+      { this.state.success && 
+        <div className="alert alert-success" role="alert" style={{ width: '80%', margin: '20px auto', color: '#3c763d', backgroundColor: '#dff0d8' }}>
+          <strong>Well done!</strong> Password has been updated successfully.
+        </div>
+      }
         <main>
           <h1>My Account : </h1>
           <hr />
           <section>
-            <form className="container-column">
+           
+            <form className="container-column" onSubmit={this.handleSubmit}>
               <label htmlFor="username">Username</label>
               <input
                 type="text"
@@ -111,8 +107,8 @@ class Admin extends React.Component {
                 </button>
                 <button
                   type="submit"
-                  onClick={this.submitit}
-                  className="dashboard-btns edits"
+                  onClick={this.handleSubmit}
+                
                 >
                   send
                 </button>

@@ -1,6 +1,4 @@
 import React from "react";
-
-
 import edit from "../edit.svg"
 import trash from "../trash.svg"
 import send from "../send.svg"
@@ -18,21 +16,21 @@ class Expirence extends React.Component {
 
     render() { 
         return (
-            <div className="educationcard">
-            <div className="information">
-                <div className="info">
+            <div className="dashboard-card">
+            <div className="container-row">
+                <div className="container-column">
                     <h3>
-                        {this.props.Expir.name}<br></br>
-                        {this.props.Expir.companyName}<br></br>
-                        {this.props.Expir.startDate}<br></br>
-                        {this.props.Expir.endDate}<br></br>
+                        {this.props.Expir.name}</h3 >
+                     <h3>   {this.props.Expir.companyName}</h3>
+                       <h3> {this.props.Expir.startDate}</h3>
+                       <h3> {this.props.Expir.endDate}
                     </h3>
                 </div>
-                <div className="editanddelet">
-                    <button onClick={this.toggelvisible}>
+                <div className="container-column">
+                    <button onClick={this.toggelvisible} className="dashboard-btns edit">
                         <img src={edit} alt="" ></img>
                     </button>
-                    <button>
+                    <button className="dashboard-btns cancel">
                         <img src={trash} alt=""></img>
                     </button>
                 </div>

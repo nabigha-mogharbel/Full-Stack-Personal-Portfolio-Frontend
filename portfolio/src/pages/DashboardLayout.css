@@ -4,3 +4,13 @@
     column-gap: 100px;
     background-color: rgb(239,239,239);
 }
+#dashboard-nav{
+    position: sticky;
+}
+
+@media screen and (max-width:800px){
+    #dashboard-nav{
+        position: fixed;
+    }
+    
+}

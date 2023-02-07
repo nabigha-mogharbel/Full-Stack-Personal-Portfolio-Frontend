@@ -1,5 +1,5 @@
 .dashboard-section{
-    height: 100vh;
+    min-height: 100vh;
     background-color: rgb(239,239,239);
     padding-top: 50px;
     box-sizing: border-box;
@@ -46,13 +46,13 @@
 form{
     margin-bottom: 10px;
 }
-input[type="text"]{
+input[type="text"], input[type="password"]{
     padding: 6px 6px;
     border-radius: 10px;
     font-size: medium;
     border: 1px solid var(--primary);
 }
-input[type="text"]:hover, input[type="text"]:active{
+input[type="text"]:hover, input[type="text"]:active,input[type="password"]:hover, input[type="password"]:active{
     border: 2px solid var(--secondary);
 }
 input{
@@ -66,4 +66,10 @@ input{
 }
 .dashboard-card form{
     margin-top:10px;
+}
+@media screen and (max-width:800px){
+    .container-row{
+        flex-direction: column;
+    }
+    
 }

@@ -1,18 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
-import Portfolio from './pages/Portfolio';
-// import About from "./About_component/About"
-// import Skills from "./Skills_component/Skills"
-// import Projects from "./Projects_component/Projects"
-// import Resume from "./Resume_component/Resume"
-// import SideBar from "./Sidebar_component/SideBar"
-// import Contact from "./Contact_component/Contact"
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Portfolio from "./pages/Portfolio"
+import DashboardAbout from "./pages/DashboardAbout"
+import DashboardProjects from './pages/DashboardProjects';
+import DashboardEducation from './pages/DashboardEducation';
+import DashboardExperience from './pages/DashboardExperience';
+import DashboardSkills from './pages/DashboardSkills';
+import DashboardAdmin from './pages/DashboardAdmin';
+import Error from "./pages/Error"
 
 function App() {
   return (
-    <div className="App">
-      <Portfolio/>
-    </div>
+    <BrowserRouter>
+    <Routes>
+    <Route path="/" exact element={<Portfolio />}/>
+    <Route path="/dashboard/about" element={<DashboardAbout />}/>
+    <Route path="/dashboard/projects" element={<DashboardProjects/>}/>
+    <Route path="/dashboard/education" element={<DashboardEducation/>}/>
+    <Route path="/dashboard/experience" element={<DashboardExperience/>}/>
+    <Route path="/dashboard/skills" element={<DashboardSkills/>}/>
+    <Route path="/dashboard/admin" element={<DashboardAdmin/>}/>
+    <Route path="*" element={<Error/>} />
+    </Routes>
+    </BrowserRouter>
   );
 }
 

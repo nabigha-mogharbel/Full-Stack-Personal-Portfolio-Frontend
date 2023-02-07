@@ -1,5 +1,8 @@
 import React from "react";
 import "./Dashboard.css";
+import edit from "../edit.svg"
+import trash from "../trash.svg"
+import send from "../send.svg"
 export default class DashboardAbout extends React.Component {
   constructor(props) {
     super(props);
@@ -68,7 +71,7 @@ export default class DashboardAbout extends React.Component {
             <img className="dashboard-pp" src={this.state.about.personal_pic}/>
             </div>
           </section>
-          <button onClick={this.toggleEdit} className="dashboard-btns edit">edit</button>
+          <button onClick={this.toggleEdit} className="dashboard-btns edit"><img src={edit}/></button>
           </>}
           {
             this.state.isEditMode && <section>
@@ -80,8 +83,8 @@ export default class DashboardAbout extends React.Component {
                     <label htmlFor="personal_pic">Upload project picture</label>
                     <input type="file" name="personal_pic" id="personal_pic" ref={this.fileInput}/>
                     <div className="container-row">
-                    <input type="submit" className="dashboard-btns edit"/>
-                    <button onClick={this.toggleEdit} className="dashboard-btns cancel">Cancel</button>
+                    <button type="submit" className="dashboard-btns edit"><img src={send}/></button>
+                    <button onClick={this.toggleEdit} className="dashboard-btns cancel">X</button>
                     </div>
                 </form>   
             </section>

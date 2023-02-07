@@ -1,22 +1,23 @@
 import React from "react";
 import "../Dashboard_Admin/Admin.css"
+import "../Dashboard_about/Dashboard.css"
+import send from "../send.svg"
 
 
 class Admin extends React.Component {
 
     state = {
-        isvisible: true,
         password:"",
         username:""
     }
 
-    toggelvisible = () => {
+    /*toggelvisible = () => {
         this.setState({ isvisible: false })
         if (this.state.isvisible == false){
             this.setState({isvisible:true})
         }
         
-    }
+    }*/
     submitit=()=>{
         this.setState({
             password:document.getElementById('password').value,
@@ -26,11 +27,41 @@ class Admin extends React.Component {
 
     render() {
         return (
+            <div className="dashboard-section">
+                <main>
+                <h1>My Account </h1>
+                <hr />
+                <section>
+                    <form className="container-column">
+                        <label htmlFor="username">Username</label>
+                        <input type="text" name="username" id="username" />
+                        <label htmlFor="newpassword1">New Password</label>
+                        <input type="password" name="" id='newpassword1' />
+                        <label htmlFor="newpassword2">New Password</label>
+                        <input type="password" name="password" id="newpassword2"  />
+                        <div className="container-row">
+              <button type="submit" className="dashboard-btns edit"><img src={send}/></button>
+              <button
+                onClick={this.toggleEdit}
+                className="dashboard-btns cancel"
+              >
+                X
+              </button>
+            </div>
+                        <div className="container-row">
+                            <button type="reset" onClick={this.clear}>cancel</button>
+                            <button type="submit"onClick={this.submitit} className="dashboard-btns edits">send</button>
+                        </div>
+                    </form>
+                </section>
+                </main>
+            </div>);
+    }
+}
 
-            <div className="education">
-                <h1>Admin</h1><hr />
-                <div className="userpassedit">
-                    {this.state.isvisible&&
+export default Admin;
+
+/*{this.state.isvisible&&
                     <div className="userpass">
                         <div className="infopassuser">
                             <h3>Username</h3>
@@ -42,23 +73,4 @@ class Admin extends React.Component {
                         <button onClick={this.toggelvisible}>edit</button>
                         {console.log("*********************************")}
                          {console.log(this.state.isvisible)}
-                    </div>}
-                    {!this.state.isvisible&&
-                    <div className="editpassuser">
-                        <label htmlFor="Username">User name</label>
-                        <input type="text" name="username" id="username" />
-                        <label htmlFor="oldpassword">Old Password</label>
-                        <input type="password" name="" id='' />
-                        <label htmlFor="newpassword">New Password</label>
-                        <input type="password" id="password" />
-                        <div className="button">
-                            <button onClick={this.toggelvisible}>cancel</button>
-                            <button onClick={this.submitit}>send</button>
-                        </div>
-                    </div> } 
-                </div>
-            </div>);
-    }
-}
-
-export default Admin;
+                    </div>}*/

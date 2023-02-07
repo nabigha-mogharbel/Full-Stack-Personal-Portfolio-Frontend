@@ -10,7 +10,7 @@ class DashboardExpirience extends React.Component {
         _id: "63d28f75bf3f9bab4b38bb22",
         name: "first project",
         companyName: "Codi.Tech",
-        startDate: "2000-05-13T00:00:00.000Z",
+        startDate: "2006-05-13T00:00:00.000Z",
         description: "Create a portfolio",
         __v: 0
       },
@@ -19,18 +19,19 @@ class DashboardExpirience extends React.Component {
         name: "Third",
         companyName: "DD",
         startDate: "2000-05-13T00:00:00.000Z",
-        endDate: "2000-05-13T00:00:00.000Z",
+        endDate: "2005-05-13T00:00:00.000Z",
+        description: "Create a portfolio",
         __v: 0
       },]
 
       }
     render() { 
-        return ( <div className="education">
+        return ( <div className="dashboard-section">
         <h1>Experience</h1><hr />
-        <div className="container">{this.state.Experience.map((objec)=>{
-            return <Expireience Expir = {objec} key={objec._id}/>
+        <main className="container-column">{this.state.Experience.map((objec)=>{
+            return <Expireience Expir={objec} key={objec._id}/>
         })}
-        </div>
+        </main>
     </div> );
     }
 }

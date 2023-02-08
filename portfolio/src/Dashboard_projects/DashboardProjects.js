@@ -41,15 +41,24 @@ export default class DashboardProject extends React.Component {
           __v: { $numberInt: "0" },
         },
       ],
-      isAddMode: false,
+      isProjectAddMode: false,
+      isCategoryAddMode:false
     };
     this.handleInput=React.createRef()
     this.toggleEdit = this.toggleEdit.bind(this);
   }
-  toggleEdit() {
-    this.setState({ isEditMode: !this.state.isEditMode });
-    if (!this.state.isEditMode) {
-      this.setState({ bio: "", expertise: "" });
+  toggleEdit=(key)=> {
+    
+    if(key==="isProjectAddMode"){
+      this.setState({isProjectAddMode:true });
+      console.log("batata", this.state)
+    }
+    if (key==="isCategoryAddMode") {
+      this.setState({isCategoryAddMode:true });
+    }
+    if(key==="close"){
+      console.log("close")
+      this.setState({ isProjectAddMode: false, isCategoryAddMode:false });
     }
   }
   render() {
@@ -57,15 +66,15 @@ export default class DashboardProject extends React.Component {
       <div className="dashboard-section">
         <h1>Projects</h1>
           <hr />
-        <main className="container-row">
+        <main className="container-row-to-col">
           
-          {!this.state.isAddMode && (<>
+          {!this.state.isProjectAddMode && !this.state.isCategoryAddMode &&(<>
             <section className="projects-list container container-column">
                 <h2>My projects</h2>
               {this.state.projects.map((ele) => {
                 return <ProjectCard categories={this.state.categories} project={ele} key={ele._id} id={ele._id}/>;
               })}
-              <button className="dashboard-btns edit" style={{fontSize:"24px"}}>+</button>
+              <button className="dashboard-btns edit" style={{fontSize:"24px"}} onClick={e => this.toggleEdit("isProjectAddMode")}>+</button>
             </section>
             <hr/>
             <section className="projects-list container container-column">
@@ -73,12 +82,13 @@ export default class DashboardProject extends React.Component {
                 {this.state.categories.map((ele) => {
                 return <CategoryCard category={ele} key={ele._id} id={ele._id}/>;
               })}
-              <button className="dashboard-btns edit" style={{fontSize:"24px"}}>+</button>
+              <button className="dashboard-btns edit" onClick={e => this.toggleEdit("isCategoryAddMode")} style={{fontSize:"24px"}}>+</button>
             </section></>
           )}
-          {this.state.isAddMode && (
+          {this.state.isProjectAddMode && !this.state.isCategoryAddMode && (
             <section>
               <form className="container-column" onSubmit={this.submitAbout}>
+                <h2>Add a new project</h2>
                 <label htmlFor="name">Name</label>
                 <input
                   type="text"
@@ -98,11 +108,35 @@ export default class DashboardProject extends React.Component {
                 <label htmlFor="personal_pic">
                   Upload project picture
                 </label>
-                <input type="file" id="img" />
-                <div className="container-row" name="img" ref={this.handleInput}>
+                <input type="file" id="img" name="img" ref={this.handleInput}/>
+                <div className="container-row" >
                   <input type="submit" className="dashboard-btns edit" />
                   <button
-                    onClick={this.toggleEdit}
+                    onClick={e => this.toggleEdit("close")}
+                    className="dashboard-btns cancel"
+                  >
+                    X
+                  </button>
+                </div>
+              </form>
+            </section>
+          )}
+          {!this.state.isProjectAddMode && this.state.isCategoryAddMode && (
+            <section>
+              <form className="container-column" onSubmit={this.submitAbout}>
+                <h2>Add a new category</h2>
+                <label htmlFor="name">Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  value={this.state.name}
+                  onChange={this.handleNameInput}
+                />
+                <div className="container-row">
+                  <input type="submit" className="dashboard-btns edit" />
+                  <button
+                    onClick={e => this.toggleEdit("close")}
                     className="dashboard-btns cancel"
                   >
                     X

@@ -31,9 +31,9 @@ class DashbordSkills extends React.Component {
 
 
     render() { 
-        return ( <div className="education">
+        return ( <div className="dashboard-section">
         <h1>Skills</h1><hr />
-        <div className="container-skills">{this.state.skills.map((ele)=>{
+        <div className="container-column">{this.state.skills.map((ele)=>{
             return   <Skills skil={ele} key={ele._id}/>
         })}
           

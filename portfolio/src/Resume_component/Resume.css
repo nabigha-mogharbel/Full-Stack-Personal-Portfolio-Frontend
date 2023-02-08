@@ -8,10 +8,11 @@ backdrop-filter: blur(8px);
     background-image: url("https://i.pinimg.com/736x/e6/2a/5b/e62a5b843c0b62c4164c57e93ac7e1b8.jpg");
     background-image: url("https://media.istockphoto.com/id/1190671385/vector/grunge-black-background.jpg?s=612x612&w=0&k=20&c=p72Xip_eITl98rdfuslNyyNXc66TFtxPOHAMA1ck7yY=");
     background-image: url("https://www.shutterstock.com/image-vector/black-background-overlap-dimension-grey-260nw-1095377891.jpg");*/
+ height:100vh ;
+ display: flex;
+ flex-direction: row;
 }
-.section{
-    
-}
+
 .marked{
     color:var(--marked)
 }
@@ -65,7 +66,7 @@ ul p{
 .resume-education, .resume-experience{
     background-color: transparent;
     position: relative;
-    padding-left: 60px;
+    padding-left: 9px;
     padding-top: 20px;
     
 }
@@ -125,10 +126,12 @@ ul p{
     }
     .resume-summary, .resume-details{
         width:100vw;
-        height: 100vh;
+        height: 50vh;
         padding:40px 50px;
+        padding-left: 75px;
         box-sizing: border-box;
     }
+    
     .resume-bubble{
 
         min-height:calc((100vh*0.4) - 80px);
@@ -157,13 +160,11 @@ ul p{
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
     .resume-section{
-        width:100vw;
-        height: 100vh;
         padding: 40px 60px;
         box-sizing: border-box;
         color:white;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
     }
     .resume-details{
         width:50%;
@@ -192,7 +193,7 @@ ul p{
         left:0;
     }
     .bottom-middle{
-        bottom:0;
+        bottom:0; 
         left:30%;
 
     }
@@ -204,8 +205,10 @@ ul p{
     .resume-education .resume-experience{
         display: flex;
         flex-direction: column;
-        row-gap: 0;  
         padding-top: 20px;
+    }
+    .resume-educatio .resume-element{
+        height: 360px;
     }
 
 }

@@ -7,11 +7,7 @@ class DashboardExpirience extends React.Component {
     super(props);
   }
   state = {
-    _id: "63d28f75bf3f9bab4b38bb22",
-    name: "first project",
-    companyName: "Codi.Tech",
-    startDate: "2006-05-13T00:00:00.000Z",
-    description: "Create a portfolio",
+
     data: [],
   };
   componentDidMount() {
@@ -20,7 +16,7 @@ class DashboardExpirience extends React.Component {
   getData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5008/dashboard/experience/`
+        `http://localhost:5000/dashboard/experience/`
       );
       this.setState({ data: response.data.response });
       console.log(response.data.response);

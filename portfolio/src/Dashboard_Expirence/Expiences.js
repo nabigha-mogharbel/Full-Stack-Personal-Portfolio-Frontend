@@ -9,10 +9,10 @@ class Expirence extends React.Component {
     id: this.props.Expir._id,
     data: {
       name: this.props.Expir._name,
-      startDate: this.props.StartDate,
-      endDate: this.props.EndDate,
-      companyName: this.props.CompanyName,
-      description: this.props.Description,
+      startDate: this.props.Expir.StartDate,
+      endDate: this.props.Expir.EndDate,
+      companyName: this.props.Expir.CompanyName,
+      description: this.props.Expir.Description,
     },
   };
   toggelvisible = () => {
@@ -33,7 +33,7 @@ class Expirence extends React.Component {
     console.log(experienceData + "\n" + id);
     try {
       const response = await axios.put(
-        `http://localhost:5008/dashboard/experience/update/${id}`,
+        `http://localhost:5000/dashboard/experience/update/${id}`,
          experienceData
       );
     
@@ -49,7 +49,7 @@ class Expirence extends React.Component {
     id = this.state.id
     try {
       const response = await axios.delete(
-        `http://localhost:5008/dashboard/experience/delete/${id}`
+        `http://localhost:5000/dashboard/experience/delete/${id}`
       );
       console.log(response.data.response);
     } catch (error) {
@@ -80,11 +80,11 @@ class Expirence extends React.Component {
       <div className="dashboard-card">
         <div className="container-row">
           <div className="container-column">
-            <h3>{this.props.Expir.name}</h3>
-            <h3> {this.props.Expir.companyName}</h3>
-            <h3> {this.props.Expir.startDate}</h3>
-            <h3> {this.props.Expir.endDate}</h3>
-            <p>{this.props.Expir.description}</p>
+            <h3>Name :{this.props.Expir.name}</h3>
+            <h3>Compagny : {this.props.Expir.companyName}</h3>
+            <h3> StartDay: {this.formatDate(this.props.Expir.startDate)}</h3>
+            <h3> End Date: {this.formatDate(this.props.Expir.endDate)}</h3>
+            <p> Description: {this.props.Expir.description}</p>
           </div>
           <div className="container-column">
             <button

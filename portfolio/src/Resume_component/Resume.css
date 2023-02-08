@@ -9,8 +9,7 @@ backdrop-filter: blur(8px);
     background-image: url("https://media.istockphoto.com/id/1190671385/vector/grunge-black-background.jpg?s=612x612&w=0&k=20&c=p72Xip_eITl98rdfuslNyyNXc66TFtxPOHAMA1ck7yY=");
     background-image: url("https://www.shutterstock.com/image-vector/black-background-overlap-dimension-grey-260nw-1095377891.jpg");*/
  height:100vh ;
- display: flex;
- flex-direction: row;
+
 }
 
 .marked{
@@ -119,17 +118,20 @@ ul p{
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 767px) {
     .resume-section{
+        display: flex;
         flex-direction: column;
-        margin:0;
-        padding:0;
-        min-height: 200vh;
+        height: 100vh;
+
     }
     .resume-summary, .resume-details{
         width:100vw;
-        height: 50vh;
         padding:40px 50px;
         padding-left: 75px;
         box-sizing: border-box;
+        color: white;
+    }
+    .resume-summary{
+        gap: 25px;
     }
     
     .resume-bubble{
@@ -145,6 +147,7 @@ ul p{
     .resume-bubble p{
         font-size:calc(100vh*0.4*0.1);
         margin: 5px;
+        
     }
     .top-middle{
         left:15px;
@@ -164,7 +167,7 @@ ul p{
         box-sizing: border-box;
         color:white;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
     }
     .resume-details{
         width:50%;

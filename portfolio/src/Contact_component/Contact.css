@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap);
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap');
 
 *{
   box-sizing: border-box;
@@ -7,16 +7,6 @@
   border: 0;
   outline: none;
 }
-
-* {
-    font-family: Rubik,sans-serif
-}
-
-*,:after,:before {
-    box-sizing: border-box
-}
-
-
 
 @media screen and (max-width: 768px) {
     html {
@@ -30,9 +20,7 @@
     }
 }
 
-body{
-  background: var(--primaryContact);
-}
+
 
 .contact{
   display: flex;
@@ -53,6 +41,7 @@ backdrop-filter: blur(8px);
 .contact-title{
   color: #ccc;
   font-size: 3rem;
+  font-family: Raleway;
 }
 
 .contact-form{
@@ -79,6 +68,7 @@ label input, label textarea{
   background: #202020;
   padding: .75rem;
   font-size: 1rem;
+  
   border-radius: .5rem;
   color: #e5e5e5;
   border: 1px solid transparent;
@@ -134,8 +124,18 @@ label textarea:focus{
     gap: 1rem;
   }
   .contact-title{
-    text-align: center;  
+    text-align: center; 
+    font-size: 30px;
+   
   }
+ 
+ .contact-form{
+  width: 75%;
+  margin-left: 55px;
+ }
+
+
+
 }
 
 

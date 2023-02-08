@@ -35,7 +35,7 @@ export default class Category extends React.Component {
       <div className="dashboard-card">
         <section className="container-row">
             <h3 className="dashboard-title">{this.props.category.name}</h3>
-          <div className="container-column">
+          {!this.state.isEditMode && <div className="container-column">
             <button onClick={this.toggleEdit} className="dashboard-btns edit">
               <img src={edit}/>
             </button>
@@ -45,12 +45,12 @@ export default class Category extends React.Component {
             >
               <img src={trash} />
             </button>
-          </div>
+          </div>}
         </section>
 
         {this.state.isEditMode && (
           <form className="container-column" onSubmit={this.submitProject}>
-            <div className="container-row"><label htmlFor="name">Name</label>
+            <div className="container-row-to-col"><label htmlFor="name">Name</label>
             <input
               type="text"
               name="name"

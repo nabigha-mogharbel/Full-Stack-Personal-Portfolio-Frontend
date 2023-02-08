@@ -47,8 +47,7 @@ export default class DashboardAbout extends React.Component {
        if(this.state.bio!="")request["bio"]=this.state.bio;
        if(this.state.expertise!="") request["expertise"]=this.state.expertise;
        console.log(request)
-
-        alert("yay data")
+        this.toggleEdit()
     }
   }
   render() {
@@ -59,19 +58,20 @@ export default class DashboardAbout extends React.Component {
           <hr />
           {!this.state.isEditMode&& 
           <>
-          <section className="container-row">
+          <section className="container-row-to-col">
+          <div >
+            <h2 className="dashboard-title">My picture</h2>
+            <img className="dashboard-pp" src={this.state.about.personal_pic} width="200px"/>
+            </div>
             <div className="container-column">
             <h2 className="dashboard-title">Bio</h2>
             <p className="dashboard-data">{this.state.about.bio}</p>
             <h2 className="dashboard-title">Expertise</h2>
             <p className="dashboard-data">{this.state.about.expertise}</p>
             </div>
-            <div >
-            <h2 className="dashboard-title">My picture</h2>
-            <img className="dashboard-pp" src={this.state.about.personal_pic}/>
-            </div>
+           
           </section>
-          <button onClick={this.toggleEdit} className="dashboard-btns edit"><img src={edit}/></button>
+          <button onClick={this.toggleEdit} style={{marginTop:"20px"}} className="dashboard-btns edit"><img src={edit}/></button>
           </>}
           {
             this.state.isEditMode && <section>
@@ -82,8 +82,8 @@ export default class DashboardAbout extends React.Component {
                     <input type="text" name="expertise" id="expertise" value={this.state.expertise} onChange={this.handleExpertiseInput}/>
                     <label htmlFor="personal_pic">Upload project picture</label>
                     <input type="file" name="personal_pic" id="personal_pic" ref={this.fileInput}/>
-                    <div className="container-row">
-                    <button type="submit" className="dashboard-btns edit"><img src={send}/></button>
+                    <div className="container-row" >
+                    <button type="submit" className="dashboard-btns edit"><img src={send} width="20px"/></button>
                     <button onClick={this.toggleEdit} className="dashboard-btns cancel">X</button>
                     </div>
                 </form>   

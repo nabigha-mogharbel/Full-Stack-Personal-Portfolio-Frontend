@@ -55,7 +55,7 @@ export default class Project extends React.Component {
               src={this.props.project.img}
             />
           </div>
-          <div className="container-column">
+         {!this.state.isEditMode && <div className="container-column">
             <button onClick={this.toggleEdit} className="dashboard-btns edit">
               <img src={edit} />
             </button>
@@ -65,12 +65,12 @@ export default class Project extends React.Component {
             >
               <img src={trash} />
             </button>
-          </div>
+          </div>}
         </section>
 
         {this.state.isEditMode && (
           <form className="container-column" onSubmit={this.submitProject}>
-            <div className="container-row"><label htmlFor="name">Name</label>
+            <div className="container-row-to-col"><label htmlFor="name">Name</label>
             <input
               type="text"
               name="name"
@@ -78,7 +78,7 @@ export default class Project extends React.Component {
               value={this.state.name}
               onChange={this.handleNameInput}
             /></div>
-            <div className="container-row"><label htmlFor="url">Link</label>
+            <div className="container-row-to-col"><label htmlFor="url">Link</label>
             <input
               type="text"
               name="url"
@@ -86,7 +86,7 @@ export default class Project extends React.Component {
               value={this.state.url}
               onChange={this.handleUrlInput}
             /></div>
-            <div className="container-row">
+            <div className="container-row-to-col">
             <label htmlFor="category">Category</label>
             <select
                 id="category"
@@ -97,7 +97,7 @@ export default class Project extends React.Component {
                 return <option value={ele._id} key={ele._id}>{ele.name}</option>;
               })}
             </select></div>
-            <div className="container-row">
+            <div className="container-row-to-col">
             <label htmlFor="img">Upload project picture</label>
             <input type="file" id="img" name="img" />
             </div>

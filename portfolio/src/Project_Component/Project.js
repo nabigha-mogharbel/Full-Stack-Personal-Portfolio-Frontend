@@ -1,20 +1,55 @@
-import React from "react";
+import React, { createFactory } from "react";
 import "../Project_Component/Projects.css";
 import backward from "../icons/backward-solid.svg";
 import forward from "../icons/forward-solid.svg";
 import Projects from "./Projects";
+import { CSSTransition } from 'react-transition-group';
 
 class Project extends React.Component {
-
-    state = {
-        index: 0,
+    constructor(props){
+        super(props)
+    this.state = {
+        imageA : 0,
+        imageB : 1,
         imageanddes:[{src:"https://i.pinimg.com/564x/43/a9/c3/43a9c358ae61987d07e13847fe5e45d5.jpg",
                         description:"lololololololo"},
                         {src:'https://i.pinimg.com/564x/05/83/fd/0583fd2df28236b5baad40a5f7786108.jpg',
                         description:"lalala" },
                         {src:"https://i.pinimg.com/564x/5f/7c/08/5f7c08b0ac597d7c114c4f35fafc6d99.jpg",
-                        description:"lililili"}]
-    };
+                        description:"lililili"},
+                        {src:"https://i.pinimg.com/564x/52/d4/07/52d4073a9296c79ae2da6a5c45f43f01.jpg",
+                        description:"kjbnkjkljkbjhkjnbh"}]
+    };}
+
+     handleImageincrement = () => {
+        if(this.state.imageB === this.state.imageanddes.length-1){
+            this.setState({imageA: this.state.imageB ,imageB : 0 })
+        
+        }
+        else{this.setState({imageA :this.state.imageB, imageB: this.state.imageB+1})}
+        
+    }
+        //this.setState({ imageA : imageA ,imageB: imageB})
+       // console.log(imageA , imageB)
+        //console.log(this.state.imageanddes.length - 1 )
+        
+        handleImagedeincrement = () => {
+            if(this.state.imageA === 0){
+                this.setState({imageB: 0 ,imageA : this.state.imageanddes.length-1  })
+            
+            }
+            else{this.setState({imageB:this.state.imageA, imageA: this.state.imageA-1})}
+            
+        }
+    
+    /* handleImagedeincrement = ()=>{
+        this.setState({imageA : imageA -- , imageB : imageB --})
+        
+            if(imageA === 0){
+                this.setState({imageA:this.state.imageanddes.length-2 , imageB:this.state.imageanddes.length-1})
+            }
+        this.setState({imageA: imageA , imageB: imageB})
+    }*/
 
     // images  = [{src:"https://i.pinimg.com/564x/43/a9/c3/43a9c358ae61987d07e13847fe5e45d5.jpg",
     //             description:"lololololololo"},
@@ -22,40 +57,21 @@ class Project extends React.Component {
     //             description:"lalala"},
     //             {src:"https://i.pinimg.com/564x/5f/7c/08/5f7c08b0ac597d7c114c4f35fafc6d99.jpg",
     //             description:"lililili"}]
-        handleImageincrement = () => {
-        let i = this.state.index
-        i++
-        if(i === this.state.imageanddes.length){
-            i = 0
-        }
-            this.setState({src :this.state.imageanddes[i].src})
-            this.setState({description : this.state.imageanddes[i].description , index:i})
-        }
+    
 
     render() {
-             
-    
-        //     const handleImagedeincrement = () => {
-        //     var currentIndex = this.state.index
-        //     currentIndex--
-        //     if(currentIndex === -1){
-        //         currentIndex = this.images.length -1
-        //     }
             
-        //     this.setState({src:this.images[currentIndex].src ,description:this.images[currentIndex].description , index :currentIndex})
-        
+        //let  {imageA, imageB} = this.state
         
         return (
             <div className="slider">
                 <div className="image-anddescription" >
-                    <button >
+                    <button onClick={this.handleImagedeincrement} >
                         <img src={backward} alt=""  />
-                    </button>
-
-                        <Projects description={this.state.imageanddes[this.state.index].description} img={this.state.imageanddes[this.state.index].src}/>
-                        <Projects description={this.state.imageanddes[this.state.index+1].description} img= {this.state.imageanddes[this.state.index+1].src}/>
-                    
-                    <button>
+                    </button >
+                        <Projects description={this.state.imageanddes[this.state.imageA].description} img={this.state.imageanddes[this.state.imageA].src}/>
+                        <Projects description={this.state.imageanddes[this.state.imageB].description} img= {this.state.imageanddes[this.state.imageB].src}/>
+                    <button onClick={this.handleImageincrement}>
                         <img src={forward} alt="" />
                     </button>
                 </div>

@@ -6,8 +6,8 @@
     background-color: var(--white);
     border-radius: 50%;
     box-shadow: 3px 3px 3px black;
-  margin-left: 3px;
-  transition: all 0.1s;
+    margin-left: 3px;
+    transition: all 0.1s;
 }
 .menu:active{
   transform: scale(0.9);
@@ -19,15 +19,13 @@
     position:fixed;
     top: 30%;
     height: 300px;
-    width: 60px;
+    width: 65px;
     justify-content: space-around;
     background-color: var(--Lightgray);
     align-items: center;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     box-shadow: 3px 3px 3px black;
-    
-    
 }
 .nav a{
     text-decoration: none;

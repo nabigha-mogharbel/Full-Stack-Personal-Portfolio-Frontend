@@ -18,10 +18,19 @@ backdrop-filter: blur(8px);
     left: 20%;
     transition: all 2s;
 }
-
+.information{
+    width: 400px;
+    height: 100px;
+}
+.information h1 {
+    padding-top:20px ;
+    padding-left: 20px;
+    font-family: Raleway;
+    color: var(--white);
+}
 .imageone img {
     position: absolute;
-    height: 630px;
+    height: 750px;
     right:50px;
     bottom: 0;
 
@@ -39,7 +48,7 @@ backdrop-filter: blur(8px);
 .linkedin img {
     position: absolute;
     height: 50px;
-    transition: all 1s;
+    transition: all 0.3s;
 }
 
 .facebook img {
@@ -80,6 +89,11 @@ backdrop-filter: blur(8px);
     background-color: var(--white);
     border-radius: 10px;
 }
+.facebook img:active,
+.github img:active,.insta img:active,
+.linkedin img:active {
+     transform: scale(0.9);
+} 
 
 .findme {
     width: 100px;
@@ -89,7 +103,7 @@ backdrop-filter: blur(8px);
     position: absolute;
     bottom: 70px;
     left: 100px;
-    transition: all 1s;
+    transition: all 0.3s ;
 }
 
 .findme span {
@@ -104,9 +118,15 @@ backdrop-filter: blur(8px);
 
 .findme:hover {
     box-shadow: 1px 3px 3px var(--white);
-
+}
+.findme:active{
+    
+    transform: scale(0.9);
 }
 
 .findme span:hover {
-    color: var(--Lightgray);
+    color: black;
 }
+@media (max-width : 800px){
+}
+   

@@ -9,6 +9,9 @@ backdrop-filter: blur(8px);
     background-image: url("https://media.istockphoto.com/id/1190671385/vector/grunge-black-background.jpg?s=612x612&w=0&k=20&c=p72Xip_eITl98rdfuslNyyNXc66TFtxPOHAMA1ck7yY=");
     background-image: url("https://www.shutterstock.com/image-vector/black-background-overlap-dimension-grey-260nw-1095377891.jpg");*/
 }
+.section{
+    
+}
 .marked{
     color:var(--marked)
 }
@@ -62,13 +65,15 @@ ul p{
 .resume-education, .resume-experience{
     background-color: transparent;
     position: relative;
-    padding-left: 10px;
+    padding-left: 60px;
+    padding-top: 20px;
     
 }
 .resume-toggle button{
     padding-bottom: 20px;
-    padding-left: 10px;
-    padding-right: 10px;
+    display: flex;
+    width:130px;
+    
 }
 .resume-summary{
     display: flex;
@@ -94,6 +99,7 @@ ul p{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    width: 300px;
 
 }
 @keyframes spotlight {
@@ -130,7 +136,7 @@ ul p{
         position:relative;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: center;    
         align-items: center;
     }
     .resume-bubble p{
@@ -198,7 +204,8 @@ ul p{
     .resume-education .resume-experience{
         display: flex;
         flex-direction: column;
-        row-gap: 0;   
+        row-gap: 0;  
+        padding-top: 20px;
     }
 
 }

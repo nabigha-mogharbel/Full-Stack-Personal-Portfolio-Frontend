@@ -5,6 +5,7 @@ import facebook from "../icons/facebook.svg";
 import linkedin from "../icons/linkedin.svg";
 import github from "../icons/github.svg";
 import { CSSTransition } from "react-transition-group";
+import portfolioImg from '../icons/ahmadBadawi.png'
 
 class About extends React.Component {
     state = {
@@ -19,12 +20,13 @@ class About extends React.Component {
         const { isVisible } = this.state;
         return (
             <div className="about">
-                <h1>Ahmad Badawi</h1>
-                <div className="content_info"> 
-                    
+                <div className="content_info">
+                    <div className="information">
+                        <h1>Ahmad Badawi</h1>
+                    </div>
                     <div className="imageone">
                         <img
-                            src="http://clipart-library.com/images_k/harry-potter-transparent-background/harry-potter-transparent-background-12.png"
+                            src={portfolioImg}
                             alt=""
                         ></img>
 

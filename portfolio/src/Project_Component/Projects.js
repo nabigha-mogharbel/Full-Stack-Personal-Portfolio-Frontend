@@ -16,8 +16,8 @@ class Projects extends React.Component {
                     }}
                         src={this.props.img}
                         alt=""
+                        className='projectimage'
                     />
-
                     {this.state.onhover &&<p id="image-des" onMouseEnter={()=>{
                         this.setState({onhover:true})
                     }} onMouseLeave={()=>{

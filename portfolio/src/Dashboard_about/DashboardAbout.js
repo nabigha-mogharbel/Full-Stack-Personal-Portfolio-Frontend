@@ -51,6 +51,17 @@ export default class DashboardAbout extends React.Component {
       console.log(response)
     } catch (error) {
       console.error(error);
+  submitAbout=(e) => {
+    e.preventDefault();
+    if(this.state.bio==="" && this.state.expertise===""){
+        console.log("You can't send empty data")
+    }else{
+       let request={
+       }
+       if(this.state.bio!="")request["bio"]=this.state.bio;
+       if(this.state.expertise!="") request["expertise"]=this.state.expertise;
+       console.log(request)
+        this.toggleEdit()
     }
   };
   // submitAbout=(e) => {
@@ -99,7 +110,15 @@ export default class DashboardAbout extends React.Component {
     return (
       <div>
         <main>
-          <section className="container-row">
+          <h1>About me</h1>
+          <hr />
+          {!this.state.isEditMode&& 
+          <>
+          <section className="container-row-to-col">
+          <div >
+            <h2 className="dashboard-title">My picture</h2>
+            <img className="dashboard-pp" src={this.state.about.personal_pic} width="200px"/>
+            </div>
             <div className="container-column">
               <h2 className="dashboard-title">Bio</h2>
               <p className="dashboard-data">{this.state.bio}</p>
@@ -152,6 +171,24 @@ export default class DashboardAbout extends React.Component {
                   </button>
                 </div>
               </form>
+           
+          </section>
+          <button onClick={this.toggleEdit} style={{marginTop:"20px"}} className="dashboard-btns edit"><img src={edit}/></button>
+          </>}
+          {
+            this.state.isEditMode && <section>
+                <form className="container-column" onSubmit={this.submitAbout}>
+                    <label htmlFor="bio">Bio</label>
+                    <input type="text" name="bio" id="bio" value={this.state.bio} onChange={this.handleBioInput}/>
+                    <label htmlFor="expertise">Expertise</label>
+                    <input type="text" name="expertise" id="expertise" value={this.state.expertise} onChange={this.handleExpertiseInput}/>
+                    <label htmlFor="personal_pic">Upload project picture</label>
+                    <input type="file" name="personal_pic" id="personal_pic" ref={this.fileInput}/>
+                    <div className="container-row" >
+                    <button type="submit" className="dashboard-btns edit"><img src={send} width="20px"/></button>
+                    <button onClick={this.toggleEdit} className="dashboard-btns cancel">X</button>
+                    </div>
+                </form>   
             </section>
           )}
         </main>

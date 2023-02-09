@@ -33,7 +33,7 @@ class Expirence extends React.Component {
     console.log(experienceData + "\n" + id);
     try {
       const response = await axios.put(
-        `http://localhost:5000/dashboard/experience/update/${id}`,
+        `http://localhost:5010/dashboard/experience/update/${id}`,
         experienceData
       );
 
@@ -48,7 +48,7 @@ class Expirence extends React.Component {
     id = this.state.id;
     try {
       const response = await axios.delete(
-        `http://localhost:5000/dashboard/experience/delete/${id}`
+        `http://localhost:5010/dashboard/experience/delete/${id}`
       );
       console.log(response.data.response);
     } catch (error) {
@@ -78,16 +78,16 @@ class Expirence extends React.Component {
           <div className="container-column">
             <h3>Name :{this.props.Expir.name}</h3>
             <h3>Compagny : {this.props.Expir.companyName}</h3>
-            <h3> StartDay: {this.formatDate(this.props.Expir.startDate)}</h3>
+            <h3> StartDate: {this.formatDate(this.props.Expir.startDate)}</h3>
             <h3> End Date: {this.formatDate(this.props.Expir.endDate)}</h3>
             <p> Description: {this.props.Expir.description}</p>
           </div>
-          <div className="container-column">
+          {/* <div className="container-column">
             <h3>{this.props.Expir.name}</h3>
             <h3> {this.props.Expir.companyName}</h3>
             <h3> {this.props.Expir.startDate}</h3>
             <h3> {this.props.Expir.endDate}</h3>
-          </div>
+          </div> */}
           {this.state.isvisible && (
             <div className="container-column">
               <button
@@ -144,7 +144,7 @@ class Expirence extends React.Component {
                   onChange={this.handleChange}
                 />
                 <button type="submit" value="Update" className="submit">
-                  <img src={send} alt="" />
+                  <img src={send} alt="" onSubmit={this.updateData} />
                 </button>
               </form>
             </div>

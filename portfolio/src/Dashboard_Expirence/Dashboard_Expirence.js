@@ -9,25 +9,7 @@ class DashboardExpirience extends React.Component {
     super(props);
   }
   state = {
-    Experience: [
-      {
-        _id: "63d28f75bf3f9bab4b38bb22",
-        name: "first project",
-        companyName: "Codi.Tech",
-        startDate: "2006-05-13T00:00:00.000Z",
-        description: "Create a portfolio",
-        __v: 0,
-      },
-      {
-        _id: "63d2c0bb9492ae31d0d77ba8",
-        name: "Third",
-        companyName: "DD",
-        startDate: "2000-05-13T00:00:00.000Z",
-        endDate: "2005-05-13T00:00:00.000Z",
-        description: "Create a portfolio",
-        __v: 0,
-      },
-    ],
+    data: [],
     name: "",
     companyName: "",
     description: "",
@@ -57,7 +39,7 @@ class DashboardExpirience extends React.Component {
   getData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/dashboard/experience/`
+        `http://localhost:5010/dashboard/experience/`
       );
       this.setState({ data: response.data.response });
       console.log(response.data.response);
@@ -65,6 +47,30 @@ class DashboardExpirience extends React.Component {
       console.error(error);
     }
   };
+
+  addExperienceData = (e) => {
+    e.preventDefault();
+    const newExperience = {
+      name: this.state.name,
+      companyName: this.state.companyName,
+      startDate: this.state.startDate,
+      endDate: this.state.endDate,
+      description: this.state.description
+    };
+    console.log("Newwwww" + {newExperience});
+    try {
+      const response = axios.post(
+        `http://localhost:5010/dashboard/experience/create`,
+        newExperience
+      );
+
+      console.log("Done");
+      this.getData()
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   render() {
     return (
       <div className="dashboard-section">
@@ -74,7 +80,7 @@ class DashboardExpirience extends React.Component {
           <>
             {" "}
             <main className="container-column">
-              {this.state.Experience.map((objec) => {
+              {this.state.data.map((objec) => {
                 return <Expireience Expir={objec} key={objec._id} />;
               })}
             </main>{" "}
@@ -85,7 +91,7 @@ class DashboardExpirience extends React.Component {
         )}
         {this.state.isEditMode && (
           <section>
-            <form className="container-column" onSubmit={this.submitExperience}>
+            <form className="container-column" onSubmit={this.addExperienceData}>
               <label htmlFor="name">Name</label>
               <input
                 type="text"
@@ -128,7 +134,7 @@ class DashboardExpirience extends React.Component {
               />
               <div className="container-row">
                 <button type="submit" className="dashboard-btns edit">
-                  <img src={send} width="20px" />
+                  <img src={send} width="20px" onClick={this.addExperienceData} />
                 </button>
                 <button
                   onClick={this.toggleEdit}

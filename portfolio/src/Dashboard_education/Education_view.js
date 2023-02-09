@@ -67,9 +67,11 @@ class Education extends React.Component {
     id = this.state.id
     try {
       const response = await axios.delete(
-        `http://localhost:5001/dashboard/education/delete/${id}`
+        `http://localhost:5000/dashboard/education/delete/${id}`
       );
       console.log(response.data.response);
+      console.log("Hello, ");
+      this.props.refresh()
     } catch (error) {
       console.log("error deleting dashboard", error);
       console.error(error);
@@ -87,7 +89,8 @@ class Education extends React.Component {
         <div className="information">
           <div className="info">
             <h3>
-              Magor : {this.props.edu.major}
+              {this.props.edu.major}
+             Magor : {this.props.edu.major}
               <br></br>
               Degree : {this.props.edu.degree}
               <br></br>

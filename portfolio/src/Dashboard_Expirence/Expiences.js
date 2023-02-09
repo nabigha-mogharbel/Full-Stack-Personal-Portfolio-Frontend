@@ -34,19 +34,18 @@ class Expirence extends React.Component {
     try {
       const response = await axios.put(
         `http://localhost:5000/dashboard/experience/update/${id}`,
-         experienceData
+        experienceData
       );
-    
+
       this.setState({ data: response.data.response });
       console.log(response.data.response);
     } catch (error) {
       console.error(error);
     }
-    
   };
 
   deleteData = async (id) => {
-    id = this.state.id
+    id = this.state.id;
     try {
       const response = await axios.delete(
         `http://localhost:5000/dashboard/experience/delete/${id}`
@@ -67,26 +66,9 @@ class Expirence extends React.Component {
     this.updateData(this.state.data, this.state.id);
   };
 
- formatDate=(date) =>{
-    const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
-    return new Date(date).toLocaleDateString('en-US', options);
-  };  
-  render() {
-    // alert(this.state.data.name)
-    const { Expir } = this.props;
-    console.log("Expir: ", Expir.name);
-
-
-class Expirence extends React.Component {
-  state = {
-    isvisible: true,
-  };
-  toggelvisible = () => {
-
-        this.setState({ isvisible: !this.state.isvisible });
-
-      
-    
+  formatDate = (date) => {
+    const options = { year: "numeric", month: "2-digit", day: "2-digit" };
+    return new Date(date).toLocaleDateString("en-US", options);
   };
 
   render() {
@@ -106,17 +88,19 @@ class Expirence extends React.Component {
             <h3> {this.props.Expir.startDate}</h3>
             <h3> {this.props.Expir.endDate}</h3>
           </div>
-          {this.state.isvisible && <div className="container-column">
-            <button
-              onClick={this.toggelvisible}
-              className="dashboard-btns edit"
-            >
-              <img src={edit} alt=""></img>
-            </button>
-            <button className="dashboard-btns cancel">
-              <img src={trash} alt="DeleteMe" onClick={this.deleteData}></img>
-            </button>
-          </div>
+          {this.state.isvisible && (
+            <div className="container-column">
+              <button
+                onClick={this.toggelvisible}
+                className="dashboard-btns edit"
+              >
+                <img src={edit} alt=""></img>
+              </button>
+              <button className="dashboard-btns cancel">
+                <img src={trash} alt="DeleteMe" onClick={this.deleteData}></img>
+              </button>
+            </div>
+          )}
         </div>
         {!this.state.isvisible && (
           <div className="editinformation">
@@ -131,7 +115,7 @@ class Expirence extends React.Component {
                 />
                 <label htmlFor="degre">companyName</label>
                 {console.log(this.state.data.name)}
-                {console.log("jhhhihihihj"+this.props.Expir.CompanyName)}
+                {console.log("jhhhihihihj" + this.props.Expir.CompanyName)}
                 <input
                   type="text"
                   name="companyName"
@@ -165,45 +149,6 @@ class Expirence extends React.Component {
               </form>
             </div>
           </div>
-              <img src={trash} alt=""></img>
-            </button>
-          </div>}
-        </div>
-        {!this.state.isvisible && (
-          <form className="editinformation">
-            <div className="container-row-to-col">
-              <label htmlFor="name">Name</label>
-              <input type="text" id="name" />
-            </div>
-            <div className="container-row-to-col">
-              <label htmlFor="companyName">companyName</label>
-              <input type="text" id="companyName" />
-            </div>
-            <div className="container-row-to-col">
-              <label htmlFor="description">description</label>
-              <input type="text" id="description" />
-            </div>
-            <div className="container-row-to-col">
-              <label htmlFor="startDate">startDate</label>
-              <input type="date" id="startDate" value={this.state.startDate} />
-            </div>
-            <div className="container-row-to-col">
-              <label htmlFor="endDate">endDate</label>
-              <input type="date" id="endDate" value={this.state.endDate} />
-            </div>
-
-            <div className="container-row">
-              <button type="submit" className="dashboard-btns edit">
-                <img src={send} />
-              </button>
-              <button
-                onClick={this.toggelvisible}
-                className="dashboard-btns cancel"
-              >
-                X
-              </button>
-            </div>
-          </form>
         )}
       </div>
     );

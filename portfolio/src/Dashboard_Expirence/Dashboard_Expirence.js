@@ -2,13 +2,54 @@ import React from "react";
 import Expireience from "./Expiences";
 import "../Dashboard_Expirence/Expirence.css";
 import axios from "axios";
+import send from "../send.svg";
+
 class DashboardExpirience extends React.Component {
   constructor(props) {
     super(props);
   }
   state = {
-
-    data: [],
+    Experience: [
+      {
+        _id: "63d28f75bf3f9bab4b38bb22",
+        name: "first project",
+        companyName: "Codi.Tech",
+        startDate: "2006-05-13T00:00:00.000Z",
+        description: "Create a portfolio",
+        __v: 0,
+      },
+      {
+        _id: "63d2c0bb9492ae31d0d77ba8",
+        name: "Third",
+        companyName: "DD",
+        startDate: "2000-05-13T00:00:00.000Z",
+        endDate: "2005-05-13T00:00:00.000Z",
+        description: "Create a portfolio",
+        __v: 0,
+      },
+    ],
+    name: "",
+    companyName: "",
+    description: "",
+    startDate: "",
+    endDate: "",
+    isEditMode: false,
+  };
+  toggleEdit = () => {
+    this.setState({ isEditMode: !this.state.isEditMode });
+    if (!this.state.isEditMode) {
+      this.setState({
+        name: "",
+        companyName: "",
+        description: "",
+        startDate: "",
+        endDate: "",
+      });
+    }
+  };
+  handleInput = (event, key) => {
+    this.setState({ [key]: event.target.value });
+    console.log(this.state);
   };
   componentDidMount() {
     this.getData();
@@ -22,58 +63,26 @@ class DashboardExpirience extends React.Component {
       console.log(response.data.response);
     } catch (error) {
       console.error(error);
-import "../Dashboard_Expirence/Expirence.css"
-import send from "../send.svg"
-class DashboardExpirience extends React.Component {
-    constructor(props) {
-        super(props);
     }
-    state = { Experience : [ {
-        _id: "63d28f75bf3f9bab4b38bb22",
-        name: "first project",
-        companyName: "Codi.Tech",
-        startDate: "2006-05-13T00:00:00.000Z",
-        description: "Create a portfolio",
-        __v: 0
-      },
-      {
-        _id: "63d2c0bb9492ae31d0d77ba8",
-        name: "Third",
-        companyName: "DD",
-        startDate: "2000-05-13T00:00:00.000Z",
-        endDate: "2005-05-13T00:00:00.000Z",
-        description: "Create a portfolio",
-        __v: 0
-      },],
-      name:"",
-      companyName:"",
-      description:"",
-      startDate:"",
-      endDate:"",
-      isEditMode:false
-
-      }
-      toggleEdit=()=> {
-        this.setState({ isEditMode: !this.state.isEditMode });
-        if (!this.state.isEditMode) {
-          this.setState({ name:"",
-          companyName:"",
-          description:"",
-          startDate:"",
-          endDate:""});
-        }
-      }
-      handleInput = (event, key) => {
-        this.setState({ [key]: event.target.value });
-        console.log(this.state);
-      };
-    render() { 
-        return ( <div className="dashboard-section">
-        <h1>Experience</h1><hr />
-      {!this.state.isEditMode&& <>  <main className="container-column">{this.state.Experience.map((objec)=>{
-            return <Expireience Expir={objec} key={objec._id}/>
-        })}
-        </main> <button onClick={this.toggleEdit} className="dashboard-btns edit">+</button></>}
+  };
+  render() {
+    return (
+      <div className="dashboard-section">
+        <h1>Experience</h1>
+        <hr />
+        {!this.state.isEditMode && (
+          <>
+            {" "}
+            <main className="container-column">
+              {this.state.Experience.map((objec) => {
+                return <Expireience Expir={objec} key={objec._id} />;
+              })}
+            </main>{" "}
+            <button onClick={this.toggleEdit} className="dashboard-btns edit">
+              +
+            </button>
+          </>
+        )}
         {this.state.isEditMode && (
           <section>
             <form className="container-column" onSubmit={this.submitExperience}>
@@ -131,20 +140,6 @@ class DashboardExpirience extends React.Component {
             </form>
           </section>
         )}
-    </div> );
-    }
-  };
-
-  render() {
-    return (
-      <div className="dashboard-section">
-        <h1>Experience</h1>
-        <hr />
-        <main className="container-column">
-          {this.state.data.map((objec) => {
-            return <Expireience Expir={objec} key={objec._id} />;
-          })}
-        </main>
       </div>
     );
   }

@@ -1,27 +1,49 @@
 import axios from "axios";
 import React from "react";
 import "../Skills_component/Skills.css";
-class Skill extends React.Component {
-  state = {
-    data: [],
-  };
-  componentDidMount() {
-    this.getData();
-    this.circle();
-  }
-  circle = () => {
-    const circles = document.querySelectorAll(".progress");
 
-    for (var i = 0; i < circles.length; i++) {
-      const totalProgress = circles[i]
-        .querySelector("circle")
-        .getAttribute("stroke-dasharray");
-      const progress = circles[i].parentElement.getAttribute("data-percent");
+import SkillsProgress from "./SkillsProgress";
+  
+  class Skill extends React.Component{
+    constructor(props) {
+      super(props);
+  
+    this.state =  {
+      skills :
+        [
+          {
+            _id: "63d574747161f0aa819ddc2d",
+            name: "potato-chips",
+            percentage: 88,
+            __v: 0
+          },
+          {
+            _id: "63d574e3de5b8d4add69d065",
+            name: "potato",
+            percentage: 100,
+            __v: 0
+          },
+          {
+            _id: "63d574e3de5b8d4add69d065",
+            name: "motato",
+            percentage: 40,
+            __v: 0
+          }
+          ,
+          {
+            _id: "63d574e3de5b8d4add69d065",
+            name: "fotato",
+            percentage: 55,
+            __v: 0
+          }
 
-      circles[i].querySelector(".bar").style["stroke-dashoffset"] =
-        (totalProgress * progress) / 100;
+        ]
+      
     }
-  };
+  
+}
+  
+
   getData = () => {
     axios
       .get("http://localhost:5000/dashboard/skills/")
@@ -62,53 +84,22 @@ class Skill extends React.Component {
         console.error(error);
       });
   };
+  
 
+  
   render() {
-    return (
-      <div className="container">
-        Helllpooooo
-        <div >
-          {this.state.data.map((item) => (
-            <div key={item._id}>
-              <div >
-              <h2>{item.name}</h2>
-                <div class="progressdiv" data-percent={item.percentage}>
-                  <svg class="progress" width="120" height="120">
-                    <circle
-                      r="52"
-                      cx="60"
-                      cy="60"
-                      fill="transparent"
-                      stroke-dasharray="326"
-                      stroke-dashoffset="0"
-                    ></circle>
-                    <circle
-                      class="bar"
-                      r="52"
-                      cx="60"
-                      cy="60"
-                      fill="transparent"
-                      stroke-dasharray="326"
-                      stroke-dashoffset="0"
-                    ></circle>
-                  </svg>
-                </div>
-              </div>
-            </div>
-          ))}
 
-          {/* <div className="container">
-    
-        <div class="progressdiv"  data-percent="36">
-  <svg class="progress" width="120" height="120">
-  <circle r="52" cx="60" cy="60" fill="transparent" stroke-dasharray="326" stroke-dashoffset="0" ></circle>
-  <circle class="bar" r="52" cx="60" cy="60" fill="transparent" stroke-dasharray="326" stroke-dashoffset="0"></circle>
-</svg></div>
-      </div> */}
-        </div>
+    return (
+      <div className="all_Skills">
+      <div className="SkillsProgress">
+        {this.state.skills.map ((ele)=>{
+        return  <SkillsProgress skil ={ele} key={this.state._id}/>
+      })}
       </div>
+    </div>
     );
   }
 }
-
+  
 export default Skill;
+

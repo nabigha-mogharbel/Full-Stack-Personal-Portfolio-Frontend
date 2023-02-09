@@ -1,4 +1,4 @@
-
+/* 
 .progressdiv {
   position: relative;
   
@@ -51,5 +51,40 @@ h2 {
   z-index: 1;
   margin: 20px 15%;
   color: #8C7F68;
+} */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
+
+.circle{
+  width: 200px;
+  height: 240px;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+.Skills_Name{
+  height: 40px;
+}
+.Skills_Name h4 {
+  font-size: 25px;
+  font-family: Raleway;
+  margin: 0 auto;
+
 }
 
+.skills_Percentage{
+  width: 200px;
+  height: 200px;
+}
+.SkillsProgress{
+  height: 250px;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+}
+.all_Skills{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

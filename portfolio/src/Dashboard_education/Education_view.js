@@ -41,7 +41,7 @@ class Education extends React.Component {
     console.log(educationData + "\n" + id);
     try {
       const response = await axios.put(
-        `http://localhost:5001/dashboard/education/update/${id}`,
+        `http://localhost:5010/dashboard/education/update/${id}`,
         educationData
       );
 
@@ -67,7 +67,7 @@ class Education extends React.Component {
     id = this.state.id
     try {
       const response = await axios.delete(
-        `http://localhost:5000/dashboard/education/delete/${id}`
+        `http://localhost:5010/dashboard/education/delete/${id}`
       );
       console.log(response.data.response);
       console.log("Hello, ");

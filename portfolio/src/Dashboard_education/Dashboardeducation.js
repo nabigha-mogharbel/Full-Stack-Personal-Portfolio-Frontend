@@ -17,60 +17,60 @@ class DashboardEducation extends React.Component {
       endDate: "",
     };
   }
-    componentDidMount() {
-        this.getData();
-      }
-      getData = async () => {
-        try {
-          const response = await axios.get(
-            `http://localhost:5010/dashboard/education/`
-          );
-          this.setState({ data: response.data.response });
-          console.log(response.data.response);
-        } catch (error) {
-          console.error(error);
-        }
-      };
-      
-      addEducationData = async () => {
-        const newEduation = {
-          major: this.state.major,
-          degree: this.state.degree,
-          startDate: this.state.startDate,
-          endDate: this.state.endDate ,
-        };
-        console.log("Newwwww"+newEduation )
-        try {
-          const response = await axios.post(
-            `http://localhost:5010/dashboard/education/create`,
-            newEduation , headers{
-              'Content-Type': 'application/json',
-            },
-          );
-    
-          this.setState({ data: response.data.response });
-          console.log("Done"+response.data.response);
-        } catch (error) {
-          console.error(error);
-        }
-      };
+  componentDidMount() {
+    this.getData();
+  }
+  getData = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:5010/dashboard/education/`
+      );
+      this.setState({ data: response.data.response });
+      console.log(response.data.response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-      toggleEdit = () => {
-        this.setState({ isEditMode: !this.state.isEditMode });
-        if (!this.state.isEditMode) {
-        }
-      };
+  addEducationData = (e) => {
+    e.preventDefault();
+    const newEduation = {
+      major: this.state.major,
+      degree: this.state.degree,
+      startDate: this.state.startDate,
+      endDate: this.state.endDate,
+      institute: this.state.institute
+    };
+    console.log("Newwwww" + {newEduation});
+    try {
+      const response = axios.post(
+        `http://localhost:5010/dashboard/education/create`,
+        newEduation
+      );
 
-      // handleInput = (event, key) => {
-      //   this.setState({ [key]: event.target.value });
-      //   console.log(this.state.$[key]);
-      // };
-      handleChange = (event) => {
-        this.setState({
-          [event.target.name]: event.target.value,
-        })
-        //  console.log(this.state.$[event.target.name]);;
-      };
+      console.log("Done");
+      this.getData()
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  toggleEdit = () => {
+    this.setState({ isEditMode: !this.state.isEditMode });
+    if (!this.state.isEditMode) {
+    }
+  };
+
+  // handleInput = (event, key) => {
+  //   this.setState({ [key]: event.target.value });
+  //   console.log(this.state.$[key]);
+  // };
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+    //  console.log(this.state.$[event.target.name]);;
+  };
   render() {
     return (
       <div className="dashboard-section">
@@ -81,7 +81,7 @@ class DashboardEducation extends React.Component {
           <>
             <div className="container-column">
               {this.state.data.map((ele) => {
-                return <Education edu={ele} key={ele._id} refresh={this.ge}/>;
+                return <Education edu={ele} key={ele._id} refresh={this.ge} />;
               })}
             </div>
             <button
@@ -139,8 +139,12 @@ class DashboardEducation extends React.Component {
                 onChange={this.handleChange}
               />
               <div className="container-row">
-                <button type="submit" className="dashboard-btns edit" onSubmit={this.addEducationData}>
-                  <img src={send} width="20px" />
+                <button type="submit" className="dashboard-btns edit">
+                  <img
+                    src={send}
+                    width="20px"
+                    onSubmit={this.addEducationData}
+                  />
                 </button>
                 <button
                   onClick={this.toggleEdit}

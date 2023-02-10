@@ -1,56 +1,98 @@
-import React from "react"
-import '../About_component/About.css'
-import insta from "../icons/instagram.svg"
-import facebook from '../icons/facebook.svg'
-import linkedin from '../icons/linkedin.svg'
-import github from '../icons/github.svg'
-import { CSSTransition } from "react-transition-group"
+import React from "react";
+import "../About_component/About.css";
+import insta from "../icons/instagram.svg";
+import facebook from "../icons/facebook.svg";
+import linkedin from "../icons/linkedin.svg";
+import github from "../icons/github.svg";
+import { CSSTransition } from "react-transition-group";
+import portfolioImg from '../icons/ahmadBadawi.png'
+import axios from "axios";
 
 class About extends React.Component {
-    state = { 
-
+    state = {
         isVisible: true,
-     } 
-     toggleVisibility = () => {
-        this.setState(state => ({
+    };
+    toggleVisibility = () => {
+        this.setState((state) => ({
             isVisible: !state.isVisible,
         }));
     };
     render() {
-        const { isVisible } = this.state; 
-        return (<div className="about">
-            <div className="content_info">
-                <div className="imageone" >
-                    <img src='http://clipart-library.com/images_k/harry-potter-transparent-background/harry-potter-transparent-background-12.png'alt=""></img>
-                    
-                    <div className="findme" onClick={this.toggleVisibility} >
-                        <span> Find Me</span>
+        const { isVisible } = this.state;
+        return (
+            <div className="about">
+                <div className="content_info">
+                    <div className="information">
+                        <h1>Ahmad Badawi</h1>
                     </div>
-                    <CSSTransition
-                    in={!isVisible}
-                    timeout={300}
-                    classNames="linkss"
-                    unmountOnExit>
+                    <div className="imageone">
+                        <img
+                            src={portfolioImg}
+                            alt=""
+                        ></img>
 
-                    <div className="links">
-                    <div className="facebook">
-                        <img src={facebook} alt="" />
+                        <div className="findme" onClick={this.toggleVisibility}>
+                            <button>Find Me</button> 
+                        </div>
+                        <CSSTransition
+                            in={!isVisible}
+                            timeout={300}
+                            classNames="linkss"
+                            unmountOnExit
+                        >
+                            <div className="links">
+                                <div className="facebook">
+                                    <img src={facebook} alt="" />
+                                </div>
+                                <div className="github">
+                                    <img src={github} alt="" />
+                                </div>
+                                <div className="insta">
+                                    <img src={insta} alt="" />
+                                </div>
+                                <div className="linkedin">
+                                    <img src={linkedin} alt="" />
+                                </div>
+                            </div>
+                        </CSSTransition>
                     </div>
-                    <div className="github">
-                        <img src={github} alt="" />
-                    </div>
-                    <div className="insta">
-                        <img src={insta} alt="" />
-                    </div>
-                    <div className="linkedin">
-                        <img src={linkedin} alt="" />
-                    </div>
-                    </div>
-                    </CSSTransition>
                 </div>
             </div>
-        </div>);
+        );
     }
 }
- 
+// import React, { Component } from "react";
+// import axios from "axios";
+
+// class About extends Component {
+//   state = {
+//     about: []
+//   };
+
+//   componentDidMount() {
+//     axios
+//       .get("http://localhost:5010/dashboard/about/")
+//       .then(res =>{ this.setState({ about: res.data })
+//       console.log(res.data)}
+//       )
+//       .catch(err => console.log(err));
+//   }
+
+//   render() {
+//     return (
+//       <div>
+//         {this.state.about.map(about => (
+//           <div key={about._id}>
+//             <p>{about.bio}</p>
+//             <p>{about.expertise}</p>
+//             {console.log(about.personal_pic)}
+            
+//             <img src={`http://localhost:5010/${about.personal_pic}`} alt="Profile" />
+//           </div>
+//         ))}
+//       </div>
+//     );
+//   }
+// }
+
 export default About;

@@ -12,7 +12,7 @@ export default class DashboardAbout extends React.Component {
       isEditMode: false,
       bio: "",
       expertise: "",
-      personal_pic: "",
+      images: "",
       id: "",
     };
 
@@ -39,10 +39,14 @@ export default class DashboardAbout extends React.Component {
   handleExpertiseInput(e) {
     this.setState({ expertise: e.target.value });
   }
+  /*handleImage=(e) =>{
+    this.setState({ images:this.fileInput.current.files[0].name});
+    console.log(this.state)
+  }*/
   getData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5010/dashboard/about/`
+        `http://localhost:5000/dashboard/about/`
       );
       // this.setState({ about: response.data[0]. });
       this.setState({ bio: response.data[0].bio });
@@ -75,20 +79,17 @@ export default class DashboardAbout extends React.Component {
     formData.append("bio", this.state.bio);
     formData.append("expertise", this.state.expertise);
     formData.append(
-      "personal_pic",
-      new Blob([this.state.personal_pic]),
-      this.state.personal_pic.name
+      "images",this.fileInput.current.files[0],this.fileInput.current.files[0].name
     );
-
+    console.log(formData);
     try {
       const response = await axios.put(
-        `http://localhost:5010/dashboard/about/img/${this.state.id}`,
+        `http://localhost:5000/dashboard/about/img/${this.state.id}`,
         formData,
         {
           headers: {
-            accept: "application/json",
             "Accept-Language": "en-US,en;q=0.8",
-            "Content-Type": `multipart/form-data; boundary=${formData._boundary}`,
+            "Content-Type": `multipart/form-data`,
           },
         }
       );
@@ -138,13 +139,11 @@ export default class DashboardAbout extends React.Component {
                 >
                   <img
                     className="dashboard-pp"
-                    src={`http://localhost:5010/${this.state.personal_pic}`}
+                    src={`http://localhost:5000/${this.state.personal_pic}`}
                     alt="MY Profile"
                     style={{
-                      width: "200px",
-                      height: "200px",
-                      borderRadius: "50%",
-                      objectFit: "cover",
+                   width:"200px", height:"200px", borderRadius:"50%"
+
                     }}
                   />
                   
@@ -156,7 +155,7 @@ export default class DashboardAbout extends React.Component {
             </button>
             {this.state.isEditMode && (
               <section>
-                <form className="container-column" onSubmit={this.submitAbout}>
+                <form className="container-column" onSubmit={this.submitAbout} encType='multipart/form-data'>
                   <label htmlFor="bio">Bio</label>
                   <input
                     type="text"
@@ -177,9 +176,11 @@ export default class DashboardAbout extends React.Component {
                   <label htmlFor="personal_pic">Upload project picture</label>
                   <input
                     type="file"
-                    name="personal_pic"
+                    name="images"
                     id="personal_pic"
                     ref={this.fileInput}
+                  /* value={this.state.images}
+                    onChange={this.handleImage}*/
                     className="buttonDownload"
                   />
                   <div className="container-row">

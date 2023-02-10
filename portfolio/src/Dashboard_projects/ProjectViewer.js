@@ -2,14 +2,19 @@ import React from "react";
 import edit from "../edit.svg"
 import trash from "../trash.svg"
 import send from "../send.svg"
+import axios from "axios";
 export default class Project extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isEditMode: false,
-      name: "",
-      url: "",
-      category: "",
+      name: this.props.project.name,
+      url: this.props.project.url,
+      category: this.props.project.category,
+      images:"",
+      img:this.props.project.img,
+      id: this.props.project._id,
+      categories:[]
     };
     this.toggleEdit = this.toggleEdit.bind(this);
   }
@@ -37,14 +42,28 @@ export default class Project extends React.Component {
   handleCategoryOption = (e) => {
     this.setState({ category: e.target.value });
   };
+
+  deleteData = async (id) => {
+    id = this.state.id;
+    try {
+      const response = await axios.delete(
+        `http://localhost:5000/dashboard/projects/delete/${id}`
+      );
+      console.log(response.data.response);
+    } catch (error) {
+      console.log("error deleting dashboard", error);
+      console.error(error);
+    }
+  };
+
   render() {
     return (
       <div className="dashboard-card">
         <section className="container-row">
           <div className="container-column">
-            <h3 className="dashboard-title">{this.props.project.name}</h3>
+            <h3 className="dashboard-title"> Name:  {this.props.project.name}</h3>
             <a className="dashboard-data" href={this.props.project.url}>
-              {this.props.project.url}
+             Url: {this.props.project.url}
             </a>
             <img className="dashboard-img" />
           </div>
@@ -52,7 +71,7 @@ export default class Project extends React.Component {
             <img
               className="dashboard-proj-img"
               width="100px"
-              src={this.props.project.img}
+              src={`http://localhost:5000/${this.state.img}`}
             />
           </div>
          {!this.state.isEditMode && <div className="container-column">
@@ -63,7 +82,7 @@ export default class Project extends React.Component {
               onClick={this.deleteProject}
               className="dashboard-btns cancel"
             >
-              <img src={trash} />
+              <img src={trash} onClick={this.deleteData} />
             </button>
           </div>}
         </section>
@@ -96,7 +115,8 @@ export default class Project extends React.Component {
               {this.props.categories.map((ele) => {
                 return <option value={ele._id} key={ele._id}>{ele.name}</option>;
               })}
-            </select></div>
+            </select>
+            </div>
             <div className="container-row-to-col">
             <label htmlFor="img">Upload project picture</label>
             <input type="file" id="img" name="img" />

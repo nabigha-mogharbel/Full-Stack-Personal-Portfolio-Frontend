@@ -22,8 +22,9 @@ class About extends React.Component {
         return (
             <div className="about">
                 <div className="content_info">
-                    <div className="information">
+                    <div className="information-about">
                         <h1>Ahmad Badawi</h1>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur nihil a vitae odit quas repudiandae dolore aut, dicta quo quia dolor consectetur laudantium illo quos quod vel iste, totam neque!</p>
                     </div>
                     <div className="imageone">
                         <img

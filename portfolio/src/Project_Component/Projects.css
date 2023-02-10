@@ -128,12 +128,17 @@
     
   }  */
 /*******************************************************************************************/
+
+
+
 .slider {
     height: 100vh;
     margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
+    backdrop-filter: blur(8px);
+-webkit-backdrop-filter: blur(8px);     
 }
 .image-anddescription{
     width: 800px;

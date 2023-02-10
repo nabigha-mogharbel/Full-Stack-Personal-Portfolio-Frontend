@@ -20,7 +20,7 @@ import SkillsProgress from "./SkillsProgress";
           {
             _id: "63d574e3de5b8d4add69d065",
             name: "potato",
-            percentage: 100,
+            percentage: 22,
             __v: 0
           },
           {

@@ -85,6 +85,7 @@ label textarea{
 
 .send-btn{
   background: linear-gradient(90deg, var(--secondaryContact) 0%, var(--accentContact) 100%);
+  width: 100px;
   padding: .75rem;
   font-size: 1rem;
   font-weight: 600;

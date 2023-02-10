@@ -60,6 +60,10 @@ h2 {
 
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
 
+.all_Skills{
+  backdrop-filter: blur(8px);
+-webkit-backdrop-filter: blur(8px);
+}
 .circle{
   width: 200px;
   height: 240px;
@@ -100,7 +104,7 @@ h2 {
   justify-content: center;
 }
 
-@media (max-width : 400px) {
+@media (max-width : 500px) {
   .SkillsProgress{
     display: flex;
     justify-items: center;

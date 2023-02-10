@@ -2,9 +2,9 @@
 
 .about {
     background: rgba(255, 255, 255, 0.16);
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(8px);
--webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     height: 100vh;
     position: relative;
 }
@@ -13,25 +13,36 @@ backdrop-filter: blur(8px);
     position: absolute;
     height: 550px;
     width: 68%;
-    background-color: rgb(119, 143, 161);
     bottom: 0;
     left: 20%;
     transition: all 2s;
 }
-.information{
+
+.information-about {
     width: 400px;
-    height: 100px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
-.information h1 {
-    padding-top:20px ;
-    padding-left: 20px;
+
+.information-about p {
+    color: white;
+    font-size: 17px;
+    font-family: Raleway;
+
+}
+
+.information-about h1 {
+    padding-top: 20px;
     font-family: Raleway;
     color: var(--white);
 }
+
 .imageone img {
     position: absolute;
     height: 750px;
-    right:50px;
+    right: 50px;
     bottom: 0;
 
 }
@@ -79,21 +90,20 @@ backdrop-filter: blur(8px);
 .facebook img:hover,
 .github img:hover {
     height: 60px;
-    background-color: var(--white);
     border-radius: 50%;
 }
 
 .insta img:hover,
 .linkedin img:hover {
     height: 60px;
-    background-color: var(--white);
-    border-radius: 10px;
 }
+
 .facebook img:active,
-.github img:active,.insta img:active,
+.github img:active,
+.insta img:active,
 .linkedin img:active {
-     transform: scale(0.9);
-} 
+    transform: scale(0.9);
+}
 
 .findme {
     width: 100px;
@@ -103,7 +113,7 @@ backdrop-filter: blur(8px);
     position: absolute;
     bottom: 70px;
     left: 100px;
-    transition: all 0.3s ;
+    transition: all 0.3s;
 }
 
 .findme button {
@@ -121,14 +131,104 @@ backdrop-filter: blur(8px);
 .findme:hover {
     box-shadow: 1px 3px 3px var(--white);
 }
-.findme:active{
-    
+
+.findme:active {
+
     transform: scale(0.9);
 }
 
 .findme button:hover {
     color: black;
 }
-@media (max-width : 800px){
+
+@media (max-width : 500px) {
+    .imageone img {
+        position: absolute;
+        height: 440px;
+        left: -110px;
+        bottom: 0;
+    }
+
+    .content_info {
+        position: absolute;
+        height: 700px;
+        width: 68%;
+        bottom: 0;
+        left: 20%;
+        transition: all 2s;
+    }
+
+    .information-about {
+        width: 250px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .findme {
+        width: 65px;
+        height: 65px;
+        background-color: var(--Darkgrey);
+        border-radius: 50%;
+        position: absolute;
+        bottom: 280px;
+        left: 195px;
+        transition: all 0.3s;
+    }
+
+    .findme button {
+        width: 65px;
+        height: 40px;
+        font-size: 15px;
+        display: flex;
+        padding-top: 35%;
+        justify-content: center;
+        font-family: "Raleway";
+        color: var(--white);
+        transition: all 0.5s;
+    }
+
+    .facebook img,
+    .github img,
+    .insta img,
+    .linkedin img {
+        position: absolute;
+        height: 35px;
+        transition: all 0.3s;
+    }
+
+    .facebook img {
+        top: 36%;
+        left: 7%;
+    }
+
+    .github img {
+        top: 36%;
+        left: 25%;
+    }
+
+    .insta img {
+        top: 36%;
+        left: 43%;
+    }
+
+    .linkedin img {
+        top: 36%;
+        left: 60%;
+    }
+
+    .links {
+        height: 50px;
+        width: 50px;
+    }
+    .facebook img:hover,
+.github img:hover {
+    height: 42px;
 }
-   
+
+.insta img:hover,
+.linkedin img:hover {
+    height: 42px;
+}
+
+}

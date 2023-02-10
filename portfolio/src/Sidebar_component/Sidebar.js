@@ -6,6 +6,9 @@ import { CSSTransition } from 'react-transition-group';
 // const nav = document.querySelector('.nav')
 
 class sidebar extends React.Component {
+    constructor(props){
+        super(props)
+    }
     state = {
         isVisible: true,
     }
@@ -29,11 +32,11 @@ class sidebar extends React.Component {
                     unmountOnExit>
 
                     <div className="nav">
-                        <a href="#">About</a> <hr />
-                        <a href="#">My skills</a> <hr />
-                        <a href="#">Work</a> <hr />
-                        <a href="#">Contact</a> <hr />
-                        <a href="#">Resume</a>
+                        <a href="#" onClick={e => this.props.click(0)}>About</a> <hr />
+                        <a href="#" onClick={e => this.props.click(1)}>Work</a> <hr />
+                        <a href="#"onClick={e => this.props.click(2)}>Skills</a> <hr />
+                        <a href="#"onClick={e => this.props.click(3)}>Resume</a> <hr />
+                        <a href="#"onClick={e => this.props.click(4)}>Contact</a>
                     </div>
                 </CSSTransition>
             </div>

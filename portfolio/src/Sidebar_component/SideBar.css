@@ -1,20 +1,16 @@
-
-:root {
-    --Darkgrey: #2A2C39;
-    --Lightgray: #858792;
-    --white: #FFFFFF
-}
-
 .menu{
     position: fixed;
     top: 19%;
     width: 60px;
     height: 60px;
-    left:20px;
     background-color: var(--white);
     border-radius: 50%;
     box-shadow: 3px 3px 3px black;
-  margin-left: 3px
+    margin-left: 3px;
+    transition: all 0.1s;
+}
+.menu:active{
+  transform: scale(0.9);
 }
 .side_bar .nav {
     display:flex;
@@ -22,20 +18,16 @@
     align-items: flex-start;
     position:fixed;
     top: 30%;
-    left: 20px;
     height: 300px;
-    width: 60px;
+    width: 65px;
     justify-content: space-around;
     background-color: var(--Lightgray);
     align-items: center;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     box-shadow: 3px 3px 3px black;
-    
-    
 }
 .nav a{
-    
     text-decoration: none;
     font-size:16px;
     font-family:"Raleway";

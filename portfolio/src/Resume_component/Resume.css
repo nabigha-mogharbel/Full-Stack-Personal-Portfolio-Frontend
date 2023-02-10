@@ -1,11 +1,17 @@
 .resume-section{
-    --marked:#FA8072;
-    background-color: var(--primary);
-   /* background-image: url("https://thumbs.dreamstime.com/b/dark-grey-black-slate-texture-high-resolution-pattern-stone-brick-wall-background-design-art-work-165711969.jpg");
+    background: rgba(255, 255, 255, 0.16);
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(8px);
+-webkit-backdrop-filter: blur(8px);
+    /*background-color: var(--primary);
+    background-image: url("https://thumbs.dreamstime.com/b/dark-grey-black-slate-texture-high-resolution-pattern-stone-brick-wall-background-design-art-work-165711969.jpg");
     background-image: url("https://i.pinimg.com/736x/e6/2a/5b/e62a5b843c0b62c4164c57e93ac7e1b8.jpg");
     background-image: url("https://media.istockphoto.com/id/1190671385/vector/grunge-black-background.jpg?s=612x612&w=0&k=20&c=p72Xip_eITl98rdfuslNyyNXc66TFtxPOHAMA1ck7yY=");
     background-image: url("https://www.shutterstock.com/image-vector/black-background-overlap-dimension-grey-260nw-1095377891.jpg");*/
+ height:100vh ;
+
 }
+
 .marked{
     color:var(--marked)
 }
@@ -25,23 +31,7 @@
     font-size: large;
     align-items: flex-end;
 }
-.resume-bubble{
-    border-radius: 50%;
-    color:var(--primary);
-    background-color: var(--accent);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0px 0px 15px 5px #ffffff;
-    box-shadow: 0px -1px 50px -7px rgba(255, 255, 255, 0.695);
-    box-shadow: 0px -1px 50px -7px var(--marked);
-}
-.container{
-    display: flex;
-    flex-direction: row;
-    margin: 0;
-}
+
 .resume-element{
     color: var(--accent);
     margin:0px;
@@ -75,7 +65,21 @@ ul p{
 .resume-education, .resume-experience{
     background-color: transparent;
     position: relative;
-    padding-left: 10px;
+    padding-left: 9px;
+    padding-top: 20px;
+    
+}
+.resume-toggle button{
+    padding-bottom: 20px;
+    display: flex;
+    width:130px;
+    
+}
+.resume-summary{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-size: 40px;
 }
 
 
@@ -95,6 +99,7 @@ ul p{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    width: 300px;
 
 }
 @keyframes spotlight {
@@ -113,30 +118,36 @@ ul p{
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 767px) {
     .resume-section{
+        display: flex;
         flex-direction: column;
-        margin:0;
-        padding:0;
-        min-height: 200vh;
+        height: 100vh;
+
     }
     .resume-summary, .resume-details{
         width:100vw;
-        height: 100vh;
         padding:40px 50px;
+        padding-left: 75px;
         box-sizing: border-box;
+        color: white;
     }
+    .resume-summary{
+        gap: 25px;
+    }
+    
     .resume-bubble{
-        border-radius: 50%;
+
         min-height:calc((100vh*0.4) - 80px);
         width:calc((100vh*0.4) - (80px));
         position:relative;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: center;    
         align-items: center;
     }
     .resume-bubble p{
         font-size:calc(100vh*0.4*0.1);
         margin: 5px;
+        
     }
     .top-middle{
         left:15px;
@@ -152,9 +163,6 @@ ul p{
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
     .resume-section{
-        background-color: var(--primary);
-        width:100vw;
-        height: 100vh;
         padding: 40px 60px;
         box-sizing: border-box;
         color:white;
@@ -171,8 +179,6 @@ ul p{
         width:50%;
     }
     .resume-bubble{
-        border-radius: 50%;
-        background-color: var(--accent);
         height:calc((100vh*0.3) - 20px);
         width:calc((100vh*0.3) - (20px));
         position: absolute;
@@ -190,7 +196,7 @@ ul p{
         left:0;
     }
     .bottom-middle{
-        bottom:0;
+        bottom:0; 
         left:30%;
 
     }
@@ -202,7 +208,10 @@ ul p{
     .resume-education .resume-experience{
         display: flex;
         flex-direction: column;
-        row-gap: 0;   
+        padding-top: 20px;
+    }
+    .resume-educatio .resume-element{
+        height: 360px;
     }
 
 }

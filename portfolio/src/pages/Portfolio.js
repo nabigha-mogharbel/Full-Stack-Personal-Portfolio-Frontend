@@ -4,9 +4,9 @@ import Project from "../Project_Component/Projects"
 import Resume from "../Resume_component/Resume"
 import Contact from "../Contact_component/Contact"
 import Sidebar from "../Sidebar_component/Sidebar"
+import Skills from "../Skills_component/Skills"
 import axios from "axios"
 import "./Portfolio.css";
-import Sidebar from "../Sidebar_component/Sidebar";
 
 export default class Portfolio extends React.Component{
     constructor(props){
@@ -81,7 +81,7 @@ export default class Portfolio extends React.Component{
       touchStart={this.captureStart}
       touchEnd={this.captureEnd}
     />,
-    <Skill
+    <Skills
     scroll={this.handleScroll}
     touchStart={this.captureStart}
     touchEnd={this.captureEnd}

@@ -1,0 +1,90 @@
+/* 
+.progressdiv {
+  position: relative;
+  
+}
+
+.progressdiv:after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 25px;
+  transform: translate(-50%, -50%);
+  content: attr(data-percent) "%";
+}
+
+.progress {
+  display: block;
+  margin: 0 auto;
+  overflow: hidden;
+  transform: rotate(-90deg) rotateX(180deg);
+}
+
+.progress circle {
+	stroke-dashoffset: 0;
+  	transition: stroke-dashoffset 1s ease;
+  	stroke: #395659;
+  	stroke-width: 5px;
+}
+
+.progress .bar {
+	stroke: wheat;
+}
+.container{
+  position: relative;
+
+}
+.container::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  height: 125%;
+  background: #5c5151;
+  rotate: -3deg;
+  translate: -50% -50%;
+}
+h2 {
+  position: relative;
+  z-index: 1;
+  margin: 20px 15%;
+  color: #8C7F68;
+} */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
+
+.circle{
+  width: 200px;
+  height: 240px;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+.Skills_Name{
+  height: 40px;
+}
+.Skills_Name h4 {
+  font-size: 25px;
+  font-family: Raleway;
+  margin: 0 auto;
+
+}
+
+.skills_Percentage{
+  width: 200px;
+  height: 200px;
+}
+.SkillsProgress{
+  height: 250px;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+}
+.all_Skills{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

@@ -106,7 +106,9 @@ backdrop-filter: blur(8px);
     transition: all 0.3s ;
 }
 
-.findme span {
+.findme button {
+    width: 100px;
+    height: 60px;
     font-size: 20px;
     display: flex;
     padding-top: 35%;
@@ -124,7 +126,7 @@ backdrop-filter: blur(8px);
     transform: scale(0.9);
 }
 
-.findme span:hover {
+.findme button:hover {
     color: black;
 }
 @media (max-width : 800px){

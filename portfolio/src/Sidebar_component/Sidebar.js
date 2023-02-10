@@ -33,10 +33,10 @@ class sidebar extends React.Component {
 
                     <div className="nav">
                         <a href="#" onClick={e => this.props.click(0)}>About</a> <hr />
-                        <a href="#" onClick={e => this.props.click(0)}>Work</a> <hr />
-                        <a href="#"onClick={e => this.props.click(1)}>Skills</a> <hr />
-                        <a href="#"onClick={e => this.props.click(2)}>Resume</a> <hr />
-                        <a href="#"onClick={e => this.props.click(3)}>Contact</a>
+                        <a href="#" onClick={e => this.props.click(1)}>Work</a> <hr />
+                        <a href="#"onClick={e => this.props.click(2)}>Skills</a> <hr />
+                        <a href="#"onClick={e => this.props.click(3)}>Resume</a> <hr />
+                        <a href="#"onClick={e => this.props.click(4)}>Contact</a>
                     </div>
                 </CSSTransition>
             </div>

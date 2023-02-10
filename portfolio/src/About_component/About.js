@@ -6,6 +6,7 @@ import linkedin from "../icons/linkedin.svg";
 import github from "../icons/github.svg";
 import { CSSTransition } from "react-transition-group";
 import portfolioImg from '../icons/ahmadBadawi.png'
+import axios from "axios";
 
 class About extends React.Component {
     state = {
@@ -31,7 +32,7 @@ class About extends React.Component {
                         ></img>
 
                         <div className="findme" onClick={this.toggleVisibility}>
-                            <span> Find Me</span>
+                            <button>Find Me</button> 
                         </div>
                         <CSSTransition
                             in={!isVisible}
@@ -94,4 +95,4 @@ class About extends React.Component {
 //   }
 // }
 
-// export default About;
+export default About;

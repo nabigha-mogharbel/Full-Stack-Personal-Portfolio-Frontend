@@ -52,6 +52,12 @@ h2 {
   margin: 20px 15%;
   color: #8C7F68;
 } */
+
+/*
+ * react-circular-progressbar styles
+ * All of the styles in this file are configurable!
+ */
+
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
 
 .circle{
@@ -68,7 +74,12 @@ h2 {
   font-size: 25px;
   font-family: Raleway;
   margin: 0 auto;
+  text-align: center;
+  color:white;
 
+}
+.CircularProgressbar{
+  color: white;
 }
 
 .skills_Percentage{
@@ -87,4 +98,14 @@ h2 {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+@media (max-width : 400px) {
+  .SkillsProgress{
+    display: flex;
+    justify-items: center;
+    flex-direction: column;
+    padding-top: 120%;
+    
+  }
 }

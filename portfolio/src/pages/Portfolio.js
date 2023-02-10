@@ -2,6 +2,7 @@ import React from "react";
 import About from "../About_component/About";
 import Project from "../Project_Component/Project";
 import Resume from "../Resume_component/Resume";
+import Skill from "../Skills_component/Skills";
 import Contact from "../Contact_component/Contact";
 import "./Portfolio.css";
 import Sidebar from "../Sidebar_component/Sidebar";
@@ -60,6 +61,11 @@ export default class Portfolio extends React.Component {
       touchStart={this.captureStart}
       touchEnd={this.captureEnd}
     />,
+    <Skill
+    scroll={this.handleScroll}
+    touchStart={this.captureStart}
+    touchEnd={this.captureEnd}
+  />,
     <Resume
       scroll={this.handleScroll}
       touchStart={this.captureStart}

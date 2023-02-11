@@ -11,12 +11,14 @@
 .dashboard-section hr{
     margin-bottom: 30px;
 }
+.dashboard-card{
+    width: 100%;
+}
 .container-column{
     display: flex;
     flex-direction: column;
     align-items: stretch;
     row-gap: 20px;
-
 }
 .container-row, .container-row-to-col{
     display: flex;
@@ -32,11 +34,19 @@
 .dashboard-btns{
     color:white;
     font-size: medium;
-    padding:8px 8px;
+    padding:4px 4px;
+    width:30px;
+    height:30px;
     border-radius: 50%;
     background-color: var(--primary);
     border:0px;
-    align-self: flex-start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.dashboard-btns img{
+    width: 20px;
+
 }
 .edit:hover{
     background-color: rgb(33, 93, 33);
@@ -69,11 +79,30 @@ input{
 .dashboard-card form{
     margin-top:10px;
 }
-@media screen and (max-width:800px){
+.flex-start{
+    align-items: flex-start;
+}
+.flex-center{
+    align-items: center;
+}
+.container-column-to-row{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    row-gap: 20px;
+}
+@media screen and (max-width:799px){
     .container-row-to-col{
         flex-direction: column;
         row-gap:20px;
         align-items: stretch;
+    }
+    .dashboard-section{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0;
+        padding-left: 5px;
     }
     .dashboard-card{
         width:80vw;
@@ -92,4 +121,8 @@ input{
 .dashboard label{
     color:var(--primary) ;
 }
-
+@media screen and (min-width:800px){
+    #about_container{
+        max-width: 50%;
+    }
+}

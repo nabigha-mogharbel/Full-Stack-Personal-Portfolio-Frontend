@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import '../Login_component/Login.css'
+import Cookies from "universal-cookie"
+import {history} from "react-router-dom"
 
 class Login extends Component {
   constructor(props) {
@@ -33,10 +35,11 @@ class Login extends Component {
         .then(response => {
           if (response) {
              // Handle successful login
-            console.log(response)
+            console.log("headers",response)
             this.setState({success:response})
-            this.props.onLogin(true);
-            alert("Success")
+            const cookie=new Cookies
+           cookie.set("auth-token", response.data.data)
+           // this.props.allowAdmin()
           }
         })
         .catch(error => {

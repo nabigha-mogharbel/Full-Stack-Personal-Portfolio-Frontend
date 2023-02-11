@@ -10,6 +10,7 @@ export default class DashboardAbout extends React.Component {
     this.state = {
       about: [],
       isEditMode: false,
+      isLoaded:false,
       bio: "",
       expertise: "",
       images: "",
@@ -49,11 +50,12 @@ export default class DashboardAbout extends React.Component {
         `http://localhost:5000/dashboard/about/`
       );
       // this.setState({ about: response.data[0]. });
-      this.setState({ bio: response.data[0].bio });
+     /* this.setState({ bio: response.data[0].bio });
       this.setState({ expertise: response.data[0].expertise });
       this.setState({ personal_pic: response.data[0].personal_pic });
-      this.setState({ id: response.data[0]._id });
-      console.log(response);
+      this.setState({ id: response.data[0]._id });*/
+      this.setState({data:response.data[0], isLoaded:true})
+      console.log(this.state.data);
     } catch (error) {
       console.error(error);
     }
@@ -76,15 +78,15 @@ export default class DashboardAbout extends React.Component {
     event.preventDefault();
 
     const formData = new FormData();
-    formData.append("bio", this.state.bio);
-    formData.append("expertise", this.state.expertise);
+    formData.append("bio", this.state.data.bio);
+    formData.append("expertise", this.state.data.expertise);
     formData.append(
       "images",this.fileInput.current.files[0],this.fileInput.current.files[0].name
     );
     console.log(formData);
     try {
       const response = await axios.put(
-        `http://localhost:5000/dashboard/about/img/${this.state.id}`,
+        `http://localhost:5000/dashboard/about/img/${this.state.data._id}`,
         formData,
         {
           headers: {
@@ -107,25 +109,16 @@ export default class DashboardAbout extends React.Component {
           <h1>About me</h1>
           <hr />
           {/* {!this.state.isEditMode&&  */}
-          <>
-            <section className="container-row-to-col">
-              <div>
-                <h2 className="dashboard-title">My picture</h2>
-                <img
-                  className="dashboard-pp"
-                  src={this.state.about.personal_pic}
-                  width="200px"
-                />
-              </div>
-              <div className="container-column">
+         {this.state.isLoaded&&  <>
+           {!this.state.isEditMode && <> <section className="container-row-to-col">
+              <div className="container-column flex-start" id="about_container">
                 <h2 className="dashboard-title">Bio</h2>
-                <p className="dashboard-data">{this.state.bio}</p>
+                <p className="dashboard-data">{this.state.data.bio}</p>
                 <h2 className="dashboard-title">Expertise</h2>
-                <p className="dashboard-data">{this.state.expertise}</p>
+                <p className="dashboard-data">{this.state.data.expertise}</p>
               </div>
               <div>
                 <h2 className="dashboard-title">My picture</h2>
-                {this.state.personal_pic}
                 <div
                   style={{
                     width: "200px",
@@ -139,7 +132,7 @@ export default class DashboardAbout extends React.Component {
                 >
                   <img
                     className="dashboard-pp"
-                    src={`http://localhost:5000/${this.state.personal_pic}`}
+                    src={`http://localhost:5000/${this.state.data.personal_pic}`}
                     alt="MY Profile"
                     style={{
                    width:"200px", height:"200px", borderRadius:"50%"
@@ -152,7 +145,7 @@ export default class DashboardAbout extends React.Component {
             </section>
             <button onClick={this.toggleEdit} className="dashboard-btns edit">
               <img src={edit} alt="Icon" />
-            </button>
+            </button></>}
             {this.state.isEditMode && (
               <section>
                 <form className="container-column" onSubmit={this.submitAbout} encType='multipart/form-data'>
@@ -197,7 +190,7 @@ export default class DashboardAbout extends React.Component {
                 </form>
               </section>
             )}
-          </>
+          </>}
         </main>
       </div>
     );

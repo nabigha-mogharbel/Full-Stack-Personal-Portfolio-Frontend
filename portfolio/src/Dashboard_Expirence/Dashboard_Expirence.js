@@ -39,7 +39,7 @@ class DashboardExpirience extends React.Component {
   getData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5010/dashboard/experience/`
+        `http://localhost:5000/dashboard/experience/`
       );
       this.setState({ data: response.data.response });
       console.log(response.data.response);
@@ -60,7 +60,7 @@ class DashboardExpirience extends React.Component {
     console.log("Newwwww" + {newExperience});
     try {
       const response = axios.post(
-        `http://localhost:5010/dashboard/experience/create`,
+        `http://localhost:5000/dashboard/experience/create`,
         newExperience
       );
 

@@ -1,18 +1,27 @@
 import React from "react";
-import edit from "../edit.svg"
-import trash from "../trash.svg"
-import send from "../send.svg"
+import edit from "../edit.svg";
+import trash from "../trash.svg";
+import send from "../send.svg";
+import axios from "axios";
 export default class Project extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isEditMode: false,
+      name: this.props.project.name,
+      url: this.props.project.url,
+      category: this.props.project.category,
+      images: "",
+      img: this.props.project.img,
+      id: this.props.project._id,
+      categories: [],
+      selectedCategory: "",
       name: "",
       url: "",
-      category: "",
+      nameCategory:""
     };
-    this.toggleEdit = this.toggleEdit.bind(this);
-  }
+    this.fileInput = React.createRef();
+    this.toggleEdit = this.toggleEdit.bind(this);  }
   toggleEdit() {
     this.setState({ isEditMode: !this.state.isEditMode });
   }
@@ -28,6 +37,39 @@ export default class Project extends React.Component {
       console.log("request", request, param);
     }
   };
+
+  updateData = async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData();
+    formData.append("name", this.state.name);
+    formData.append("url", this.state.url);
+    formData.append("category", this.state.selectedCategory);
+    formData.append(
+      "images",
+      this.fileInput.current.files[0],
+      this.fileInput.current.files[0].name
+    );
+    console.log(formData);
+    try {
+      const response = await axios.put(
+        `http://localhost:5000/dashboard/projects/update/withimg/${this.state.id}`,
+        formData,
+        {
+          headers: {
+            "Accept-Language": "en-US,en;q=0.8",
+            "Content-Type": `multipart/form-data`,
+          },
+        }
+      );
+      console.log(response.data);
+      alert("yay data");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+
   handleNameInput = (e) => {
     this.setState({ name: e.target.value });
   };
@@ -35,16 +77,39 @@ export default class Project extends React.Component {
     this.setState({ url: e.target.value });
   };
   handleCategoryOption = (e) => {
-    this.setState({ category: e.target.value });
+    this.setState({ cate: e.target.value });
+  };
+
+  deleteData = async (id) => {
+    id = this.state.id;
+    try {
+      const response = await axios.delete(
+        `http://localhost:5000/dashboard/projects/delete/${id}`
+      );
+      console.log(response.data.response);
+    } catch (error) {
+      console.log("error deleting dashboard", error);
+      console.error(error);
+    }
+  };
+
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+    console.log(event.target.name);
   };
   render() {
     return (
       <div className="dashboard-card">
         <section className="container-row">
           <div className="container-column">
-            <h3 className="dashboard-title">{this.props.project.name}</h3>
+            <h3 className="dashboard-title">
+              {" "}
+              Name: {this.props.project.name}
+            </h3>
             <a className="dashboard-data" href={this.props.project.url}>
-              {this.props.project.url}
+              Url: {this.props.project.url}
             </a>
             <img className="dashboard-img" />
           </div>
@@ -52,57 +117,79 @@ export default class Project extends React.Component {
             <img
               className="dashboard-proj-img"
               width="100px"
-              src={this.props.project.img}
+              src={`http://localhost:5000/${this.props.project.img}`}
             />
           </div>
-         {!this.state.isEditMode && <div className="container-column">
-            <button onClick={this.toggleEdit} className="dashboard-btns edit">
-              <img src={edit} />
-            </button>
-            <button
-              onClick={this.deleteProject}
-              className="dashboard-btns cancel"
-            >
-              <img src={trash} />
-            </button>
-          </div>}
+          {!this.state.isEditMode && (
+            <div className="container-column">
+              <button onClick={this.toggleEdit} className="dashboard-btns edit">
+                <img src={edit} />
+              </button>
+              <button
+                onClick={this.deleteProject}
+                className="dashboard-btns cancel"
+              >
+                <img src={trash} onClick={this.deleteData} />
+              </button>
+            </div>
+          )}
         </section>
 
         {this.state.isEditMode && (
-          <form className="container-column" onSubmit={this.submitProject}>
-            <div className="container-row-to-col"><label htmlFor="name">Name</label>
-            <input
-              type="text"
-              name="name"
-              id="name"
-              value={this.state.name}
-              onChange={this.handleNameInput}
-            /></div>
-            <div className="container-row-to-col"><label htmlFor="url">Link</label>
-            <input
-              type="text"
-              name="url"
-              id="url"
-              value={this.state.url}
-              onChange={this.handleUrlInput}
-            /></div>
+          <form className="container-column" onSubmit={this.updateData} encType="multipart/form-data">
+            <h1>Update</h1>
             <div className="container-row-to-col">
-            <label htmlFor="category">Category</label>
-            <select
+              <label htmlFor="name">Name</label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                value={this.state.name}
+                onChange={this.handleNameInput}
+              />
+            </div>
+            <div className="container-row-to-col">
+              <label htmlFor="url">Link</label>
+              <input
+                type="text"
+                name="url"
+                id="url"
+                value={this.state.url}
+                onChange={this.handleUrlInput}
+              />
+            </div>
+            <div className="container-row-to-col">
+              <label htmlFor="category">Category</label>
+              <select
                 id="category"
-              value={this.state.category}
-              onChange={this.handleCategoryOption}
-            >
-              {this.props.categories.map((ele) => {
-                return <option value={ele._id} key={ele._id}>{ele.name}</option>;
-              })}
-            </select></div>
+                value={this.state.selectedCategory}
+                onChange={this.handleCategoryOption}
+              >
+                {this.props.categories.map((ele) => {
+                  return (
+                    <option value={ele._id} key={ele._id}>
+                      {ele.name}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
             <div className="container-row-to-col">
-            <label htmlFor="img">Upload project picture</label>
-            <input type="file" id="img" name="img" />
+              <label htmlFor="img">Upload project picture</label>
+              <input
+                type="file"
+                name="images"
+                id="images"
+                ref={this.fileInput}
+                /* value={this.state.images}
+                    onChange={this.handleImage}*/
+                className="buttonDownload"
+              />
             </div>
             <div className="container-row">
-              <button type="submit" className="dashboard-btns edit"><img src={send}/></button>
+              <button type="submit" className="dashboard-btns edit">
+                <img src={send} />
+              </button>
               <button
                 onClick={this.toggleEdit}
                 className="dashboard-btns cancel"

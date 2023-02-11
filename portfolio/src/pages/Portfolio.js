@@ -1,20 +1,71 @@
-import React from "react";
-import About from "../About_component/About";
-import Project from "../Project_Component/Project";
-import Resume from "../Resume_component/Resume";
-import Skill from "../Skills_component/Skills";
-import Contact from "../Contact_component/Contact";
+import React from "react"
+import About from "../About_component/About"
+import Project from "../Project_Component/Project"
+import Resume from "../Resume_component/Resume"
+import Contact from "../Contact_component/Contact"
+import Sidebar from "../Sidebar_component/Sidebar"
+import Skills from "../Skills_component/Skills"
+import axios from "axios"
 import "./Portfolio.css";
-import Sidebar from "../Sidebar_component/Sidebar";
-export default class Portfolio extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      component: 0,
-    };
-    this.handleScroll = this.handleScroll.bind(this);
-    this.initialY = 0;
-  }
+
+export default class Portfolio extends React.Component{
+    constructor(props){
+        super(props)
+        this.state = 
+        {
+            Portfolio:[],
+            isLoaded:false,
+            component: 0,
+        }
+        this.handleScroll = this.handleScroll.bind(this);
+        this.initialY = 0;
+    }
+    componentDidMount() {
+        this.getData();
+      }
+    getData = async () => {
+        try {
+          const response = await axios.get(
+            `http://localhost:5000/dashboard/portfolio/`
+          );
+          this.setState({ Portfolio: response.data.response[0], isLoaded:true});
+        this.components=[<About
+          scroll={this.handleScroll}
+          touchStart={this.captureStart}
+          touchEnd={this.captureEnd}
+          aboData={this.state.Portfolio.about[0]}
+          linkData={this.state.Portfolio.link}
+        />,
+        <Project
+          scroll={this.handleScroll}
+          touchStart={this.captureStart}
+          touchEnd={this.captureEnd}
+          proData={[...this.state.Portfolio.project]}
+        />,
+        <Skills
+        scroll={this.handleScroll}
+        touchStart={this.captureStart}
+        touchEnd={this.captureEnd}
+        skillData={[...this.state.Portfolio.skill]}
+      />,
+        <Resume
+          scroll={this.handleScroll}
+          touchStart={this.captureStart}
+          touchEnd={this.captureEnd}
+          expData={[...this.state.Portfolio.experience]}
+          eduData={[...this.state.Portfolio.education]}
+        />,
+        <Contact
+          scroll={this.handleScroll}
+          touchStart={this.captureStart}
+          touchEnd={this.captureEnd}
+        />,]
+          console.log(response.data.response[0]);
+        } catch (error) {
+          console.error(error);
+        }
+      };
+    
   handleScroll(e) {
     console.log("hhhiiii");
     if (e.deltaY > 0) {
@@ -50,40 +101,14 @@ export default class Portfolio extends React.Component {
   sidebarClick=(index)=>{
     this.setState({component:index})
   }
-  components = [
-    <About
-      scroll={this.handleScroll}
-      touchStart={this.captureStart}
-      touchEnd={this.captureEnd}
-    />,
-    <Project
-      scroll={this.handleScroll}
-      touchStart={this.captureStart}
-      touchEnd={this.captureEnd}
-    />,
-    <Skill
-    scroll={this.handleScroll}
-    touchStart={this.captureStart}
-    touchEnd={this.captureEnd}
-  />,
-    <Resume
-      scroll={this.handleScroll}
-      touchStart={this.captureStart}
-      touchEnd={this.captureEnd}
-    />,
-    <Contact
-      scroll={this.handleScroll}
-      touchStart={this.captureStart}
-      touchEnd={this.captureEnd}
-    />,
-  ];
+  components = [];
   render() {
     return (
       <div className="portfolio" onWheel={this.handleScroll}>
         <div className="wave"></div>
         <div className="wave"></div>
         <div className="wave"></div>
-        {this.components[this.state.component]}
+        {this.state.isLoaded && this.components[this.state.component]}
         <Sidebar click={this.sidebarClick} />
       </div>
     );

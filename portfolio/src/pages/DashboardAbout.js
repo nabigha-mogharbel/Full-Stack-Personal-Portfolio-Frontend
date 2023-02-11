@@ -6,6 +6,7 @@ export default class DashboardAbout extends React.Component {
   constructor(props){
     super(props)
     this.state={
+      
     }
   }
     render() {

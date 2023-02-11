@@ -9,14 +9,21 @@ import portfolioImg from '../icons/ahmadBadawi.png'
 import axios from "axios";
 
 class About extends React.Component {
+    constructor(props){
+        super(props)
+    }
     state = {
         isVisible: true,
+        data:this.props.aboData
     };
     toggleVisibility = () => {
         this.setState((state) => ({
             isVisible: !state.isVisible,
         }));
     };
+    componentDidMount(){
+        console.log(this.state.data)
+    }
     render() {
         const { isVisible } = this.state;
         return (
@@ -24,7 +31,8 @@ class About extends React.Component {
                 <div className="content_info">
                     <div className="information-about">
                         <h1>Ahmad Badawi</h1>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur nihil a vitae odit quas repudiandae dolore aut, dicta quo quia dolor consectetur laudantium illo quos quod vel iste, totam neque!</p>
+                        <p>{this.props.aboData.expertise}</p>
+                        <p>{this.props.aboData.bio}</p>
                     </div>
                     <div className="imageone">
                         <img

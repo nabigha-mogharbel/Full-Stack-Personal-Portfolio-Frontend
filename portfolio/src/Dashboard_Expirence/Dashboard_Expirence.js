@@ -1,60 +1,97 @@
-import React from "react"
+import React from "react";
 import Expireience from "./Expiences";
-import "../Dashboard_Expirence/Expirence.css"
-import send from "../send.svg"
-class DashboardExpirience extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-    state = { Experience : [ {
-        _id: "63d28f75bf3f9bab4b38bb22",
-        name: "first project",
-        companyName: "Codi.Tech",
-        startDate: "2006-05-13T00:00:00.000Z",
-        description: "Create a portfolio",
-        __v: 0
-      },
-      {
-        _id: "63d2c0bb9492ae31d0d77ba8",
-        name: "Third",
-        companyName: "DD",
-        startDate: "2000-05-13T00:00:00.000Z",
-        endDate: "2005-05-13T00:00:00.000Z",
-        description: "Create a portfolio",
-        __v: 0
-      },],
-      name:"",
-      companyName:"",
-      description:"",
-      startDate:"",
-      endDate:"",
-      isEditMode:false
+import "../Dashboard_Expirence/Expirence.css";
+import axios from "axios";
+import send from "../send.svg";
 
-      }
-      toggleEdit=()=> {
-        this.setState({ isEditMode: !this.state.isEditMode });
-        if (!this.state.isEditMode) {
-          this.setState({ name:"",
-          companyName:"",
-          description:"",
-          startDate:"",
-          endDate:""});
-        }
-      }
-      handleInput = (event, key) => {
-        this.setState({ [key]: event.target.value });
-        console.log(this.state);
-      };
-    render() { 
-        return ( <div className="dashboard-section">
-        <h1>Experience</h1><hr />
-      {!this.state.isEditMode&& <>  <main className="container-column">{this.state.Experience.map((objec)=>{
-            return <Expireience Expir={objec} key={objec._id}/>
-        })}
-        </main> <button onClick={this.toggleEdit} className="dashboard-btns edit">+</button></>}
+class DashboardExpirience extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  state = {
+    data: [],
+    name: "",
+    companyName: "",
+    description: "",
+    startDate: "",
+    endDate: "",
+    isEditMode: false,
+  };
+  toggleEdit = () => {
+    this.setState({ isEditMode: !this.state.isEditMode });
+    if (!this.state.isEditMode) {
+      this.setState({
+        name: "",
+        companyName: "",
+        description: "",
+        startDate: "",
+        endDate: "",
+      });
+    }
+  };
+  handleInput = (event, key) => {
+    this.setState({ [key]: event.target.value });
+    console.log(this.state);
+  };
+  componentDidMount() {
+    this.getData();
+  }
+  getData = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:5010/dashboard/experience/`
+      );
+      this.setState({ data: response.data.response });
+      console.log(response.data.response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  addExperienceData = (e) => {
+    e.preventDefault();
+    const newExperience = {
+      name: this.state.name,
+      companyName: this.state.companyName,
+      startDate: this.state.startDate,
+      endDate: this.state.endDate,
+      description: this.state.description
+    };
+    console.log("Newwwww" + {newExperience});
+    try {
+      const response = axios.post(
+        `http://localhost:5010/dashboard/experience/create`,
+        newExperience
+      );
+
+      console.log("Done");
+      this.getData()
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  render() {
+    return (
+      <div className="dashboard-section">
+        <h1>Experience</h1>
+        <hr />
+        {!this.state.isEditMode && (
+          <>
+            {" "}
+            <main className="container-column">
+              {this.state.data.map((objec) => {
+                return <Expireience Expir={objec} key={objec._id} />;
+              })}
+            </main>{" "}
+            <button onClick={this.toggleEdit} className="dashboard-btns edit">
+              +
+            </button>
+          </>
+        )}
         {this.state.isEditMode && (
           <section>
-            <form className="container-column" onSubmit={this.submitExperience}>
+            <form className="container-column" onSubmit={this.addExperienceData}>
               <label htmlFor="name">Name</label>
               <input
                 type="text"
@@ -97,7 +134,7 @@ class DashboardExpirience extends React.Component {
               />
               <div className="container-row">
                 <button type="submit" className="dashboard-btns edit">
-                  <img src={send} width="20px" />
+                  <img src={send} width="20px" onClick={this.addExperienceData} />
                 </button>
                 <button
                   onClick={this.toggleEdit}
@@ -109,8 +146,9 @@ class DashboardExpirience extends React.Component {
             </form>
           </section>
         )}
-    </div> );
-    }
+      </div>
+    );
+  }
 }
- 
+
 export default DashboardExpirience;

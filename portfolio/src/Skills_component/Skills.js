@@ -92,8 +92,8 @@ import SkillsProgress from "./SkillsProgress";
     return (
       <div className="all_Skills">
       <div className="SkillsProgress">
-        {this.state.skills.map ((ele)=>{
-        return  <SkillsProgress skil ={ele} key={this.state._id}/>
+        {this.props.skillData.map ((ele)=>{
+        return  <SkillsProgress skil ={ele} key={ele._id}/>
       })}
       </div>
     </div>

@@ -18,11 +18,12 @@ class Project extends React.Component {
                         {src:"https://i.pinimg.com/564x/5f/7c/08/5f7c08b0ac597d7c114c4f35fafc6d99.jpg",
                         description:"lililili"},
                         {src:"https://i.pinimg.com/564x/52/d4/07/52d4073a9296c79ae2da6a5c45f43f01.jpg",
-                        description:"kjbnkjkljkbjhkjnbh"}]
+                        description:"kjbnkjkljkbjhkjnbh"}],
+         data:this.props.proData
     };}
 
      handleImageincrement = () => {
-        if(this.state.imageB === this.state.imageanddes.length-1){
+        if(this.state.imageB === this.state.data.length-1){
             this.setState({imageA: this.state.imageB ,imageB : 0 })
         
         }
@@ -31,7 +32,7 @@ class Project extends React.Component {
     }
         handleImagedeincrement = () => {
             if(this.state.imageA === 0){
-                this.setState({imageB: 0 ,imageA : this.state.imageanddes.length-1  })
+                this.setState({imageB: 0 ,imageA : this.state.data.length-1  })
             
             }
             else{this.setState({imageB:this.state.imageA, imageA: this.state.imageA-1})}
@@ -50,8 +51,8 @@ class Project extends React.Component {
                     <button onClick={this.handleImagedeincrement} >
                         <img src={backward} alt=""  />
                     </button >
-                        <Projects description={this.state.imageanddes[this.state.imageA].description} img={this.state.imageanddes[this.state.imageA].src}/>
-                        <Projects description={this.state.imageanddes[this.state.imageB].description} img= {this.state.imageanddes[this.state.imageB].src}/>
+                        <Projects description={this.state.data[this.state.imageA].name} img={this.state.data[this.state.imageA].src}/>
+                        <Projects description={this.state.data[this.state.imageB].name} img= {this.state.data[this.state.imageB].src}/>
                     <button onClick={this.handleImageincrement}>
                         <img src={forward} alt="" />
                     </button>

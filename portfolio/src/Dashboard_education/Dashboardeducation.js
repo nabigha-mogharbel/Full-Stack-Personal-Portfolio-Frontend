@@ -2,31 +2,13 @@ import React from "react";
 import "../Dashboard_education/Dashboardeducation.css";
 import Education from "./Education_view";
 import send from "../send.svg";
+import axios from "axios";
 
 class DashboardEducation extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      education: [
-        {
-          _id: "63cfe11a916be585e47fc9ae",
-          major: "hello",
-          institute: "bro",
-          degree: "ts2",
-          __v: 0,
-          startDate: 3 + "/" + 5 + "/" + 2019,
-          endDate: 8 + "/" + 3 + "/" + 2022,
-        },
-        {
-          _id: "63cfe11a916be585e47fc9a1",
-          major: "hii",
-          institute: "bro",
-          degree: "ts2",
-          __v: 0,
-          startDate: 1 + "/" + 3 + "/" + 2020,
-          endDate: 2 + "/" + 22 + "/" + 2020,
-        },
-      ],
+      data: [],
       isEditMode: false,
       major: "",
       degree: "",
@@ -35,15 +17,59 @@ class DashboardEducation extends React.Component {
       endDate: "",
     };
   }
+  componentDidMount() {
+    this.getData();
+  }
+  getData = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:5000/dashboard/education/`
+      );
+      this.setState({ data: response.data.response });
+      console.log(response.data.response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  addEducationData = (e) => {
+    e.preventDefault();
+    const newEduation = {
+      major: this.state.major,
+      degree: this.state.degree,
+      startDate: this.state.startDate,
+      endDate: this.state.endDate,
+      institute: this.state.institute
+    };
+    console.log("Newwwww" + {newEduation});
+    try {
+      const response = axios.post(
+        `http://localhost:5010/dashboard/education/create`,
+        newEduation
+      );
+
+      console.log("Done");
+      this.getData()
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   toggleEdit = () => {
     this.setState({ isEditMode: !this.state.isEditMode });
     if (!this.state.isEditMode) {
-      this.setState({ bio: "", expertise: "" });
     }
   };
-  handleInput = (event, key) => {
-    this.setState({ [key]: event.target.value });
-    console.log(this.state);
+
+  // handleInput = (event, key) => {
+  //   this.setState({ [key]: event.target.value });
+  //   console.log(this.state.$[key]);
+  // };
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+    //  console.log(this.state.$[event.target.name]);;
   };
   render() {
     return (
@@ -54,8 +80,8 @@ class DashboardEducation extends React.Component {
         {!this.state.isEditMode && (
           <>
             <div className="container-column">
-              {this.state.education.map((ele) => {
-                return <Education edu={ele} key={ele._id} />;
+              {this.state.data.map((ele) => {
+                return <Education edu={ele} key={ele._id} refresh={this.ge} />;
               })}
             </div>
             <button
@@ -70,14 +96,15 @@ class DashboardEducation extends React.Component {
 
         {this.state.isEditMode && (
           <section>
-            <form className="container-column" onSubmit={this.submitAbout}>
+            <h2> Add New Education</h2>
+            <form className="container-column" onSubmit={this.addEducationData}>
               <label htmlFor="major">Major</label>
               <input
                 type="text"
                 name="major"
                 id="major"
                 value={this.state.major}
-                onChange={(e) => this.handleInput(e, "major")}
+                onChange={this.handleChange}
               />
               <label htmlFor="degree">Degree</label>
               <input
@@ -85,7 +112,7 @@ class DashboardEducation extends React.Component {
                 name="degree"
                 id="degree"
                 value={this.state.degree}
-                onChange={(e) => this.handleInput(e, "degree")}
+                onChange={this.handleChange}
               />
               <label htmlFor="institute">Institute</label>
               <input
@@ -93,27 +120,31 @@ class DashboardEducation extends React.Component {
                 name="institute"
                 id="institute"
                 value={this.state.institute}
-                onChange={(e) => this.handleInput(e, "institute")}
+                onChange={this.handleChange}
               />
               <label htmlFor="startDate">Start Date</label>
               <input
                 type="date"
                 name="startDate"
                 id="startDate"
-                value={this.state.institute}
-                onChange={(e) => this.handleInput(e, "startDate")}
+                value={this.state.startDate}
+                onChange={this.handleChange}
               />
               <label htmlFor="endDate">End Date</label>
               <input
                 type="date"
                 name="endDate"
                 id="endDate"
-                value={this.state.institute}
-                onChange={(e) => this.handleInput(e, "endDate")}
+                value={this.state.endDate}
+                onChange={this.handleChange}
               />
               <div className="container-row">
                 <button type="submit" className="dashboard-btns edit">
-                  <img src={send} width="20px" />
+                  <img
+                    src={send}
+                    width="20px"
+                    onSubmit={this.addEducationData}
+                  />
                 </button>
                 <button
                   onClick={this.toggleEdit}

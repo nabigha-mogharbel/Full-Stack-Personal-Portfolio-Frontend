@@ -168,7 +168,7 @@ export default class Resume extends React.Component {
             </div>
             <div className="container">
              {this.state.isEducation && <ul className="resume-education">
-              {this.state.response[0].education.map(ele => {
+              {this.props.eduData.map(ele => {
                     return <li className="resume-element" key={ele._id}>
                             <p className="title-big">{ele.major}</p>
                             <p className="title-med">{ele.institute}</p>
@@ -181,7 +181,7 @@ export default class Resume extends React.Component {
                 })}
               </ul>}
               {this.state.isExperience && <ul className="resume-experience">
-                {this.state.response[0].experience.map((ele) => {
+                {this.props.expData.map((ele) => {
                   return (
                     <li className="resume-element" key={ele._id}>
                       <p className="title-big">{ele.name}</p>

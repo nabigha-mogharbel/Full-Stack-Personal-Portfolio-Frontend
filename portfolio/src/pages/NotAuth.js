@@ -1,0 +1,11 @@
+import React from "react"
+export default class Error extends React.Component{
+    render(){
+        return(<div className="Error">
+            <div className="wave"></div>
+            <div className="wave"></div>
+            <div className="wave"></div>
+            please log in before accessing this page
+            </div>)
+    }
+}

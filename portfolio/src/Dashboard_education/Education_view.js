@@ -41,7 +41,7 @@ class Education extends React.Component {
     console.log(educationData + "\n" + id);
     try {
       const response = await axios.put(
-        `http://localhost:5010/dashboard/education/update/${id}`,
+        `http://localhost:5000/dashboard/education/update/${id}`,
         educationData
       );
 
@@ -67,7 +67,7 @@ class Education extends React.Component {
     id = this.state.id
     try {
       const response = await axios.delete(
-        `http://localhost:5010/dashboard/education/delete/${id}`
+        `http://localhost:5000/dashboard/education/delete/${id}`
       );
       console.log(response.data.response);
       console.log("Hello, ");
@@ -85,27 +85,31 @@ class Education extends React.Component {
 
   render() {
     return (
-      <div className="educationcard">
-        <div className="information">
+      <div className="dashboard-card">
+        <div className="container-row-to-col flex-center">
           <div className="info">
             <h3>
               {this.props.edu.major}
-             Major : {this.props.edu.major}
-              <br></br>
-              Degree : {this.props.edu.degree}
-              <br></br>
-              Institute : {this.props.edu.institute}
-              <br></br>
-              StarDate : {this.formatDate(this.props.edu.startDate)}
-              <br></br>
-              EndDate: {this.formatDate(this.props.edu.endDate)}
             </h3>
+            <p>
+              {this.props.edu.degree}
+            </p>
+            <p>
+{this.props.edu.institute}
+</p>
+<p>
+{this.formatDate(this.props.edu.startDate)}
+
+              </p>
+              <p>
+              {this.formatDate(this.props.edu.endDate)}
+            </p>
           </div>
-          <div className="editanddelet">
-            <button onClick={this.toggelvisible}>
+          <div className="container-column-to-row">
+            <button className="dashboard-btns edit"onClick={this.toggelvisible}>
               <img src={edit} alt=""></img>
             </button>
-            <button  >
+            <button className="dashboard-btns delete"  >
               <img src={trash} alt="" onClick={this.deleteData}></img>
             </button>
           </div>

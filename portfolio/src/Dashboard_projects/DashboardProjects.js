@@ -9,12 +9,13 @@ export default class DashboardProject extends React.Component {
     this.state = {
       projects: [],
       categories: [],
+      isLoaded: false,
       isProjectAddMode: false,
       isCategoryAddMode: false,
       selectedCategory: "",
       name: "",
       url: "",
-      nameCategory:""
+      nameCategory: "",
     };
     this.fileInput = React.createRef();
     this.toggleEdit = this.toggleEdit.bind(this);
@@ -36,6 +37,7 @@ export default class DashboardProject extends React.Component {
   componentDidMount() {
     this.getData();
     this.getCategories();
+    this.setState({isLoaded:true})
   }
   getData = async () => {
     try {
@@ -43,7 +45,7 @@ export default class DashboardProject extends React.Component {
         `http://localhost:5000/dashboard/projects/`
       );
       this.setState({ projects: response.data.response });
-      console.log(response.data.response);
+      console.log("btbtat", response.data.response);
     } catch (error) {
       console.error(error);
     }
@@ -54,33 +56,31 @@ export default class DashboardProject extends React.Component {
       const response = await axios.get(
         `http://localhost:5000/dashboard/categories/`
       );
-      this.setState({ categories: response.data.response });
-      console.log("Categoriiiiiies" + response.data.response);
+      this.setState({ categories:response.data.response });
+      console.log("Categoriiiiiies" + this.state.categories);
     } catch (error) {
       console.error(error);
     }
   };
 
-
   addCatergory = (e) => {
     e.preventDefault();
     const addCatergory = {
-      name: this.state.nameCategory
+      name: this.state.nameCategory,
     };
     console.log("Newwwww" + this.state.name);
     try {
       const response = axios.post(
         `http://localhost:5000/dashboard/categories/create`,
-          addCatergory 
+        addCatergory
       );
 
       console.log("Done");
-      this.getData()
+      this.getData();
     } catch (error) {
       console.error(error);
     }
   };
-
 
   addProject = async (event) => {
     event.preventDefault();
@@ -124,12 +124,11 @@ export default class DashboardProject extends React.Component {
   };
 
   render() {
-    console.log("hohhohoho" + this.state.categories);
     return (
       <div className="dashboard-section">
         <h1>Projects</h1>
         <hr />
-        <main className="container-row-to-col">
+      {this.state.isLoaded&&  <main className="container-row-to-col">
           {!this.state.isProjectAddMode && !this.state.isCategoryAddMode && (
             <>
               <section className="projects-list container container-column">
@@ -244,7 +243,11 @@ export default class DashboardProject extends React.Component {
                   onChange={this.handleChange}
                 />
                 <div className="container-row">
-                  <input type="submit" className="dashboard-btns edit" onSubmit={this.addCatergory}/>
+                  <input
+                    type="submit"
+                    className="dashboard-btns edit"
+                    onSubmit={this.addCatergory}
+                  />
                   <button
                     onClick={(e) => this.toggleEdit("close")}
                     className="dashboard-btns cancel"
@@ -255,7 +258,7 @@ export default class DashboardProject extends React.Component {
               </form>
             </section>
           )}
-        </main>
+        </main>}
       </div>
     );
   }

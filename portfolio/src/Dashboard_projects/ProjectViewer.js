@@ -7,14 +7,11 @@ export default class Project extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoaded:false,
       isEditMode: false,
-      name: this.props.project.name,
-      url: this.props.project.url,
-      category: this.props.project.category,
       images: "",
       img: this.props.project.img,
       id: this.props.project._id,
-      categories: [],
       selectedCategory: "",
       name: "",
       url: "",
@@ -102,26 +99,33 @@ export default class Project extends React.Component {
   render() {
     return (
       <div className="dashboard-card">
-        <section className="container-row">
-          <div className="container-column">
+        <section className="container-row-to-col flex-center">
+          <div className="container-column-">
             <h3 className="dashboard-title">
               {" "}
-              Name: {this.props.project.name}
+               {this.props.project.name}
             </h3>
             <a className="dashboard-data" href={this.props.project.url}>
-              Url: {this.props.project.url}
+              {this.props.project.url}
             </a>
             <img className="dashboard-img" />
           </div>
           <div>
             <img
               className="dashboard-proj-img"
-              width="100px"
+              style= {{ width: "100px",
+              height: "100px",
+              backgroundColor: "#ddd",
+              borderRadius: "50%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
               src={`http://localhost:5000/${this.props.project.img}`}
             />
           </div>
           {!this.state.isEditMode && (
-            <div className="container-column">
+            <div className="container-column-to-row">
               <button onClick={this.toggleEdit} className="dashboard-btns edit">
                 <img src={edit} />
               </button>

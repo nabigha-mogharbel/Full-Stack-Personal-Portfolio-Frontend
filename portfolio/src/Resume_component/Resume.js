@@ -1,3 +1,4 @@
+//f8bb86
 import React from "react";
 import "./Resume.css";
 import dateIcon from "../Date_range_fill.svg"
@@ -64,7 +65,7 @@ export default class Resume extends React.Component {
               __v: 0,
             },
           ],
-          project: [],
+          project: ["a"],
           education: [
             {
               _id: "63d5787256da48876d463e21",
@@ -84,15 +85,6 @@ export default class Resume extends React.Component {
               endDate:"2018-05-13T00:00:00.000Z",
               __v: 0,
             },
-            {
-              _id: "63d5787256da48876d463e23",
-              major: "ithg",
-              institute: "LT",
-              degree: "hfhg",
-              startDate:"2014-05-13T00:00:00.000Z",
-              endDate:"2016-05-13T00:00:00.000Z",
-              __v: 0,
-            },
           ],
           link: [],
           __v: 0,
@@ -108,6 +100,14 @@ export default class Resume extends React.Component {
   incrementer(number) {
     console.log(this.state);
   }
+  enumerateProjects=()=>{
+    let i=0;
+    for(i; i<=this.state.response.projects.length; i++){
+      setTimeout()
+      return i
+
+    }
+  }
   educationToggle() {
     this.setState({ isExperience: false });
     this.setState({ isEducation: true });
@@ -118,7 +118,37 @@ export default class Resume extends React.Component {
     this.setState({ isEducation: false });
   }
   dateTrim(rawDate){
-    return rawDate.slice(0,7)
+    let year=rawDate.slice(0,4)
+    let month=rawDate.slice(5,7)
+    switch(month){
+      case("01"):
+       month="Jan"
+      break;
+      case("02"):
+       month="Feb"
+      break;case("03"):
+       month="Mar"
+      break;case("04"):
+       month="Apr"
+      break;case("05"):
+       month="May"
+      break;case("06"):
+       month="June"
+      break;case("07"):
+       month="July"
+      break;case("08"):
+       month="Aug"
+      break;case("09"):
+       month="Sep"
+      break;case("10"):
+      break;case("11"):
+       month="Nov"
+      break;case("12"):
+       month="Dec"
+      break;
+    }
+    let value=year + " " + month    
+    return value
   }
   render() {
 
@@ -140,9 +170,13 @@ export default class Resume extends React.Component {
              {this.state.isEducation && <ul className="resume-education">
               {this.state.response[0].education.map(ele => {
                     return <li className="resume-element" key={ele._id}>
-                            <p className="major">{ele.major}</p>
-                            <p className="institute">{ele.institute}</p>
-                            <p className="degree">{ele.degree}</p>
+                            <p className="title-big">{ele.major}</p>
+                            <p className="title-med">{ele.institute}</p>
+                            <p className="title-med">{ele.degree}</p>
+                            <div className="resume-element-date"><img src={dateIcon} className="icons"/> 
+                            <p className="text-date">{this.dateTrim(ele.startDate)}</p>
+                            {ele.endDate? <p className="test-date"> - {this.dateTrim(ele.endDate)}</p> : <p className="test-date marked"> - Present</p> }
+                            </div>
                         </li>
                 })}
               </ul>}
@@ -154,7 +188,7 @@ export default class Resume extends React.Component {
                       <p className="title-med">{ele.companyName}</p>
                       <div className="resume-element-date"><img src={dateIcon} className="icons"/> 
                       <p className="text-date">{this.dateTrim(ele.startDate)}</p>
-                      {ele.endDate? <p className="test-date">{this.dateTrim(ele.endDate)}</p> : <p className="test-date marked">Present</p> }
+                      {ele.endDate? <p className="test-date">- {this.dateTrim(ele.endDate)}</p> : <p className="test-date marked"> - Present</p> }
                       </div>
                       
                     </li>
@@ -164,20 +198,20 @@ export default class Resume extends React.Component {
             </div>
           </div>
           <div className="resume-summary">
-            <div className="">
+            
             <p>9+
             Years
             Experience</p>
-            </div>
-            <div className="">
-              <p>9+
+            
+            
+              <p>{this.state.response[0].project.length}+
               Completed
               Projects</p>
-            </div>
-            <div className=" ">
-            <p>3+
+            
+          
+            <p>{this.state.response[0].experience.length}+
             Companies</p>
-            </div>
+          
           </div>
         </section>
       </>

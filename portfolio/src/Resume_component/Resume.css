@@ -72,14 +72,15 @@ ul p{
 .resume-toggle button{
     padding-bottom: 20px;
     display: flex;
-    width:130px;
+    width:fit-content;
     
 }
 .resume-summary{
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    font-size: 40px;
+    justify-content: center;
+    row-gap: 60px;
+    font-size: 50px;
 }
 
 
@@ -99,24 +100,15 @@ ul p{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    width: 300px;
+    min-width: 300px;
 
 }
-@keyframes spotlight {
-    0% {background-color: var(--accent); opacity: 0.8;};
-    15% {background-color: var(--accent); opacity: 0.5;}
-    20% {background-color: var(--accent); opacity: 0.9;}
-    50% {background-color: var(--accent); opacity: 0.5;}
-    70% {background-color: var(--accent); opacity: 0.8;}
-    80% {background-color: var(--accent); opacity: 0.4;}
-    100% {background-color: var(--accent); opacity: 1;}
-    
-}
+
 .active{
     border-bottom: 2px solid var(--marked);
 }
 /* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 799px) {
     .resume-section{
         display: flex;
         flex-direction: column;
@@ -132,6 +124,7 @@ ul p{
     }
     .resume-summary{
         gap: 25px;
+        font-size: 30px;
     }
     
     .resume-bubble{
@@ -161,13 +154,17 @@ ul p{
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 800px) {
     .resume-section{
         padding: 40px 60px;
         box-sizing: border-box;
         color:white;
         display: flex;
         flex-direction: row;
+    }
+    .resume-toggler{
+        padding-right: 10px;
+        font-size: 35px;
     }
     .resume-details{
         width:50%;
@@ -177,6 +174,7 @@ ul p{
     .resume-summary{
         position:relative;
         width:50%;
+        row-gap:80px;
     }
     .resume-bubble{
         height:calc((100vh*0.3) - 20px);
@@ -213,11 +211,16 @@ ul p{
     .resume-educatio .resume-element{
         height: 360px;
     }
-
+    .resume-summary p{
+        font-size: 60px;
+    }
+    .resume-summary p:first-child{
+        align-self: flex-end;
+    }
+    .resume-summary p:nth-child(2){
+        align-self: flex-start;
+    }
+    .resume-summary p:last-child{
+        align-self: center;
+    }
 }
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {}
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {}
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {}

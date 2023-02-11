@@ -18,7 +18,7 @@ export default class Portfolio extends React.Component {
   handleScroll(e) {
     console.log("hhhiiii");
     if (e.deltaY > 0) {
-      if (this.state.component === 3) {
+      if (this.state.component === 4) {
         console.log("the end");
         return;
       } else {

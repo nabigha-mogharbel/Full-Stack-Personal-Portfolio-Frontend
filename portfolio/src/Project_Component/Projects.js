@@ -3,7 +3,7 @@ import React from 'react'
 import '../Project_Component/Projects.css'
 
 class Projects extends React.Component {
-    state = { onhover:true } 
+    state = { onhover:false } 
     render(
     ) { 
         return (

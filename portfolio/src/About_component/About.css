@@ -108,7 +108,7 @@
 .findme {
     width: 100px;
     height: 100px;
-    background-color: var(--Darkgrey);
+    background-color: #8c7f68;
     border-radius: 50%;
     position: absolute;
     bottom: 70px;
@@ -129,7 +129,7 @@
 }
 
 .findme:hover {
-    box-shadow: 1px 3px 3px var(--white);
+    box-shadow: 1px 3px 3px #395659;
 }
 
 .findme:active {
@@ -142,20 +142,24 @@
 }
 
 @media (max-width : 500px) {
+    
+    .about{
+        width: 100%;
+        box-sizing: border-box;
+    }
     .imageone img {
         position: absolute;
-        height: 440px;
-        left: -110px;
+        height: 396px;
+        left: 10px;
         bottom: 0;
     }
-
     .content_info {
         position: absolute;
         height: 700px;
         width: 68%;
         bottom: 0;
         left: 20%;
-        transition: all 2s;
+        transition: unset;
     }
 
     .information-about {
@@ -168,12 +172,12 @@
     .findme {
         width: 65px;
         height: 65px;
-        background-color: var(--Darkgrey);
+        background-color: #8c7f68;
         border-radius: 50%;
         position: absolute;
-        bottom: 280px;
-        left: 195px;
-        transition: all 0.3s;
+        bottom: 178px;
+        left: -28px;
+        transition: unset;
     }
 
     .findme button {
@@ -185,7 +189,7 @@
         justify-content: center;
         font-family: "Raleway";
         color: var(--white);
-        transition: all 0.5s;
+        transition: unset;
     }
 
     .facebook img,
@@ -194,7 +198,7 @@
     .linkedin img {
         position: absolute;
         height: 35px;
-        transition: all 0.3s;
+        transition: unset;
     }
 
     .facebook img {
@@ -218,8 +222,11 @@
     }
 
     .links {
-        height: 50px;
-        width: 50px;
+        height: 74px;
+        width: 538px;
+        background-color: #3956593b;
+        position: absolute;
+        top: 50%;
     }
     .facebook img:hover,
 .github img:hover {
@@ -231,4 +238,79 @@
     height: 42px;
 }
 
+.information-about h1 {
+    padding-top: 96px;
+    font-family: Raleway;
+    color: #395659;
 }
+
+
+.information-about p {
+    color: white;
+    font-size: 17px;
+    font-family: Raleway;
+    width: 295px;
+    cursor: grab;
+}
+
+
+}
+
+
+
+@media (min-width: 501px)and (max-width: 992px) {
+    .content_info {
+      position: absolute;
+      height: 100%;
+      width: 80%;
+      bottom: -34px;
+      left: 20%;
+      /* transition: all 2s; */
+  }
+  .information-about {
+    width: 50%;
+    display: flex;
+    gap: 54px;
+    /* align-content: center; */
+    /* justify-content: center; */
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    flex-direction: column;
+  }
+  .information-about h1 {
+    padding-top: 108px;
+    font-family: Raleway;
+    color: #2c4446;
+    font-size: xxx-large;
+    /* width: 228rem; */
+    /* font-stretch: extra-condensed; */
+    font-family: monospace;
+  }
+  .findme {
+    width: 100px;
+    height: 100px;
+    background-color: #8c7f68;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 315px;
+    left: 400px;
+    transition: all 0.3s;
+}
+
+.links {
+    height: 0;
+    width: 100%;
+    position: relative;
+    /* display: flex; */
+    /* flex-direction: row-reverse; */
+    justify-content: space-between;
+}
+
+.imageone img {
+    position: absolute;
+    height: 512px;
+    right: 17px;
+    bottom: 0;
+}
+  
+  }

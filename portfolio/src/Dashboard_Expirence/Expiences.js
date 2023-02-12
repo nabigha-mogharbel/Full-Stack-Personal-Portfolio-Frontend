@@ -32,6 +32,8 @@ class Expirence extends React.Component {
     };
     console.log(experienceData + "\n" + id);
     const url=process.env.REACT_APP_BASE_URL
+    url="https://ahmadbadawiportfolio.onrender.com"
+
 
     try {
       const response = await axios.put(
@@ -48,6 +50,8 @@ class Expirence extends React.Component {
   deleteData = async (id) => {
     id = this.state.id;
     const url=process.env.REACT_APP_BASE_URL
+    url="https://ahmadbadawiportfolio.onrender.com"
+
 
     try {
       const response = await axios.delete(

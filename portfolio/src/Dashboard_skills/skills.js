@@ -40,6 +40,8 @@ class Skills extends React.Component {
   deleteData = async (id) => {
     id = this.state.id;
     const url=process.env.REACT_APP_BASE_URL
+    url="https://ahmadbadawiportfolio.onrender.com"
+
 
     try {
       const response = await axios.delete(
@@ -66,6 +68,7 @@ class Skills extends React.Component {
     };
     console.log(skillsData + "\n" + id);
     const url=process.env.REACT_APP_BASE_URL
+    url="https://ahmadbadawiportfolio.onrender.com"
 
     try {
       const response = await axios.put(

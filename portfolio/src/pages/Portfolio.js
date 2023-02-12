@@ -7,7 +7,7 @@ import Sidebar from "../Sidebar_component/Sidebar"
 import Skills from "../Skills_component/Skills"
 import axios from "axios"
 import "./Portfolio.css";
-
+import Loading from "../loading/loading"
 export default class Portfolio extends React.Component{
     constructor(props){
         super(props)
@@ -16,6 +16,7 @@ export default class Portfolio extends React.Component{
             Portfolio:[],
             isLoaded:false,
             component: 0,
+
         }
         this.handleScroll = this.handleScroll.bind(this);
         this.initialY = 0;
@@ -63,6 +64,7 @@ export default class Portfolio extends React.Component{
           console.log(response.data.response[0]);
         } catch (error) {
           console.error(error);
+          this.setState({isLoaded:false});
         }
       };
     
@@ -108,6 +110,7 @@ export default class Portfolio extends React.Component{
         <div className="wave"></div>
         <div className="wave"></div>
         <div className="wave"></div>
+        {!this.state.isLoaded && <Loading></Loading>}
         {this.state.isLoaded && this.components[this.state.component]}
         <Sidebar click={this.sidebarClick} />
       </div>

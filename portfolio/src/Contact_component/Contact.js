@@ -47,11 +47,11 @@ export default class Contact extends Component {
     return (
       <div className="contact">
  
-        <h2 className="contact-title typing">
-          Do you have a project?
-          <br />
-          I would love to help.
+        <div className="title-text"><h2 className="contact-title typing">
+          Do you have a project? <br/>
+          I would love  to help.
         </h2>
+        </div>
         
         <form className="contact-form" onSubmit={this.handleSubmit}>
           <label htmlFor="name">

@@ -286,6 +286,31 @@
     /* font-stretch: extra-condensed; */
     font-family: monospace;
   }
+  .findme {
+    width: 100px;
+    height: 100px;
+    background-color: #8c7f68;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 315px;
+    left: 400px;
+    transition: all 0.3s;
+}
 
+.links {
+    height: 0;
+    width: 100%;
+    position: relative;
+    /* display: flex; */
+    /* flex-direction: row-reverse; */
+    justify-content: space-between;
+}
+
+.imageone img {
+    position: absolute;
+    height: 512px;
+    right: 17px;
+    bottom: 0;
+}
   
   }

@@ -46,7 +46,7 @@ import SkillsProgress from "./SkillsProgress";
     console.log("props batata",this.props.skillData)
   }
 
-  getData = () => {
+  /*getData = () => {
     axios
       .get("http://localhost:5000/dashboard/skills/")
       .then((res) => {
@@ -85,7 +85,7 @@ import SkillsProgress from "./SkillsProgress";
       .catch((error) => {
         console.error(error);
       });
-  };
+  };*/
   
 
   

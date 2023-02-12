@@ -14,9 +14,9 @@ class Admin extends React.Component {
 
   handleSubmit = async (event) => {
     event.preventDefault();
-
+    const url=process.env.REACT_APP_BASE_URL
     try {
-      const response = await axios.put(`http://localhost:5005/admin/update/${this.state.username}`, {
+      const response = await axios.put(`${url}/admin/update/${this.state.username}`, {
     
         password: this.state.password
       });

@@ -21,9 +21,11 @@ class DashboardEducation extends React.Component {
     this.getData();
   }
   getData = async () => {
+    const url=process.env.REACT_APP_BASE_URL
+
     try {
       const response = await axios.get(
-        `http://localhost:5000/dashboard/education/`
+        `${url}/dashboard/education/`
       );
       this.setState({ data: response.data.response });
       console.log(response.data.response);
@@ -42,9 +44,11 @@ class DashboardEducation extends React.Component {
       institute: this.state.institute
     };
     console.log("Newwwww" + {newEduation});
+    const url=process.env.REACT_APP_BASE_URL
+
     try {
       const response = axios.post(
-        `http://localhost:5010/dashboard/education/create`,
+        `${url}/dashboard/education/create`,
         newEduation
       );
 

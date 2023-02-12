@@ -39,9 +39,11 @@ class Skills extends React.Component {
 
   deleteData = async (id) => {
     id = this.state.id;
+    const url=process.env.REACT_APP_BASE_URL
+
     try {
       const response = await axios.delete(
-        `http://localhost:5000/dashboard/skills/delete/${id}`
+        `${url}/dashboard/skills/delete/${id}`
       );
       console.log("Done");
       window.location.reload(false)
@@ -63,9 +65,11 @@ class Skills extends React.Component {
       percentage: this.state.data.percentage,
     };
     console.log(skillsData + "\n" + id);
+    const url=process.env.REACT_APP_BASE_URL
+
     try {
       const response = await axios.put(
-        `http://localhost:5000/dashboard/skills/update/${id}`,
+        `${url}/dashboard/skills/update/${id}`,
         skillsData
       );
 

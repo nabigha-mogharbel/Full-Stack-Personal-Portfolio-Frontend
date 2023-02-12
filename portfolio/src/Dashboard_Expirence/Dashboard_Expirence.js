@@ -37,9 +37,11 @@ class DashboardExpirience extends React.Component {
     this.getData();
   }
   getData = async () => {
+    const url=process.env.REACT_APP_BASE_URL
+
     try {
       const response = await axios.get(
-        `http://localhost:5000/dashboard/experience/`
+        `${url}/dashboard/experience/`
       );
       this.setState({ data: response.data.response });
       console.log(response.data.response);
@@ -58,9 +60,11 @@ class DashboardExpirience extends React.Component {
       description: this.state.description
     };
     console.log("Newwwww" + {newExperience});
+    const url=process.env.REACT_APP_BASE_URL
+
     try {
       const response = axios.post(
-        `http://localhost:5000/dashboard/experience/create`,
+        `${url}/dashboard/experience/create`,
         newExperience
       );
 

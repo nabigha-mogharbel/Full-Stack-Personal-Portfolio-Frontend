@@ -40,9 +40,11 @@ export default class DashboardProject extends React.Component {
     this.setState({isLoaded:true})
   }
   getData = async () => {
+    const url=process.env.REACT_APP_BASE_URL
+
     try {
       const response = await axios.get(
-        `http://localhost:5000/dashboard/projects/`
+        `${url}/dashboard/projects/`
       );
       this.setState({ projects: response.data.response });
       console.log("btbtat", response.data.response);
@@ -52,9 +54,11 @@ export default class DashboardProject extends React.Component {
   };
 
   getCategories = async () => {
+    const url=process.env.REACT_APP_BASE_URL
+
     try {
       const response = await axios.get(
-        `http://localhost:5000/dashboard/categories/`
+        `${url}/dashboard/categories/`
       );
       this.setState({ categories:response.data.response });
       console.log("Categoriiiiiies" + this.state.categories);
@@ -69,9 +73,11 @@ export default class DashboardProject extends React.Component {
       name: this.state.nameCategory,
     };
     console.log("Newwwww" + this.state.name);
+    const url=process.env.REACT_APP_BASE_URL
+
     try {
       const response = axios.post(
-        `http://localhost:5000/dashboard/categories/create`,
+        `${url}/dashboard/categories/create`,
         addCatergory
       );
 
@@ -96,9 +102,11 @@ export default class DashboardProject extends React.Component {
       this.fileInput.current.files[0].name
     );
     console.log(formData);
+    const url=process.env.REACT_APP_BASE_URL
+
     try {
       const response = await axios.post(
-        `http://localhost:5000/dashboard/projects/create/`,
+        `${url}/dashboard/projects/create/`,
         formData,
         {
           headers: {

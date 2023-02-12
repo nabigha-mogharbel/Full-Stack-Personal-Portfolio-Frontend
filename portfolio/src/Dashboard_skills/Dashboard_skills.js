@@ -19,9 +19,11 @@ class DashbordSkills extends React.Component {
     this.getData();
   }
   getData = async () => {
+    const url=process.env.REACT_APP_BASE_URL
+
     try {
       const response = await axios.get(
-        `http://localhost:5000/dashboard/skills/`
+        `${url}/dashboard/skills/`
       );
       this.setState({ data: response.data.response });
       console.log(response.data.response);
@@ -38,9 +40,11 @@ class DashbordSkills extends React.Component {
 
     };
     console.log("Newwwww" + {newSkill});
+    const url=process.env.REACT_APP_BASE_URL
+
     try {
       const response = axios.post(
-        `http://localhost:5000/dashboard/skills/create`,
+        `${url}/dashboard/skills/create`,
         newSkill
       );
 

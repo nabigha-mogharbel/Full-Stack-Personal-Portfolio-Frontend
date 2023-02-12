@@ -45,9 +45,10 @@ export default class DashboardAbout extends React.Component {
     console.log(this.state)
   }*/
   getData = async () => {
+    const url=process.env.REACT_APP_BASE_URL
     try {
       const response = await axios.get(
-        `http://localhost:5000/dashboard/about/`
+        `${url}/dashboard/about/`
       );
       // this.setState({ about: response.data[0]. });
      /* this.setState({ bio: response.data[0].bio });
@@ -84,9 +85,11 @@ export default class DashboardAbout extends React.Component {
       "images",this.fileInput.current.files[0],this.fileInput.current.files[0].name
     );
     console.log(formData);
+    const url=process.env.REACT_APP_BASE_URL
+
     try {
       const response = await axios.put(
-        `http://localhost:5000/dashboard/about/img/${this.state.data._id}`,
+        `${url}/dashboard/about/img/${this.state.data._id}`,
         formData,
         {
           headers: {

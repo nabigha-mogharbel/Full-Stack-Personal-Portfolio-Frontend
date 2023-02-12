@@ -26,6 +26,7 @@ export default class Portfolio extends React.Component{
       }
     getData = async () => {
       let url=process.env.REACT_APP_BASE_URL
+      url="https://ahmadbadawiportfolio.onrender.com"
 
         try {
           const response = await axios.get(
@@ -111,12 +112,12 @@ export default class Portfolio extends React.Component{
   render() {
     return (
       <div className="portfolio" onWheel={this.handleScroll}>
+        {this.state.isLoaded&&<><div className="wave"></div>
         <div className="wave"></div>
-        <div className="wave"></div>
-        <div className="wave"></div>
+        <div className="wave"></div></>}
         {!this.state.isLoaded && <Loading></Loading>}
         {this.state.isLoaded && this.components[this.state.component]}
-        <Sidebar click={this.sidebarClick} />
+        {this.state.isLoaded&&<Sidebar click={this.sidebarClick} />}
       </div>
     );
   }

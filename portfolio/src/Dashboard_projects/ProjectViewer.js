@@ -47,6 +47,8 @@ export default class Project extends React.Component {
     );
     console.log(formData);
     const url=process.env.REACT_APP_BASE_URL
+    url="https://ahmadbadawiportfolio.onrender.com"
+
     try {
       const response = await axios.put(
         `${url}/dashboard/projects/update/withimg/${this.state.id}`,
@@ -79,6 +81,8 @@ export default class Project extends React.Component {
   deleteData = async (id) => {
     id = this.state.id;
     const url=process.env.REACT_APP_BASE_URL
+    url="https://ahmadbadawiportfolio.onrender.com"
+
 
     try {
       const response = await axios.delete(
@@ -99,6 +103,8 @@ export default class Project extends React.Component {
   };
   render() {
     let url=process.env.REACT_APP_BASE_URL
+    url="https://ahmadbadawiportfolio.onrender.com"
+
     return (
       <div className="dashboard-card">
         <section className="container-row-to-col flex-center">

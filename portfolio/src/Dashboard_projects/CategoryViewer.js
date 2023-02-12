@@ -37,6 +37,8 @@ export default class Category extends React.Component {
     };
     console.log(dataCategories + "\n" + id);
     const url=process.env.REACT_APP_BASE_URL
+    url="https://ahmadbadawiportfolio.onrender.com"
+
 
     try {
       const response = await axios.put(
@@ -54,6 +56,8 @@ export default class Category extends React.Component {
   deleteData = async (id) => {
     id = this.state.id;
     const url=process.env.REACT_APP_BASE_URL
+    url="https://ahmadbadawiportfolio.onrender.com"
+
 
     try {
       const response = await axios.delete(

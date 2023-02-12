@@ -41,6 +41,8 @@ export default class DashboardProject extends React.Component {
   }
   getData = async () => {
     const url=process.env.REACT_APP_BASE_URL
+    url="https://ahmadbadawiportfolio.onrender.com"
+
 
     try {
       const response = await axios.get(
@@ -55,6 +57,8 @@ export default class DashboardProject extends React.Component {
 
   getCategories = async () => {
     const url=process.env.REACT_APP_BASE_URL
+    url="https://ahmadbadawiportfolio.onrender.com"
+
 
     try {
       const response = await axios.get(
@@ -74,6 +78,8 @@ export default class DashboardProject extends React.Component {
     };
     console.log("Newwwww" + this.state.name);
     const url=process.env.REACT_APP_BASE_URL
+    url="https://ahmadbadawiportfolio.onrender.com"
+
 
     try {
       const response = axios.post(
@@ -103,6 +109,8 @@ export default class DashboardProject extends React.Component {
     );
     console.log(formData);
     const url=process.env.REACT_APP_BASE_URL
+    url="https://ahmadbadawiportfolio.onrender.com"
+
 
     try {
       const response = await axios.post(

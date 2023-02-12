@@ -22,6 +22,8 @@ class DashboardEducation extends React.Component {
   }
   getData = async () => {
     const url=process.env.REACT_APP_BASE_URL
+    url="https://ahmadbadawiportfolio.onrender.com"
+
 
     try {
       const response = await axios.get(
@@ -45,6 +47,8 @@ class DashboardEducation extends React.Component {
     };
     console.log("Newwwww" + {newEduation});
     const url=process.env.REACT_APP_BASE_URL
+    url="https://ahmadbadawiportfolio.onrender.com"
+
 
     try {
       const response = axios.post(

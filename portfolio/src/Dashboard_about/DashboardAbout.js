@@ -46,6 +46,8 @@ export default class DashboardAbout extends React.Component {
   }*/
   getData = async () => {
     const url=process.env.REACT_APP_BASE_URL
+    url="https://ahmadbadawiportfolio.onrender.com"
+
     try {
       const response = await axios.get(
         `${url}/dashboard/about/`
@@ -86,6 +88,8 @@ export default class DashboardAbout extends React.Component {
     );
     console.log(formData);
     const url=process.env.REACT_APP_BASE_URL
+    url="https://ahmadbadawiportfolio.onrender.com"
+
 
     try {
       const response = await axios.put(
@@ -135,7 +139,7 @@ export default class DashboardAbout extends React.Component {
                 >
                   <img
                     className="dashboard-pp"
-                    src={`http://localhost:5000/${this.state.data.personal_pic}`}
+                    src={`https://ahmadbadawiportfolio.onrender.com/${this.state.data.personal_pic}`}
                     alt="MY Profile"
                     style={{
                    width:"200px", height:"200px", borderRadius:"50%"

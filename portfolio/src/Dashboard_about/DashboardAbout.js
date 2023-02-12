@@ -104,7 +104,7 @@ export default class DashboardAbout extends React.Component {
 
   render() {
     return (
-      <div className="dashboard-section">
+      <div className="dashboard-section dashboard-section_about">
         <main>
           <h1>About me</h1>
           <hr />

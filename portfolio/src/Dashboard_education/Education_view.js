@@ -125,7 +125,7 @@ class Education extends React.Component {
                 value={this.state.data.major}
                 onChange={this.handleChange}
               />
-              <label htmlFor="degre">Degre</label>
+              <label htmlFor="degre">Degree</label>
               <input
                 type="text"
                 name="degree"
@@ -156,7 +156,7 @@ class Education extends React.Component {
               />
             
 
-            <div className="submit">
+            <div className="dashboard-btns edit">
               <button onClick={this.handleSubmit}>
                 <img src={send} alt="" />
               </button>

@@ -12,5 +12,15 @@
     #dashboard-nav{
         position: fixed;
     }
+    .dashboard-about{
+        justify-content: center;
+    }
+    .dashboard-section_about{
+        display: flex;
+        flex-direction: column;
+        margin-top: 60px;
+        justify-content: flex-start;
+        width: 80vw;
+    }
     
 }

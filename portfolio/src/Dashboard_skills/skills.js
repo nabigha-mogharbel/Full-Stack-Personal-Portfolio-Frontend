@@ -41,9 +41,11 @@ class Skills extends React.Component {
     id = this.state.id;
     try {
       const response = await axios.delete(
-        `http://localhost:5010/dashboard/skills/delete/${id}`
+        `http://localhost:5000/dashboard/skills/delete/${id}`
       );
       console.log("Done");
+      window.location.reload(false)
+
     } catch (error) {
       console.log("error deleting dashboard", error);
       console.error(error);
@@ -63,12 +65,13 @@ class Skills extends React.Component {
     console.log(skillsData + "\n" + id);
     try {
       const response = await axios.put(
-        `http://localhost:5010/dashboard/skills/update/${id}`,
+        `http://localhost:5000/dashboard/skills/update/${id}`,
         skillsData
       );
 
-      this.setState({ data: response.data.response });
       console.log(response.data.response);
+      window.location.reload(false)
+
     } catch (error) {
       console.error(error);
     }
@@ -116,7 +119,7 @@ class Skills extends React.Component {
                   onChange={this.handleChange}
                 />
               </div>
-              <div className="submit">
+              <div className="dashboard-btns edit">
                 <button>
                   <img src={send} alt="" />
                 </button>

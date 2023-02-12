@@ -30,6 +30,8 @@ export default class Portfolio extends React.Component{
             `http://localhost:5000/dashboard/portfolio/`
           );
           this.setState({ Portfolio: response.data.response[0], isLoaded:true});
+          console.log("klshi data", this.state.Portfolio)
+
         this.components=[<About
           scroll={this.handleScroll}
           touchStart={this.captureStart}

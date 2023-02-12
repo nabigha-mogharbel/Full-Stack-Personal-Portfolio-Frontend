@@ -39,9 +39,11 @@ class Education extends React.Component {
       degree: this.state.data.degree,
     };
     console.log(educationData + "\n" + id);
+    const url=process.env.REACT_APP_BASE_URL
+
     try {
       const response = await axios.put(
-        `http://localhost:5000/dashboard/education/update/${id}`,
+        `${url}/dashboard/education/update/${id}`,
         educationData
       );
 
@@ -65,9 +67,11 @@ class Education extends React.Component {
 
   deleteData = async (id) => {
     id = this.state.id
+    const url=process.env.REACT_APP_BASE_URL
+
     try {
       const response = await axios.delete(
-        `http://localhost:5000/dashboard/education/delete/${id}`
+        `${url}/dashboard/education/delete/${id}`
       );
       console.log(response.data.response);
       console.log("Hello, ");

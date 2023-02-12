@@ -36,9 +36,11 @@ export default class Category extends React.Component {
       name: this.state.name,
     };
     console.log(dataCategories + "\n" + id);
+    const url=process.env.REACT_APP_BASE_URL
+
     try {
       const response = await axios.put(
-        `http://localhost:5000/dashboard/categories/update/${id}`,
+        `${url}/dashboard/categories/update/${id}`,
         dataCategories
       );
 
@@ -51,9 +53,11 @@ export default class Category extends React.Component {
 
   deleteData = async (id) => {
     id = this.state.id;
+    const url=process.env.REACT_APP_BASE_URL
+
     try {
       const response = await axios.delete(
-        `http://localhost:5000/dashboard/categories/delete/${id}`
+        `${url}/dashboard/categories/delete/${id}`
       );
       console.log(response.data.response);
       window.location.reload(false)

@@ -31,9 +31,11 @@ class Expirence extends React.Component {
       description: this.state.data.description,
     };
     console.log(experienceData + "\n" + id);
+    const url=process.env.REACT_APP_BASE_URL
+
     try {
       const response = await axios.put(
-        `http://localhost:5000/dashboard/experience/update/${id}`,
+        `${url}}dashboard/experience/update/${id}`,
         experienceData
       );
       window.location.reload(false)
@@ -45,9 +47,11 @@ class Expirence extends React.Component {
 
   deleteData = async (id) => {
     id = this.state.id;
+    const url=process.env.REACT_APP_BASE_URL
+
     try {
       const response = await axios.delete(
-        `http://localhost:5000/dashboard/experience/delete/${id}`
+        `${url}/dashboard/experience/delete/${id}`
       );
       console.log(response.data.response);
       window.location.reload(false)

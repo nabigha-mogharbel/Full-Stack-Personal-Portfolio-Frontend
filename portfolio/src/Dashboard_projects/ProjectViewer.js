@@ -46,9 +46,10 @@ export default class Project extends React.Component {
       this.fileInput.current.files[0].name
     );
     console.log(formData);
+    const url=process.env.REACT_APP_BASE_URL
     try {
       const response = await axios.put(
-        `http://localhost:5000/dashboard/projects/update/withimg/${this.state.id}`,
+        `${url}/dashboard/projects/update/withimg/${this.state.id}`,
         formData,
         {
           headers: {
@@ -77,9 +78,11 @@ export default class Project extends React.Component {
 
   deleteData = async (id) => {
     id = this.state.id;
+    const url=process.env.REACT_APP_BASE_URL
+
     try {
       const response = await axios.delete(
-        `http://localhost:5000/dashboard/projects/delete/${id}`
+        `${url}/dashboard/projects/delete/${id}`
       );
       console.log(response.data.response);
     } catch (error) {
@@ -95,6 +98,7 @@ export default class Project extends React.Component {
     console.log(event.target.name);
   };
   render() {
+    let url=process.env.REACT_APP_BASE_URL
     return (
       <div className="dashboard-card">
         <section className="container-row-to-col flex-center">
@@ -119,7 +123,7 @@ export default class Project extends React.Component {
               justifyContent: "center",
               alignItems: "center",
             }}
-              src={`http://localhost:5000/${this.props.project.img}`}
+              src={`${url}/${this.props.project.img}`}
             />
           </div>
           {!this.state.isEditMode && (

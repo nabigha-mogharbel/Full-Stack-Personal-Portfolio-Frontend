@@ -47,7 +47,11 @@ class Project extends React.Component {
         
         return (
             <div className="slider">
+                <div className="projects_Name">
+                        <h2>projects</h2>
+                </div>
                 <div className="image-anddescription" >
+                  
                     <button onClick={this.handleImagedeincrement} >
                         <img src={backward} alt=""  />
                     </button >

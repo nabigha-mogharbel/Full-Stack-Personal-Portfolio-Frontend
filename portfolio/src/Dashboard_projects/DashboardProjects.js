@@ -76,7 +76,8 @@ export default class DashboardProject extends React.Component {
       );
 
       console.log("Done");
-      this.getData();
+      //this.getData();
+      window.location.reload(false)
     } catch (error) {
       console.error(error);
     }
@@ -107,7 +108,7 @@ export default class DashboardProject extends React.Component {
         }
       );
       console.log(response.data);
-      alert("yay data");
+      window.location.reload(false)
     } catch (error) {
       console.error(error);
     }

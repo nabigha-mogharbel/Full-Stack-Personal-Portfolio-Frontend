@@ -42,7 +42,9 @@ import SkillsProgress from "./SkillsProgress";
     }
   
 }
-  
+  componentDidMount(){
+    console.log("props batata",this.props.skillData)
+  }
 
   getData = () => {
     axios

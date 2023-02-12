@@ -56,6 +56,7 @@ export default class Category extends React.Component {
         `http://localhost:5000/dashboard/categories/delete/${id}`
       );
       console.log(response.data.response);
+      window.location.reload(false)
     } catch (error) {
       console.log("error deleting dashboard", error);
       console.error(error);

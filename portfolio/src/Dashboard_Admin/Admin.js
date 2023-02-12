@@ -60,7 +60,7 @@ class Admin extends React.Component {
 
     return (
     
-      <div className="dashboard-section">
+      <div className="dashboard-section dashboard-section_about">
       { this.state.success && 
         <div className="alert alert-success" role="alert" style={{ width: '80%', margin: '20px auto', color: '#3c763d', backgroundColor: '#dff0d8' }}>
           <strong>Well done!</strong> Password has been updated successfully.
@@ -68,7 +68,6 @@ class Admin extends React.Component {
       }
         <main>
           <h1>My Account : </h1>
-          <hr />
           <section>
            
             <form className="container-column" onSubmit={this.handleSubmit}>

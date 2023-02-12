@@ -4,21 +4,19 @@
   --accentLogin:#8C7F68;
 }
 
-
 body {
   background: linear-gradient(45deg, var(--accentLogin), var(--secondaryLogin));
   height: 100vh;
   font-family: "Montserrat", sans-serif;
 }
-
-.container {
+.login {
   position: absolute;
   transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
 }
 
-form {
+.login form {
   padding: 3em;
   height: 320px;
   border-radius: 20px;
@@ -35,7 +33,7 @@ form {
   flex-wrap: nowrap;
   justify-content: center;
 }
-form p {
+.login form p {
   font-weight: 500;
   color: #fff;
   opacity: 0.7;
@@ -44,18 +42,18 @@ form p {
   margin-bottom: 60px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
-form a {
+.login form a {
   text-decoration: none;
   color: #ddd;
   font-size: 12px;
 }
-form a:hover {
+.login form a:hover {
   text-shadow: 2px 2px 6px #00000040;
 }
-form a:active {
+.login form a:active {
   text-shadow: none;
 }
-form input {
+.login form input {
   background: transparent;
   width: 200px;
   padding: 1em;
@@ -73,51 +71,51 @@ form input {
   transition: all 0.2s ease-in-out;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
-form input:hover {
+.login form input:hover {
   background: var(--secondaryLogin);
   box-shadow: 4px 4px 60px 8px rgba(0, 0, 0, 0.2);
 }
-form input[type=email]:focus, form input[type=password]:focus {
+.login form input[type=email]:focus, form input[type=password]:focus {
   background: rgba(255, 255, 255, 0.1);
   box-shadow: 4px 4px 60px 8px rgba(0, 0, 0, 0.2);
 }
-form input[type=button] {
+.login form input[type=button] {
   margin-top: 10px;
   width: 150px;
   font-size: 1rem;
 }
-form input[type=button]:hover {
+.login form input[type=button]:hover {
   cursor: pointer;
 }
-form input[type=button]:active {
+.login form input[type=button]:active {
   background: rgba(255, 255, 255, 0.2);
 }
-form:hover {
+.login form:hover {
   margin: 4px;
 }
 
-::-moz-placeholder {
+.login ::-moz-placeholder {
   font-family: Montserrat, sans-serif;
   font-weight: 400;
   color: #fff;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
 
-:-ms-input-placeholder {
+.login :-ms-input-placeholder {
   font-family: Montserrat, sans-serif;
   font-weight: 400;
   color: #fff;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
 
-::placeholder {
+.login ::placeholder {
   font-family: Montserrat, sans-serif;
   font-weight: 400;
   color: #fff;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
 
-.drop {
+.login .drop {
   background: rgba(255, 255, 255, 0.3);
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
@@ -128,33 +126,33 @@ form:hover {
   position: absolute;
   transition: all 0.2s ease;
 }
-.drop-1 {
+.login .drop-1 {
   height: 80px;
   width: 80px;
   top: -20px;
   left: -40px;
   z-index: -1;
 }
-.drop-2 {
+.login  .drop-2 {
   height: 80px;
   width: 80px;
   bottom: -30px;
   right: -10px;
 }
-.drop-3 {
+.login .drop-3 {
   height: 100px;
   width: 100px;
   bottom: 120px;
   right: -50px;
   z-index: -1;
 }
-.drop-4 {
+.login .drop-4 {
   height: 120px;
   width: 120px;
   top: -60px;
   right: -60px;
 }
-.drop-5 {
+.login .drop-5 {
   height: 60px;
   width: 60px;
   bottom: 170px;
@@ -162,10 +160,10 @@ form:hover {
   z-index: -1;
 }
 
-a,
-input:focus,
-select:focus,
-textarea:focus,
-button:focus {
+.login a,
+.login input:focus,
+.login select:focus,
+.login textarea:focus,
+.login button:focus {
   outline: none;
 }

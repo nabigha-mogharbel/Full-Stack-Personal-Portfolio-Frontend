@@ -14,15 +14,14 @@ export default class Project extends React.Component {
       id: this.props.project._id,
       selectedCategory: "",
       name: "",
-      url: "",
-      nameCategory:""
+      url: ""
     };
     this.fileInput = React.createRef();
     this.toggleEdit = this.toggleEdit.bind(this);  }
   toggleEdit() {
     this.setState({ isEditMode: !this.state.isEditMode });
   }
-  submitProject = (e) => {
+  /*submitProject = (e) => {
     e.preventDefault();
     if (this.state.name === "" && this.state.url === "") {
       alert("You can't send empty response");
@@ -33,14 +32,13 @@ export default class Project extends React.Component {
       let param = this.props.project._id;
       console.log("request", request, param);
     }
-  };
+  };*/
 
   updateData = async (event) => {
     event.preventDefault();
-
     const formData = new FormData();
-    formData.append("name", this.state.name);
-    formData.append("url", this.state.url);
+    if(this.state.name!=="")formData.append("name", this.state.name);
+    if(this.state.url!=="")formData.append("url", this.state.url);
     formData.append("category", this.state.selectedCategory);
     formData.append(
       "images",

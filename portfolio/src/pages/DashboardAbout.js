@@ -11,7 +11,7 @@ export default class DashboardAbout extends React.Component {
   }
     render() {
     return (
-      <div className="dashboard">
+      <div className="dashboard dashboard-about">
         <SideBar linkIndex={0} />
         <About />
       </div>

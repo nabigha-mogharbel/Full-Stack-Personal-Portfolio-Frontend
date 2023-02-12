@@ -40,12 +40,12 @@ class DashbordSkills extends React.Component {
     console.log("Newwwww" + {newSkill});
     try {
       const response = axios.post(
-        `http://localhost:5010/dashboard/skills/create`,
+        `http://localhost:5000/dashboard/skills/create`,
         newSkill
       );
 
       console.log("Done");
-      this.getData()
+      window.location.reload(false)
     } catch (error) {
       console.error(error);
     }

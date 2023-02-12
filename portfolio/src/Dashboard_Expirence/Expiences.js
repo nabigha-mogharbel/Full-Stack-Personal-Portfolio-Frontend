@@ -33,11 +33,10 @@ class Expirence extends React.Component {
     console.log(experienceData + "\n" + id);
     try {
       const response = await axios.put(
-        `http://localhost:5010/dashboard/experience/update/${id}`,
+        `http://localhost:5000/dashboard/experience/update/${id}`,
         experienceData
       );
-
-      this.setState({ data: response.data.response });
+      window.location.reload(false)
       console.log(response.data.response);
     } catch (error) {
       console.error(error);
@@ -48,9 +47,10 @@ class Expirence extends React.Component {
     id = this.state.id;
     try {
       const response = await axios.delete(
-        `http://localhost:5010/dashboard/experience/delete/${id}`
+        `http://localhost:5000/dashboard/experience/delete/${id}`
       );
       console.log(response.data.response);
+      window.location.reload(false)
     } catch (error) {
       console.log("error deleting dashboard", error);
       console.error(error);
@@ -76,11 +76,10 @@ class Expirence extends React.Component {
       <div className="dashboard-card">
         <div className="container-row">
           <div className="container-column">
-            <h3>Name :{this.props.Expir.name}</h3>
-            <h3>Compagny : {this.props.Expir.companyName}</h3>
-            <h3> StartDate: {this.formatDate(this.props.Expir.startDate)}</h3>
-            <h3> End Date: {this.formatDate(this.props.Expir.endDate)}</h3>
-            <p> Description: {this.props.Expir.description}</p>
+            <h3>{this.props.Expir.name}</h3>
+            <h3>{this.props.Expir.companyName}</h3>
+            <h3>{this.formatDate(this.props.Expir.startDate)}</h3>
+            <h3> {this.formatDate(this.props.Expir.endDate)}</h3>
           </div>
           {/* <div className="container-column">
             <h3>{this.props.Expir.name}</h3>
@@ -152,7 +151,7 @@ class Expirence extends React.Component {
                 />
                 </div>
                 <div className="container-row">
-                <button type="submit" value="Update" className="submit">
+                <button type="submit" value="Update" className="dashboard-btns send">
                   <img src={send} alt="" onSubmit={this.updateData} />
                 </button>
                 <button

@@ -9,7 +9,8 @@ class Admin extends React.Component {
     password: "",
     username: "",
     newpassword1:"",
-    success:false
+    success:false,
+    failes:false
   };
 
   handleSubmit = async (event) => {
@@ -26,6 +27,7 @@ class Admin extends React.Component {
       console.log("success");
       console.log(response.data);
     } catch (error) {
+      
       console.error(error);
     }
   };

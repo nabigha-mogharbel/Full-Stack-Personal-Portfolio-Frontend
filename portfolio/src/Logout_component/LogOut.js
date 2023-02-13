@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import axios from "axios";
 import './Login.css'
 import Cookies from "universal-cookie"
-import {history, redirect} from "react-router-dom"
+import Login from '../Login_component/Login'
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
-class Login extends Component {
+
+class LogOut extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -32,6 +34,9 @@ class Login extends Component {
           if (response) {
             Cookies.remove("auth-token");
             // redirect(/)
+    
+
+
           }
         })
         .catch(error => {
@@ -45,16 +50,19 @@ class Login extends Component {
         });
         
   };
+ 
 
   render() {
     return (
       
       <div >
  
- <button  className="btn" type="submit" onClick={this.handleLogout}>Log Out</button>
+ <button  className="btn" type="submit" onClick={this.handleLogout}>Log Out
+ <Route path="/login" element={<Login />} />
+ </button>
 
     </div>
     );
   }
 }
-export default Login;
+export default LogOut;

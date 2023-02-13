@@ -15,6 +15,8 @@ class DashboardEducation extends React.Component {
       institute: "",
       startDate: "",
       endDate: "",
+      success:false,
+    failed:false,
     };
   }
   componentDidMount() {
@@ -55,11 +57,12 @@ class DashboardEducation extends React.Component {
         `https://ahmadbadawiportfolio.onrender.com/dashboard/education/create`,
         newEduation
       );
-
+      this.setState({success:true,failed:false});
       console.log("Done");
       this.getData()
     } catch (error) {
       console.error(error);
+      this.setState({success:false,failed:true});
     }
   };
 
@@ -84,7 +87,34 @@ class DashboardEducation extends React.Component {
       <div className="dashboard-section">
         <h1>Education</h1>
         <hr />
-
+        {this.state.success && (
+              <div
+                className="alert alert-success"
+                role="alert"
+                style={{
+                  width: "80%",
+                  margin: "20px auto",
+                  color: "#3c763d",
+                  backgroundColor: "#dff0d8",
+                }}
+              >
+                <strong>Well done!</strong> All Procedure has been successfully.
+              </div>
+            )}
+            {this.state.failed && (
+              <div
+                className="alert alert-success"
+                role="alert"
+                style={{
+                  width: "80%",
+                  margin: "20px auto",
+                  color: "#FF5733",
+                  backgroundColor: "#EFAC9E",
+                }}
+              >
+                <strong>Alert!</strong> Somthings  has been unSuccessfully!!!!!!
+              </div>
+            )}
         {!this.state.isEditMode && (
           <>
             <div className="container-column">

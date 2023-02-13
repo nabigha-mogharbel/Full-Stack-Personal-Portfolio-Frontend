@@ -18,6 +18,9 @@ class Education extends React.Component {
         startDate: this.props.edu.startDate,
         endDate: this.props.edu.endDate,
       },
+      success:false,
+      failed:false,
+      
     };
   }
   handleChange = (event) => {
@@ -39,20 +42,24 @@ class Education extends React.Component {
       degree: this.state.data.degree,
     };
     console.log(educationData + "\n" + id);
-    const url=process.env.REACT_APP_BASE_URL
-    url="https://ahmadbadawiportfolio.onrender.com"
+    // const url=process.env.REACT_APP_BASE_URL
+    // url="https://ahmadbadawiportfolio.onrender.com"
 
 
     try {
       const response = await axios.put(
-        `${url}/dashboard/education/update/${id}`,
+        `https://ahmadbadawiportfolio.onrender.com/dashboard/education/update/${id}`,
         educationData
       );
 
       this.setState({ data: response.data.response });
+      this.setState({success:true,failed:false});
+
       console.log(response.data.response);
     } catch (error) {
       console.error(error);
+      this.setState({success:false,failed:true});
+
     }
   };
   toggelvisible = () => {
@@ -69,13 +76,13 @@ class Education extends React.Component {
 
   deleteData = async (id) => {
     id = this.state.id
-    const url=process.env.REACT_APP_BASE_URL
-    url="https://ahmadbadawiportfolio.onrender.com"
+    // const url=process.env.REACT_APP_BASE_URL
+    // url="https://ahmadbadawiportfolio.onrender.com"
 
 
     try {
       const response = await axios.delete(
-        `${url}/dashboard/education/delete/${id}`
+        `https://ahmadbadawiportfolio.onrender.com/dashboard/education/delete/${id}`
       );
       console.log(response.data.response);
       console.log("Hello, ");
@@ -96,6 +103,37 @@ class Education extends React.Component {
       <div className="dashboard-card">
         <div className="container-row-to-col flex-center">
           <div className="info">
+            
+          {this.state.success && (
+              <div
+                className="alert alert-success"
+                role="alert"
+                style={{
+                  width: "80%",
+                  margin: "20px auto",
+                  color: "#3c763d",
+                  backgroundColor: "#dff0d8",
+                }}
+              >
+                <strong>Well done!</strong> All Procedure has been successfully.
+              </div>
+            )}
+            {this.state.failed && (
+              <div
+                className="alert alert-success"
+                role="alert"
+                style={{
+                  width: "80%",
+                  margin: "20px auto",
+                  color: "#FF5733",
+                  backgroundColor: "#EFAC9E",
+                }}
+              >
+                <strong>Alert!</strong> Somthings  has been unSuccessfully!!!!!!
+              </div>
+            )}
+            
+
             <h3>
               {this.props.edu.major}
             </h3>

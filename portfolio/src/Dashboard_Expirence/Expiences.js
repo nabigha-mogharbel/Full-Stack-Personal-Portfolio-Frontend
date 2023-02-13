@@ -31,13 +31,13 @@ class Expirence extends React.Component {
       description: this.state.data.description,
     };
     console.log(experienceData + "\n" + id);
-    const url=process.env.REACT_APP_BASE_URL
-    url="https://ahmadbadawiportfolio.onrender.com"
+    // const url=process.env.REACT_APP_BASE_URL
+    // url="https://ahmadbadawiportfolio.onrender.com"
 
 
     try {
       const response = await axios.put(
-        `${url}}dashboard/experience/update/${id}`,
+        `https://ahmadbadawiportfolio.onrender.com/dashboard/experience/update/${id}`,
         experienceData
       );
       window.location.reload(false)
@@ -48,14 +48,14 @@ class Expirence extends React.Component {
   };
 
   deleteData = async (id) => {
-    id = this.state.id;
-    const url=process.env.REACT_APP_BASE_URL
-    url="https://ahmadbadawiportfolio.onrender.com"
+    // id = this.state.id;
+    // const url=process.env.REACT_APP_BASE_URL
+    // url="https://ahmadbadawiportfolio.onrender.com"
 
 
     try {
       const response = await axios.delete(
-        `${url}/dashboard/experience/delete/${id}`
+        `https://ahmadbadawiportfolio.onrender.com/dashboard/experience/delete/${id}`
       );
       console.log(response.data.response);
       window.location.reload(false)

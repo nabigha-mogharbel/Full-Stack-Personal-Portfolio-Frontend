@@ -15,6 +15,8 @@ export default class DashboardAbout extends React.Component {
       expertise: "",
       images: "",
       id: "",
+      success:false,
+    failed:false,
     };
 
     this.fileInput = React.createRef();
@@ -45,12 +47,12 @@ export default class DashboardAbout extends React.Component {
     console.log(this.state)
   }*/
   getData = async () => {
-    const url=process.env.REACT_APP_BASE_URL
+    let url=process.env.REACT_APP_BASE_URL
     url="https://ahmadbadawiportfolio.onrender.com"
 
     try {
       const response = await axios.get(
-        `${url}/dashboard/about/`
+        `https://ahmadbadawiportfolio.onrender.com/dashboard/about/`
       );
       // this.setState({ about: response.data[0]. });
      /* this.setState({ bio: response.data[0].bio });
@@ -59,7 +61,10 @@ export default class DashboardAbout extends React.Component {
       this.setState({ id: response.data[0]._id });*/
       this.setState({data:response.data[0], isLoaded:true})
       console.log(this.state.data);
+      // this.setState({success:true});
     } catch (error) {
+      this.setState({success:false,failed:true});
+
       console.error(error);
     }
   };
@@ -88,12 +93,12 @@ export default class DashboardAbout extends React.Component {
     );
     console.log(formData);
     const url=process.env.REACT_APP_BASE_URL
-    url="https://ahmadbadawiportfolio.onrender.com"
+    // url="https://ahmadbadawiportfolio.onrender.com"
 
 
     try {
       const response = await axios.put(
-        `${url}/dashboard/about/img/${this.state.data._id}`,
+        `https://ahmadbadawiportfolio.onrender.com/dashboard/about/img/${this.state.data._id}`,
         formData,
         {
           headers: {
@@ -103,8 +108,11 @@ export default class DashboardAbout extends React.Component {
         }
       );
       console.log(response.data);
+      this.setState({success:true});
+
       alert("yay data");
     } catch (error) {
+      this.setState({success:false,failed:true});
       console.error(error);
     }
   };
@@ -113,6 +121,34 @@ export default class DashboardAbout extends React.Component {
     return (
       <div className="dashboard-section dashboard-section_about">
         <main>
+        {this.state.success && (
+              <div
+                className="alert alert-success"
+                role="alert"
+                style={{
+                  width: "80%",
+                  margin: "20px auto",
+                  color: "#3c763d",
+                  backgroundColor: "#dff0d8",
+                }}
+              >
+                <strong>Well done!</strong> All Procedure has been successfully.
+              </div>
+            )}
+            {this.state.failed && (
+              <div
+                className="alert alert-success"
+                role="alert"
+                style={{
+                  width: "80%",
+                  margin: "20px auto",
+                  color: "#FF5733",
+                  backgroundColor: "#EFAC9E",
+                }}
+              >
+                <strong>Alert!</strong> Somthings  has been unSuccessfully!!!!!!
+              </div>
+            )}
           <h1>About me</h1>
           <hr />
           {/* {!this.state.isEditMode&&  */}

@@ -9,16 +9,17 @@ class Admin extends React.Component {
     password: "",
     username: "",
     newpassword1:"",
-    success:false
+    success:false,
+    failes:false
   };
 
   handleSubmit = async (event) => {
     event.preventDefault();
     const url=process.env.REACT_APP_BASE_URL
-    url="https://ahmadbadawiportfolio.onrender.com"
+    // url="https://ahmadbadawiportfolio.onrender.com"
 
     try {
-      const response = await axios.put(`${url}/admin/update/${this.state.username}`, {
+      const response = await axios.put(`https://ahmadbadawiportfolio.onrender.com/admin/update/${this.state.username}`, {
     
         password: this.state.password
       });
@@ -26,6 +27,7 @@ class Admin extends React.Component {
       console.log("success");
       console.log(response.data);
     } catch (error) {
+      
       console.error(error);
     }
   };

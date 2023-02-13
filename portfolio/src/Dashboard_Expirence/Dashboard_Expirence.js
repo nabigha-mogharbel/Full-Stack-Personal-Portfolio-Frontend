@@ -37,13 +37,12 @@ class DashboardExpirience extends React.Component {
     this.getData();
   }
   getData = async () => {
-    const url=process.env.REACT_APP_BASE_URL
-    url="https://ahmadbadawiportfolio.onrender.com"
+
 
 
     try {
       const response = await axios.get(
-        `${url}/dashboard/experience/`
+        `https://ahmadbadawiportfolio.onrender.com/dashboard/experience/`
       );
       this.setState({ data: response.data.response });
       console.log(response.data.response);
@@ -62,13 +61,12 @@ class DashboardExpirience extends React.Component {
       description: this.state.description
     };
     console.log("Newwwww" + {newExperience});
-    const url=process.env.REACT_APP_BASE_URL
-    url="https://ahmadbadawiportfolio.onrender.com"
+
 
 
     try {
       const response = axios.post(
-        `${url}/dashboard/experience/create`,
+        `https://ahmadbadawiportfolio.onrender.com/dashboard/experience/create`,
         newExperience
       );
 

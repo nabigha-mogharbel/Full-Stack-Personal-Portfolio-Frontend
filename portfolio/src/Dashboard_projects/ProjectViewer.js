@@ -46,12 +46,12 @@ export default class Project extends React.Component {
       this.fileInput.current.files[0].name
     );
     console.log(formData);
-    const url=process.env.REACT_APP_BASE_URL
-    url="https://ahmadbadawiportfolio.onrender.com"
+    // const url=process.env.REACT_APP_BASE_URL
+    // url="https://ahmadbadawiportfolio.onrender.com"
 
     try {
       const response = await axios.put(
-        `${url}/dashboard/projects/update/withimg/${this.state.id}`,
+        `https://ahmadbadawiportfolio.onrender.com/dashboard/projects/update/withimg/${this.state.id}`,
         formData,
         {
           headers: {
@@ -80,13 +80,13 @@ export default class Project extends React.Component {
 
   deleteData = async (id) => {
     id = this.state.id;
-    const url=process.env.REACT_APP_BASE_URL
-    url="https://ahmadbadawiportfolio.onrender.com"
+    // const url=process.env.REACT_APP_BASE_URL
+    // url="https://ahmadbadawiportfolio.onrender.com"
 
 
     try {
       const response = await axios.delete(
-        `${url}/dashboard/projects/delete/${id}`
+        `https://ahmadbadawiportfolio.onrender.com/dashboard/projects/delete/${id}`
       );
       console.log(response.data.response);
     } catch (error) {
@@ -102,8 +102,8 @@ export default class Project extends React.Component {
     console.log(event.target.name);
   };
   render() {
-    let url=process.env.REACT_APP_BASE_URL
-    url="https://ahmadbadawiportfolio.onrender.com"
+    // let url=process.env.REACT_APP_BASE_URL
+    // url="https://ahmadbadawiportfolio.onrender.com"
 
     return (
       <div className="dashboard-card">
@@ -129,7 +129,7 @@ export default class Project extends React.Component {
               justifyContent: "center",
               alignItems: "center",
             }}
-              src={`${url}/${this.props.project.img}`}
+              src={`https://ahmadbadawiportfolio.onrender.com/${this.props.project.img}`}
             />
           </div>
           {!this.state.isEditMode && (

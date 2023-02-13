@@ -39,13 +39,13 @@ class Skills extends React.Component {
 
   deleteData = async (id) => {
     id = this.state.id;
-    const url=process.env.REACT_APP_BASE_URL
-    url="https://ahmadbadawiportfolio.onrender.com"
+    // const url=process.env.REACT_APP_BASE_URL
+    // url="https://ahmadbadawiportfolio.onrender.com"
 
 
     try {
       const response = await axios.delete(
-        `${url}/dashboard/skills/delete/${id}`
+        `https://ahmadbadawiportfolio.onrender.com/dashboard/skills/delete/${id}`
       );
       console.log("Done");
       window.location.reload(false)
@@ -67,12 +67,12 @@ class Skills extends React.Component {
       percentage: this.state.data.percentage,
     };
     console.log(skillsData + "\n" + id);
-    const url=process.env.REACT_APP_BASE_URL
-    url="https://ahmadbadawiportfolio.onrender.com"
+    // const url=process.env.REACT_APP_BASE_URL
+    // url="https://ahmadbadawiportfolio.onrender.com"
 
     try {
       const response = await axios.put(
-        `${url}/dashboard/skills/update/${id}`,
+        `https://ahmadbadawiportfolio.onrender.com/dashboard/skills/update/${id}`,
         skillsData
       );
 

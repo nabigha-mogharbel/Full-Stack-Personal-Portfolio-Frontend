@@ -58,7 +58,6 @@ class LogOut extends Component {
       <div >
  
  <button  className="btn" type="submit" onClick={this.handleLogout}>Log Out
- <Route path="/login" element={<Login />} />
  </button>
 
     </div>

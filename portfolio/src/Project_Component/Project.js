@@ -55,8 +55,8 @@ class Project extends React.Component {
                     <button onClick={this.handleImagedeincrement} >
                         <img src={backward} alt=""  />
                     </button >
-                        <Projects description={this.state.data[this.state.imageA].name} img={this.state.data[this.state.imageA].src}/>
-                        <Projects description={this.state.data[this.state.imageB].name} img= {this.state.data[this.state.imageB].src}/>
+                        <Projects description={this.props.proData[this.state.imageA].name} img={this.props.proData[this.state.imageA].img}/>
+                        <Projects description={this.props.proData[this.state.imageB].name} img= {this.props.proData[this.state.imageB].img}/>
                     <button onClick={this.handleImageincrement}>
                         <img src={forward} alt="" />
                     </button>

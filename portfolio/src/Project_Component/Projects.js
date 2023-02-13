@@ -14,7 +14,7 @@ class Projects extends React.Component {
                     }} onMouseLeave={()=>{
                         this.setState({onhover:false})
                     }}
-                        src={this.props.img}
+                        src={`https://ahmadbadawiportfolio.onrender.com/${this.props.img}`}
                         alt=""
                         className='projectimage'
                     />

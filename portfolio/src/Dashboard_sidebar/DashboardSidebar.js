@@ -2,6 +2,7 @@ import React from "react";
 import "./DashboardSidebar.css";
 import { Link } from "react-router-dom";
 import menu from "../icons/bars-solid.svg";
+import Logout from "../Logout_component/LogOut"
 export default class DashboardSidebar extends React.Component {
   constructor(props) {
     super(props);
@@ -48,6 +49,7 @@ export default class DashboardSidebar extends React.Component {
             <Link className="nav-link" to="/dashboard/admin">
               My Account
             </Link>
+            <><Link className="nav-link" to={"/login"}><><Logout></Logout></></Link></>
           </div>
         )}
 

@@ -21,13 +21,13 @@ class DashboardEducation extends React.Component {
     this.getData();
   }
   getData = async () => {
-    const url=process.env.REACT_APP_BASE_URL
-    url="https://ahmadbadawiportfolio.onrender.com"
+    // const url=process.env.REACT_APP_BASE_URL
+    // url="https://ahmadbadawiportfolio.onrender.com"
 
 
     try {
       const response = await axios.get(
-        `${url}/dashboard/education/`
+        `https://ahmadbadawiportfolio.onrender.com/dashboard/education/`
       );
       this.setState({ data: response.data.response });
       console.log(response.data.response);
@@ -46,13 +46,13 @@ class DashboardEducation extends React.Component {
       institute: this.state.institute
     };
     console.log("Newwwww" + {newEduation});
-    const url=process.env.REACT_APP_BASE_URL
-    url="https://ahmadbadawiportfolio.onrender.com"
+    // const url=process.env.REACT_APP_BASE_URL
+    // url="https://ahmadbadawiportfolio.onrender.com"
 
 
     try {
       const response = axios.post(
-        `${url}/dashboard/education/create`,
+        `https://ahmadbadawiportfolio.onrender.com/dashboard/education/create`,
         newEduation
       );
 

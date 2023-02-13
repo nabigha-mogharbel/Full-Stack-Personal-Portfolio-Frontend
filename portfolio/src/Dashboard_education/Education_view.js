@@ -39,13 +39,13 @@ class Education extends React.Component {
       degree: this.state.data.degree,
     };
     console.log(educationData + "\n" + id);
-    const url=process.env.REACT_APP_BASE_URL
-    url="https://ahmadbadawiportfolio.onrender.com"
+    // const url=process.env.REACT_APP_BASE_URL
+    // url="https://ahmadbadawiportfolio.onrender.com"
 
 
     try {
       const response = await axios.put(
-        `${url}/dashboard/education/update/${id}`,
+        `https://ahmadbadawiportfolio.onrender.com/dashboard/education/update/${id}`,
         educationData
       );
 
@@ -69,13 +69,13 @@ class Education extends React.Component {
 
   deleteData = async (id) => {
     id = this.state.id
-    const url=process.env.REACT_APP_BASE_URL
-    url="https://ahmadbadawiportfolio.onrender.com"
+    // const url=process.env.REACT_APP_BASE_URL
+    // url="https://ahmadbadawiportfolio.onrender.com"
 
 
     try {
       const response = await axios.delete(
-        `${url}/dashboard/education/delete/${id}`
+        `https://ahmadbadawiportfolio.onrender.com/dashboard/education/delete/${id}`
       );
       console.log(response.data.response);
       console.log("Hello, ");

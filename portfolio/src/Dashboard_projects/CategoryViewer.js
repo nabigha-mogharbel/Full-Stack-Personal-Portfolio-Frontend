@@ -36,13 +36,13 @@ export default class Category extends React.Component {
       name: this.state.name,
     };
     console.log(dataCategories + "\n" + id);
-    const url=process.env.REACT_APP_BASE_URL
-    url="https://ahmadbadawiportfolio.onrender.com"
+    // const url=process.env.REACT_APP_BASE_URL
+    // url="https://ahmadbadawiportfolio.onrender.com"
 
 
     try {
       const response = await axios.put(
-        `${url}/dashboard/categories/update/${id}`,
+        `https://ahmadbadawiportfolio.onrender.com/dashboard/categories/update/${id}`,
         dataCategories
       );
 
@@ -55,13 +55,13 @@ export default class Category extends React.Component {
 
   deleteData = async (id) => {
     id = this.state.id;
-    const url=process.env.REACT_APP_BASE_URL
-    url="https://ahmadbadawiportfolio.onrender.com"
+    // const url=process.env.REACT_APP_BASE_URL
+    // url="https://ahmadbadawiportfolio.onrender.com"
 
 
     try {
       const response = await axios.delete(
-        `${url}/dashboard/categories/delete/${id}`
+        `https://ahmadbadawiportfolio.onrender.com/dashboard/categories/delete/${id}`
       );
       console.log(response.data.response);
       window.location.reload(false)

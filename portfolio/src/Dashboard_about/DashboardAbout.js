@@ -50,7 +50,7 @@ export default class DashboardAbout extends React.Component {
 
     try {
       const response = await axios.get(
-        `${url}/dashboard/about/`
+        `https://ahmadbadawiportfolio.onrender.com/dashboard/about/`
       );
       // this.setState({ about: response.data[0]. });
      /* this.setState({ bio: response.data[0].bio });
@@ -88,12 +88,12 @@ export default class DashboardAbout extends React.Component {
     );
     console.log(formData);
     const url=process.env.REACT_APP_BASE_URL
-    url="https://ahmadbadawiportfolio.onrender.com"
+    // url="https://ahmadbadawiportfolio.onrender.com"
 
 
     try {
       const response = await axios.put(
-        `${url}/dashboard/about/img/${this.state.data._id}`,
+        `https://ahmadbadawiportfolio.onrender.com/dashboard/about/img/${this.state.data._id}`,
         formData,
         {
           headers: {

@@ -19,13 +19,13 @@ class DashbordSkills extends React.Component {
     this.getData();
   }
   getData = async () => {
-    const url=process.env.REACT_APP_BASE_URL
-    url="https://ahmadbadawiportfolio.onrender.com"
+    // const url=process.env.REACT_APP_BASE_URL
+    // url="https://ahmadbadawiportfolio.onrender.com"
 
 
     try {
       const response = await axios.get(
-        `${url}/dashboard/skills/`
+        `https://ahmadbadawiportfolio.onrender.com/dashboard/skills/`
       );
       this.setState({ data: response.data.response });
       console.log(response.data.response);
@@ -42,13 +42,13 @@ class DashbordSkills extends React.Component {
 
     };
     console.log("Newwwww" + {newSkill});
-    const url=process.env.REACT_APP_BASE_URL
-    url="https://ahmadbadawiportfolio.onrender.com"
+    // const url=process.env.REACT_APP_BASE_URL
+    // url="https://ahmadbadawiportfolio.onrender.com"
 
 
     try {
       const response = axios.post(
-        `${url}/dashboard/skills/create`,
+        `https://ahmadbadawiportfolio.onrender.com/dashboard/skills/create`,
         newSkill
       );
 

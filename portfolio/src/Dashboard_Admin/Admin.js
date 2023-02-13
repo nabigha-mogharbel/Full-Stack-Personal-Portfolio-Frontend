@@ -15,10 +15,10 @@ class Admin extends React.Component {
   handleSubmit = async (event) => {
     event.preventDefault();
     const url=process.env.REACT_APP_BASE_URL
-    url="https://ahmadbadawiportfolio.onrender.com"
+    // url="https://ahmadbadawiportfolio.onrender.com"
 
     try {
-      const response = await axios.put(`${url}/admin/update/${this.state.username}`, {
+      const response = await axios.put(`https://ahmadbadawiportfolio.onrender.com/admin/update/${this.state.username}`, {
     
         password: this.state.password
       });

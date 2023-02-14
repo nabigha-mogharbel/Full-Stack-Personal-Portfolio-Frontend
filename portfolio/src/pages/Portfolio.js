@@ -27,42 +27,11 @@ export default class Portfolio extends React.Component{
     getData = async () => {
         try {
           const response = await axios.get(
-             `${this.props.backendLink}/dashboard/portfolio`
+             `https://ahbadawiport.onrender.com/dashboard/portfolio`
           );
-          this.setState({ Portfolio: response.data.response[0], isLoaded:true});
+          this.setState({ Portfolio: response.data.response[0]});
+          this.setState({isLoaded:true})
           console.log("klshi data", this.state.Portfolio)
-
-        this.components=[<About
-          scroll={this.handleScroll}
-          touchStart={this.captureStart}
-          touchEnd={this.captureEnd}
-          aboData={this.state.Portfolio.about[0]}
-          linkData={this.state.Portfolio.link}
-        />,
-        <Project
-          scroll={this.handleScroll}
-          touchStart={this.captureStart}
-          touchEnd={this.captureEnd}
-          proData={[...this.state.Portfolio.project]}
-        />,
-        <Skills
-        scroll={this.handleScroll}
-        touchStart={this.captureStart}
-        touchEnd={this.captureEnd}
-        skillData={[...this.state.Portfolio.skill]}
-      />,
-        <Resume
-          scroll={this.handleScroll}
-          touchStart={this.captureStart}
-          touchEnd={this.captureEnd}
-          expData={[...this.state.Portfolio.experience]}
-          eduData={[...this.state.Portfolio.education]}
-        />,
-        <Contact
-          scroll={this.handleScroll}
-          touchStart={this.captureStart}
-          touchEnd={this.captureEnd}
-        />,]
           console.log(response.data.response[0]);
         } catch (error) {
           console.error(error);
@@ -113,8 +82,42 @@ export default class Portfolio extends React.Component{
         <div className="wave"></div>
         <div className="wave"></div></>}
         {!this.state.isLoaded && <Loading></Loading>}
-        {this.state.isLoaded && this.components[this.state.component]}
-        {this.state.isLoaded&&<Sidebar click={this.sidebarClick} />}
+        {this.state.isLoaded && 
+        <>
+        <About
+          scroll={this.handleScroll}
+          touchStart={this.captureStart}
+          touchEnd={this.captureEnd}
+          aboData={this.state.Portfolio.about[0]}
+          linkData={this.state.Portfolio.link}
+        />
+        <Project
+          scroll={this.handleScroll}
+          touchStart={this.captureStart}
+          touchEnd={this.captureEnd}
+          proData={[...this.state.Portfolio.project]}
+        />
+         <Skills
+        scroll={this.handleScroll}
+        touchStart={this.captureStart}
+        touchEnd={this.captureEnd}
+        skillData={[...this.state.Portfolio.skill]}
+      />
+      <Resume
+          scroll={this.handleScroll}
+          touchStart={this.captureStart}
+          touchEnd={this.captureEnd}
+          expData={[...this.state.Portfolio.experience]}
+          eduData={[...this.state.Portfolio.education]}
+        />
+        <Contact
+          scroll={this.handleScroll}
+          touchStart={this.captureStart}
+          touchEnd={this.captureEnd}
+        />
+        </>
+        }
+        {this.state.isLoaded && <Sidebar click={this.sidebarClick} />}
       </div>
     );
   }

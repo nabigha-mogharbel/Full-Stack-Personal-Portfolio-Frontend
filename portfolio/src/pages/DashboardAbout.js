@@ -13,7 +13,7 @@ export default class DashboardAbout extends React.Component {
     return (
       <div className="dashboard dashboard-about">
         <SideBar linkIndex={0} />
-        <About />
+        <About backendLink={this.props.backendLink}/>
       </div>
     );
   }

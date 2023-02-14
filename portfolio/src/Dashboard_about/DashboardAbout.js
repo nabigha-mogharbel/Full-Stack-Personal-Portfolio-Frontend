@@ -4,6 +4,7 @@ import edit from "../edit.svg";
 import trash from "../trash.svg";
 import send from "../send.svg";
 import axios from "axios";
+import Cookies from "universal-cookie"
 export default class DashboardAbout extends React.Component {
   constructor(props) {
     super(props);
@@ -42,26 +43,15 @@ export default class DashboardAbout extends React.Component {
   handleExpertiseInput(e) {
     this.setState({ expertise: e.target.value });
   }
-  /*handleImage=(e) =>{
-    this.setState({ images:this.fileInput.current.files[0].name});
-    console.log(this.state)
-  }*/
   getData = async () => {
-    let url=process.env.REACT_APP_BASE_URL
-    url="https://ahmadbadawiportfolio.onrender.com"
-
+    const cookie=new Cookies()
+    let bearer=cookie.get("auth-token")
     try {
       const response = await axios.get(
-        `https://ahmadbadawiportfolio.onrender.com/dashboard/about/`
+        `${this.props.backendLink}/dashboard/about/`, {headers:{"auth-token": bearer }}
       );
-      // this.setState({ about: response.data[0]. });
-     /* this.setState({ bio: response.data[0].bio });
-      this.setState({ expertise: response.data[0].expertise });
-      this.setState({ personal_pic: response.data[0].personal_pic });
-      this.setState({ id: response.data[0]._id });*/
       this.setState({data:response.data[0], isLoaded:true})
       console.log(this.state.data);
-      // this.setState({success:true});
     } catch (error) {
       this.setState({success:false,failed:true});
 
@@ -69,22 +59,8 @@ export default class DashboardAbout extends React.Component {
     }
   };
 
-  // submitAbout=(e) => {
-  //   e.preventDefault();
-  //   if(this.state.bio==="" && this.state.expertise===""){
-  //       console.log("You can't send empty data")
-  //   }else{
-  //      let request={
-  //      }
-  //      if(this.state.bio!="")request["bio"]=this.state.bio;
-  //      if(this.state.expertise!="") request["expertise"]=this.state.expertise;
-  //      console.log(request)
-
-  //       alert("yay data")
-  //   }
   submitAbout = async (event) => {
     event.preventDefault();
-
     const formData = new FormData();
     formData.append("bio", this.state.data.bio);
     formData.append("expertise", this.state.data.expertise);
@@ -92,18 +68,17 @@ export default class DashboardAbout extends React.Component {
       "images",this.fileInput.current.files[0],this.fileInput.current.files[0].name
     );
     console.log(formData);
-    const url=process.env.REACT_APP_BASE_URL
-    // url="https://ahmadbadawiportfolio.onrender.com"
-
-
+    const cookie=new Cookies()
+    let bearer=cookie.get("auth-token")
     try {
       const response = await axios.put(
-        `https://ahmadbadawiportfolio.onrender.com/dashboard/about/img/${this.state.data._id}`,
+        `${this.props.backendLink}/dashboard/about/img/${this.state.data._id}`,
         formData,
         {
           headers: {
             "Accept-Language": "en-US,en;q=0.8",
             "Content-Type": `multipart/form-data`,
+            "auth-token":bearer
           },
         }
       );
@@ -118,6 +93,7 @@ export default class DashboardAbout extends React.Component {
   };
 
   render() {
+    let backendLink=this.props.backendLink
     return (
       <div className="dashboard-section dashboard-section_about">
         <main>
@@ -151,7 +127,6 @@ export default class DashboardAbout extends React.Component {
             )}
           <h1>About me</h1>
           <hr />
-          {/* {!this.state.isEditMode&&  */}
          {this.state.isLoaded&&  <>
            {!this.state.isEditMode && <> <section className="container-row-to-col">
               <div className="container-column flex-start" id="about_container">
@@ -175,7 +150,7 @@ export default class DashboardAbout extends React.Component {
                 >
                   <img
                     className="dashboard-pp"
-                    src={`https://ahmadbadawiportfolio.onrender.com/${this.state.data.personal_pic}`}
+                    src={`${backendLink}/${this.state.data.personal_pic}`}
                     alt="MY Profile"
                     style={{
                    width:"200px", height:"200px", borderRadius:"50%"
@@ -215,8 +190,6 @@ export default class DashboardAbout extends React.Component {
                     name="images"
                     id="personal_pic"
                     ref={this.fileInput}
-                  /* value={this.state.images}
-                    onChange={this.handleImage}*/
                     className="buttonDownload"
                   />
                   <div className="container-row">

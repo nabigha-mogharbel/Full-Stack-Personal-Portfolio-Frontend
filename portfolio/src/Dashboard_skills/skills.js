@@ -3,7 +3,7 @@ import axios from "axios";
 import edit from "../edit.svg";
 import trash from "../trash.svg";
 import send from "../send.svg";
-
+import Cookies from "universal-cookie"
 
 class Skills extends React.Component {
   constructor(props) {
@@ -33,19 +33,16 @@ class Skills extends React.Component {
   };
 
   handleSubmit = (event) => {
-    // event.preventDefault();
     this.updateData(this.state.data, this.state.id);
   };
 
   deleteData = async (id) => {
     id = this.state.id;
-    // const url=process.env.REACT_APP_BASE_URL
-    // url="https://ahmadbadawiportfolio.onrender.com"
-
-
+    const cookie=new Cookies()
+    let bearer=cookie.get("auth-token")
     try {
       const response = await axios.delete(
-        `https://ahmadbadawiportfolio.onrender.com/dashboard/skills/delete/${id}`
+        `${this.props.backendLink}/dashboard/skills/delete/${id}`, {headers:{"auth-token":bearer}}
       );
       console.log("Done");
       window.location.reload(false)
@@ -67,15 +64,13 @@ class Skills extends React.Component {
       percentage: this.state.data.percentage,
     };
     console.log(skillsData + "\n" + id);
-    // const url=process.env.REACT_APP_BASE_URL
-    // url="https://ahmadbadawiportfolio.onrender.com"
-
+    const cookie=new Cookies()
+    let bearer=cookie.get("auth-token")
     try {
       const response = await axios.put(
-        `https://ahmadbadawiportfolio.onrender.com/dashboard/skills/update/${id}`,
-        skillsData
+        `${this.props.backendLink}/dashboard/skills/update/${id}`,
+        skillsData, {headers:{"auth-token":bearer}}
       );
-
       console.log(response.data.response);
       window.location.reload(false)
 

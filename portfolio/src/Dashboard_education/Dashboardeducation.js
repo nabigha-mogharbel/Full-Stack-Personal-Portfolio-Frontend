@@ -3,7 +3,7 @@ import "../Dashboard_education/Dashboardeducation.css";
 import Education from "./Education_view";
 import send from "../send.svg";
 import axios from "axios";
-
+import Cookies from "universal-cookie"
 class DashboardEducation extends React.Component {
   constructor(props) {
     super(props);
@@ -23,13 +23,11 @@ class DashboardEducation extends React.Component {
     this.getData();
   }
   getData = async () => {
-    // const url=process.env.REACT_APP_BASE_URL
-    // url="https://ahmadbadawiportfolio.onrender.com"
-
-
+    const cookie=new Cookies()
+    let bearer=cookie.get("auth-token")    
     try {
       const response = await axios.get(
-        `https://ahmadbadawiportfolio.onrender.com/dashboard/education/`
+        `${this.props.backendLink}/dashboard/education/`, {headers:{"auth-token": bearer }}
       );
       this.setState({ data: response.data.response });
       console.log(response.data.response);
@@ -38,7 +36,7 @@ class DashboardEducation extends React.Component {
     }
   };
 
-  addEducationData = (e) => {
+  addEducationData = async (e) => {
     e.preventDefault();
     const newEduation = {
       major: this.state.major,
@@ -47,19 +45,16 @@ class DashboardEducation extends React.Component {
       endDate: this.state.endDate,
       institute: this.state.institute
     };
-    console.log("Newwwww" + {newEduation});
-    // const url=process.env.REACT_APP_BASE_URL
-    // url="https://ahmadbadawiportfolio.onrender.com"
-
-
+    const cookie=new Cookies()
+    let bearer=cookie.get("auth-token")
     try {
-      const response = axios.post(
-        `https://ahmadbadawiportfolio.onrender.com/dashboard/education/create`,
-        newEduation
+      const response = await axios.post(
+        `${this.props.backendLink}/dashboard/education/create`,
+        newEduation, {headers:{"auth-token": bearer }}
       );
       this.setState({success:true,failed:false});
+      window.location.reload(false)
       console.log("Done");
-      this.getData()
     } catch (error) {
       console.error(error);
       this.setState({success:false,failed:true});
@@ -72,15 +67,10 @@ class DashboardEducation extends React.Component {
     }
   };
 
-  // handleInput = (event, key) => {
-  //   this.setState({ [key]: event.target.value });
-  //   console.log(this.state.$[key]);
-  // };
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
     });
-    //  console.log(this.state.$[event.target.name]);;
   };
   render() {
     return (
@@ -119,7 +109,7 @@ class DashboardEducation extends React.Component {
           <>
             <div className="container-column">
               {this.state.data.map((ele) => {
-                return <Education edu={ele} key={ele._id} refresh={this.ge} />;
+                return <Education backendLink={this.props.backendLink} edu={ele} key={ele._id} refresh={this.ge} />;
               })}
             </div>
             <button

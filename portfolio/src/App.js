@@ -17,25 +17,25 @@ class App extends React.Component {
  constructor(props){
   super(props)
   this.state={
-    isAdmin:false
+    
   }
  }
 
 
   render(){
-    let {auth}=this.state.isAdmin
+    let url="https://ahmadbadawiportfolio.onrender.com"
     return (
       <> <p>{this.state.isAdmin&& <p>batata</p>}</p>
     <BrowserRouter>
     <Routes>
-    <Route path="/" exact element={<Portfolio />}/>
-   <Route path="/dashboard/about" element={<AuthCheck><DashboardAbout /></AuthCheck>}/>
-    <Route path="/dashboard/projects" element={<AuthCheck ><DashboardProjects/></AuthCheck>}/>
-    <Route path="/dashboard/education" element={<AuthCheck ><DashboardEducation/></AuthCheck>}/>
-    <Route path="/dashboard/experience" element={<AuthCheck ><DashboardExperience/></AuthCheck>}/>
-    <Route path="/dashboard/skills" element={<AuthCheck ><DashboardSkills/></AuthCheck>}/>
-    <Route path="/dashboard/admin" element={<AuthCheck><DashboardAdmin/></AuthCheck>}/>
-    <Route path="/login" element={<Login />} />
+    <Route path="/" exact element={<Portfolio backendLink={url}/>}/>
+   <Route path="/dashboard/about" element={<AuthCheck><DashboardAbout backendLink={url} /></AuthCheck>}/>
+    <Route path="/dashboard/projects" element={<AuthCheck ><DashboardProjects backendLink={url}/></AuthCheck>}/>
+    <Route path="/dashboard/education" element={<AuthCheck ><DashboardEducation backendLink={url}/></AuthCheck>}/>
+    <Route path="/dashboard/experience" element={<AuthCheck ><DashboardExperience backendLink={url}/></AuthCheck>}/>
+    <Route path="/dashboard/skills" element={<AuthCheck ><DashboardSkills backendLink={url}/></AuthCheck>}/>
+    <Route path="/dashboard/admin" element={<AuthCheck><DashboardAdmin backendLink={url}/></AuthCheck>}/>
+    <Route path="/login" element={<Login backendLink={url} />} />
     <Route path="*" element={<Error/>} />
     </Routes>
     </BrowserRouter></>

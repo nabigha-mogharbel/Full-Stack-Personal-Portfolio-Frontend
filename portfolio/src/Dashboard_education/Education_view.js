@@ -3,7 +3,7 @@ import edit from "../edit.svg";
 import trash from "../trash.svg";
 import send from "../send.svg";
 import axios from "axios";
-
+import Cookies from "universal-cookie"
 class Education extends React.Component {
   constructor(props) {
     super(props);
@@ -42,14 +42,13 @@ class Education extends React.Component {
       degree: this.state.data.degree,
     };
     console.log(educationData + "\n" + id);
-    // const url=process.env.REACT_APP_BASE_URL
-    // url="https://ahmadbadawiportfolio.onrender.com"
 
-
+    const cookie=new Cookies()
+    let bearer=cookie.get("auth-token")
     try {
       const response = await axios.put(
-        `https://ahmadbadawiportfolio.onrender.com/dashboard/education/update/${id}`,
-        educationData
+        `${this.props.backendLink}/dashboard/education/update/${id}`,
+        educationData,{headers:{"auth-token": bearer }}
       );
 
       this.setState({ data: response.data.response });
@@ -76,17 +75,15 @@ class Education extends React.Component {
 
   deleteData = async (id) => {
     id = this.state.id
-    // const url=process.env.REACT_APP_BASE_URL
-    // url="https://ahmadbadawiportfolio.onrender.com"
-
-
+    const cookie=new Cookies()
+    let bearer=cookie.get("auth-token")
     try {
       const response = await axios.delete(
-        `https://ahmadbadawiportfolio.onrender.com/dashboard/education/delete/${id}`
+        `${this.props.backendLink}/dashboard/education/delete/${id}`, {headers:{"auth-token": bearer }}
       );
       console.log(response.data.response);
       console.log("Hello, ");
-      this.props.refresh()
+      window.location.reload(false)
     } catch (error) {
       console.log("error deleting dashboard", error);
       console.error(error);

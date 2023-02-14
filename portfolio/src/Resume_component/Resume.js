@@ -7,89 +7,6 @@ export default class Resume extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      response: [
-        {
-          _id: "63d572df7161f0aa819ddc24",
-          about: [
-            {
-              _id: "63d57de640fc9bb511fc9b0d",
-              bio: "batata",
-              personal_pic: "uploads/images-1674935781999.jpeg",
-              expertise: "ffffffrrrr",
-              __v: 0,
-            },
-            {
-              _id: "63d62396e4d791662a882501",
-              bio: "haaaaaaaaaaaalaaaaaaaaa2",
-              personal_pic: "uploads/images-1674978198590.octet-stream",
-              expertise: "kifik",
-              __v: 0,
-            },
-            {
-              _id: "63d623da6267ee0c1333c27c",
-              bio: "haaaaaaaaaaaalaaaaaaaaa2",
-              personal_pic: "uploads/images-1674978266410.octet-stream",
-              expertise: "kifik",
-              __v: 0,
-            },
-            {
-              _id: "63d624013c6b497cf583e74c",
-              bio: "haaaaaaaaaaaalaaaaaaaaa2",
-              personal_pic: "uploads/images-1674978305318.octet-stream",
-              expertise: "kifik",
-              __v: 0,
-            },
-          ],
-          experience: [
-            {
-              _id: "63d578ad56da48876d463e24",
-              name: "Lorem Ipsum",
-              companyName: "LT",
-              startDate: "2020-05-13T00:00:00.000Z",
-              __v: 0,
-            },
-            {
-              _id: "63d578ad56da48876d463e26",
-              name: "Lorem Ipsum",
-              companyName: "LT",
-              startDate: "2020-05-13T00:00:00.000Z",
-              endDate: "2018-05-13T00:00:00.000Z",
-              __v: 0,
-            }
-          ],
-          skill: [
-            {
-              _id: "63d574e3de5b8d4add69d065",
-              name: "potato-chips",
-              percentage: 80,
-              __v: 0,
-            },
-          ],
-          project: ["a"],
-          education: [
-            {
-              _id: "63d5787256da48876d463e21",
-              major: "ithg",
-              institute: "LT",
-              degree: "hfhg",
-              startDate:"2018-05-13T00:00:00.000Z",
-              endDate:"2019-05-13T00:00:00.000Z",
-              __v: 0,
-            },
-            {
-              _id: "63d5787256da48876d463e22",
-              major: "ithg",
-              institute: "LT",
-              degree: "hfhg",
-              startDate:"2016-05-13T00:00:00.000Z",
-              endDate:"2018-05-13T00:00:00.000Z",
-              __v: 0,
-            },
-          ],
-          link: [],
-          __v: 0,
-        },
-      ],
       isExperience: true,
       isEducation: false,
     };
@@ -204,12 +121,12 @@ export default class Resume extends React.Component {
             Experience</p>
             
             
-              <p>{this.state.response[0].project.length}+
+              <p>+
               Completed
               Projects</p>
             
           
-            <p>{this.state.response[0].experience.length}+
+            <p>+
             Companies</p>
           
           </div>

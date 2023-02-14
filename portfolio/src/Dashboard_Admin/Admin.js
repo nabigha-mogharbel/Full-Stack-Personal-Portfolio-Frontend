@@ -3,8 +3,11 @@ import axios from "axios";
 import "../Dashboard_Admin/Admin.css";
 import "../Dashboard_about/Dashboard.css";
 import send from "../send.svg";
-
+import Cookies from "universal-cookie"
 class Admin extends React.Component {
+  constructor(props){
+    super(props)
+  }
   state = {
     password: "",
     username: "",
@@ -15,14 +18,12 @@ class Admin extends React.Component {
 
   handleSubmit = async (event) => {
     event.preventDefault();
-    const url=process.env.REACT_APP_BASE_URL
-    // url="https://ahmadbadawiportfolio.onrender.com"
-
+    const cookie=new Cookies()
+    let bearer=cookie.get("auth-token")
     try {
-      const response = await axios.put(`https://ahmadbadawiportfolio.onrender.com/admin/update/${this.state.username}`, {
-    
+      const response = await axios.put(`${this.props.backendLink}/admin/update/${this.state.username}`, {
         password: this.state.password
-      });
+      }, {headers:{"auth-token": bearer }});
       this.setState({success: true});
       console.log("success");
       console.log(response.data);

@@ -24,10 +24,8 @@ class Login extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const { username, password } = this.state;
-    let url=process.env.REACT_APP_BASE_URL
-    url="https://ahmadbadawiportfolio.onrender.com"
     axios
-      .post(`${url}/admin/login`, {
+      .post(`${this.props.backendLink}/admin/login`, {
         username,
         password
       },{ headers: {
@@ -38,7 +36,8 @@ class Login extends Component {
              // Handle successful login
             console.log("headers",response)
             this.setState({success:response})
-            const cookie=new Cookies
+            alert("you are logged in")
+            const cookie=new Cookies()
            cookie.set("auth-token", response.data.data)
            // this.props.allowAdmin()
           }

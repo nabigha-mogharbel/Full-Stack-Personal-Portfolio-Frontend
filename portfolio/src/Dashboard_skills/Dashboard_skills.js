@@ -3,7 +3,7 @@ import "../Dashboard_skills/skills.css";
 import Skills from "./skills";
 import axios from "axios";
 import send from "../send.svg";
-
+import Cookies from "universal-cookie"
 class DashbordSkills extends React.Component {
   constructor(props) {
     super(props);
@@ -19,13 +19,11 @@ class DashbordSkills extends React.Component {
     this.getData();
   }
   getData = async () => {
-    // const url=process.env.REACT_APP_BASE_URL
-    // url="https://ahmadbadawiportfolio.onrender.com"
-
-
+    const cookie=new Cookies()
+    let bearer=cookie.get("auth-token")
     try {
       const response = await axios.get(
-        `https://ahmadbadawiportfolio.onrender.com/dashboard/skills/`
+        `${this.props.backendLink}/dashboard/skills/`, {headers:{"auth-token":bearer}}
       );
       this.setState({ data: response.data.response });
       console.log(response.data.response);
@@ -41,15 +39,12 @@ class DashbordSkills extends React.Component {
       percentage: this.state.percentage
 
     };
-    console.log("Newwwww" + {newSkill});
-    // const url=process.env.REACT_APP_BASE_URL
-    // url="https://ahmadbadawiportfolio.onrender.com"
-
-
+    const cookie=new Cookies()
+    let bearer=cookie.get("auth-token")
     try {
       const response = axios.post(
-        `https://ahmadbadawiportfolio.onrender.com/dashboard/skills/create`,
-        newSkill
+        `${this.props.backendLink}/dashboard/skills/create`, newSkill,{headers:{"auth-token":bearer }},
+        
       );
 
       console.log("Done");
@@ -81,7 +76,7 @@ class DashbordSkills extends React.Component {
         {!this.state.isEditMode && (
           <div className="container-column">
             {this.state.data.map((ele) => {
-              return <Skills skil={ele} key={ele._id} />;
+              return <Skills backendLink={this.props.backendLink} skil={ele} key={ele._id} />;
             })}
             <button onClick={this.toggleEdit} className="dashboard-btns edit">
               +

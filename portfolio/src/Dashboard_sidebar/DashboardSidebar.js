@@ -2,7 +2,7 @@ import React from "react";
 import "./DashboardSidebar.css";
 import { Link } from "react-router-dom";
 import menu from "../icons/bars-solid.svg";
-import Logout from "../Logout_component/LogOut"
+import Logout from "../Logout_component/LogOut";
 export default class DashboardSidebar extends React.Component {
   constructor(props) {
     super(props);
@@ -26,7 +26,9 @@ export default class DashboardSidebar extends React.Component {
         {isShown && (
           <div className="dashboard-nav">
             <button className="navbar-toggler">
-              <p id="nav-close" onClick={this.toggleSidebar}>X</p>
+              <p id="nav-close" onClick={this.toggleSidebar}>
+                X
+              </p>
             </button>
             <nav>
               <Link className="nav-link" to="/dashboard/about">
@@ -49,7 +51,9 @@ export default class DashboardSidebar extends React.Component {
             <Link className="nav-link" to="/dashboard/admin">
               My Account
             </Link>
-            <><Link className="nav-link" to={"/login"}><><Logout></Logout></></Link></>
+            <a className="nav-link" href={"../login"}>
+              <Logout />
+            </a>
           </div>
         )}
 
@@ -60,7 +64,10 @@ export default class DashboardSidebar extends React.Component {
               width="16px"
               viewBox="0 0 448 512"
             >
-              <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" fill="#FFFFFF"/>
+              <path
+                d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"
+                fill="#FFFFFF"
+              />
             </svg>
           </button>
         )}

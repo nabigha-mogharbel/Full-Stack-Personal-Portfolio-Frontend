@@ -25,12 +25,9 @@ export default class Portfolio extends React.Component{
         this.getData();
       }
     getData = async () => {
-      let url=process.env.REACT_APP_BASE_URL
-      url="https://ahmadbadawiportfolio.onrender.com"
-
         try {
           const response = await axios.get(
-            `${url}/dashboard/portfolio/`
+            `${this.props.backendLink}/dashboard/portfolio/`
           );
           this.setState({ Portfolio: response.data.response[0], isLoaded:true});
           console.log("klshi data", this.state.Portfolio)

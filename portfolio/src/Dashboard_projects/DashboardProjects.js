@@ -3,6 +3,7 @@ import "../Dashboard_about/Dashboard.css";
 import ProjectCard from "./ProjectViewer";
 import CategoryCard from "./CategoryViewer";
 import axios from "axios";
+import Cookies from "universal-cookie"
 export default class DashboardProject extends React.Component {
   constructor(props) {
     super(props);
@@ -12,11 +13,9 @@ export default class DashboardProject extends React.Component {
       isLoaded: false,
       isProjectAddMode: false,
       isCategoryAddMode: false,
-      selectedCategory: "",
+      selectedCategory: "63cf8f3cc4f03511df2e4c5f",
       name: "",
-      url: "",
-      nameCategory: "",
-    };
+      url: ""    };
     this.fileInput = React.createRef();
     this.toggleEdit = this.toggleEdit.bind(this);
   }
@@ -40,13 +39,11 @@ export default class DashboardProject extends React.Component {
     this.setState({isLoaded:true})
   }
   getData = async () => {
-    // const url=process.env.REACT_APP_BASE_URL
-    // url="https://ahmadbadawiportfolio.onrender.com"
-
-
+    const cookie=new Cookies()
+    let bearer=cookie.get("auth-token")
     try {
       const response = await axios.get(
-        `https://ahmadbadawiportfolio.onrender.com/dashboard/projects/`
+        `${this.props.backendLink}/dashboard/projects/`, {headers:{"auth-token": bearer }}
       );
       this.setState({ projects: response.data.response });
       console.log("btbtat", response.data.response);
@@ -56,35 +53,31 @@ export default class DashboardProject extends React.Component {
   };
 
   getCategories = async () => {
-    // const url=process.env.REACT_APP_BASE_URL
-    // url="https://ahmadbadawiportfolio.onrender.com"
-
-
-    try {
+    const cookie=new Cookies()
+    let bearer=cookie.get("auth-token")
+try {
       const response = await axios.get(
-        `https://ahmadbadawiportfolio.onrender.com/dashboard/categories/`
+        `${this.props.backendLink}/dashboard/categories/`, {headers:{"auth-token": bearer }}
       );
-      this.setState({ categories:response.data.response });
-      console.log("Categoriiiiiies" + this.state.categories);
+      let bb=response
+      console.log("data", bb)
+      this.setState({ categories:bb.data.response });
     } catch (error) {
       console.error(error);
     }
   };
 
-  addCatergory = (e) => {
+  addCatergory = async (e) => {
     e.preventDefault();
     const addCatergory = {
       name: this.state.nameCategory,
     };
     console.log("Newwwww" + this.state.name);
-    // const url=process.env.REACT_APP_BASE_URL
-    // url="https://ahmadbadawiportfolio.onrender.com"
-
-
+    const cookie=new Cookies()
+    let bearer=cookie.get("auth-token")
     try {
-      const response = axios.post(
-        `https://ahmadbadawiportfolio.onrender.com/dashboard/categories/create`,
-        addCatergory
+      const response = await axios.post(
+        `${this.props.backendLink}/dashboard/categories/create`, addCatergory, {headers:{"auth-token": bearer }}
       );
 
       console.log("Done");
@@ -97,7 +90,6 @@ export default class DashboardProject extends React.Component {
 
   addProject = async (event) => {
     event.preventDefault();
-
     const formData = new FormData();
     formData.append("name", this.state.name);
     formData.append("url", this.state.url);
@@ -105,26 +97,31 @@ export default class DashboardProject extends React.Component {
     formData.append(
       "images",
       this.fileInput.current.files[0],
-      this.fileInput.current.files[0].name
+      //this.fileInput.current.files[0].name
     );
-    console.log(formData);
-    // const url=process.env.REACT_APP_BASE_URL
-    // url="https://ahmadbadawiportfolio.onrender.com"
-
-
+    console.log("sent data",formData);
+    const cookie=new Cookies()
+    let bearer=cookie.get("auth-token")
     try {
       const response = await axios.post(
-        `https://ahmadbadawiportfolio.onrender.com/dashboard/projects/create/`,
+        `${this.props.backendLink}/dashboard/projects/create/`,
         formData,
         {
           headers: {
             "Accept-Language": "en-US,en;q=0.8",
             "Content-Type": `multipart/form-data`,
+            "auth-token":bearer
           },
         }
-      );
-      console.log(response.data);
-      window.location.reload(false)
+      ).then( function (value) {
+        alert("success");
+        window.location.reload(false)
+      },
+      function (error) {
+        alert("something went wrong");
+      })
+     // console.log("sent from back",response.data);
+      //window.location.reload(false)
     } catch (error) {
       console.error(error);
     }
@@ -153,6 +150,7 @@ export default class DashboardProject extends React.Component {
                 {this.state.projects.map((ele) => {
                   return (
                     <ProjectCard
+                    backendLink={this.props.backendLink}
                       project={ele}
                       categories={this.state.categories}
                       key={ele._id}
@@ -173,7 +171,7 @@ export default class DashboardProject extends React.Component {
                 <h2>Categories</h2>
                 {this.state.categories.map((ele) => {
                   return (
-                    <CategoryCard category={ele} key={ele._id} id={ele._id} />
+                    <CategoryCard backendLink={this.props.backendLink} category={ele} key={ele._id} id={ele._id} />
                   );
                 })}
                 <button
@@ -215,8 +213,6 @@ export default class DashboardProject extends React.Component {
                   name="images"
                   id="images"
                   ref={this.fileInput}
-                  /* value={this.state.images}
-                    onChange={this.handleImage}*/
                   className="buttonDownload"
                 />{" "}
                 <div className="container-row-to-col">
@@ -227,7 +223,7 @@ export default class DashboardProject extends React.Component {
                     onChange={this.handleCategoryOption}
                   >
                     {this.state.categories.map((category) => (
-                      <option value={category._id}>{category.name}</option>
+                      <option key={category._id} value={category._id}>{category.name}</option>
                     ))}
                   </select>
                 </div>
@@ -260,11 +256,9 @@ export default class DashboardProject extends React.Component {
                   onChange={this.handleChange}
                 />
                 <div className="container-row">
-                  <input
-                    type="submit"
+                  <button type="submit"
                     className="dashboard-btns edit"
-                    onSubmit={this.addCatergory}
-                  />
+                    >send</button> 
                   <button
                     onClick={(e) => this.toggleEdit("close")}
                     className="dashboard-btns cancel"

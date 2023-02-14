@@ -3,7 +3,7 @@ import Expireience from "./Expiences";
 import "../Dashboard_Expirence/Expirence.css";
 import axios from "axios";
 import send from "../send.svg";
-
+import Cookies from "universal-cookie"
 class DashboardExpirience extends React.Component {
   constructor(props) {
     super(props);
@@ -37,12 +37,11 @@ class DashboardExpirience extends React.Component {
     this.getData();
   }
   getData = async () => {
-
-
-
+    const cookie=new Cookies()
+    let bearer=cookie.get("auth-token")
     try {
       const response = await axios.get(
-        `https://ahmadbadawiportfolio.onrender.com/dashboard/experience/`
+        `${this.props.backendLink}/dashboard/experience/`, {headers:{"auth-token":bearer}}
       );
       this.setState({ data: response.data.response });
       console.log(response.data.response);
@@ -60,14 +59,12 @@ class DashboardExpirience extends React.Component {
       endDate: this.state.endDate,
       description: this.state.description
     };
-    console.log("Newwwww" + {newExperience});
-
-
-
+    const cookie=new Cookies()
+    let bearer=cookie.get("auth-token")
     try {
       const response = axios.post(
-        `https://ahmadbadawiportfolio.onrender.com/dashboard/experience/create`,
-        newExperience
+        `${this.props.backendLink}/dashboard/experience/create`,
+        newExperience, {headers:{"auth-token":bearer}}
       );
 
       console.log("Done");
@@ -87,7 +84,7 @@ class DashboardExpirience extends React.Component {
             {" "}
             <main className="container-column">
               {this.state.data.map((objec) => {
-                return <Expireience Expir={objec} key={objec._id} />;
+                return <Expireience backendLink={this.props.backendLink} Expir={objec} key={objec._id} />;
               })}
             </main>{" "}
             <button onClick={this.toggleEdit} className="dashboard-btns edit">

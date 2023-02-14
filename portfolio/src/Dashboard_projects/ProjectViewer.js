@@ -3,6 +3,7 @@ import edit from "../edit.svg";
 import trash from "../trash.svg";
 import send from "../send.svg";
 import axios from "axios";
+import Cookies from "universal-cookie"
 export default class Project extends React.Component {
   constructor(props) {
     super(props);
@@ -21,19 +22,6 @@ export default class Project extends React.Component {
   toggleEdit() {
     this.setState({ isEditMode: !this.state.isEditMode });
   }
-  /*submitProject = (e) => {
-    e.preventDefault();
-    if (this.state.name === "" && this.state.url === "") {
-      alert("You can't send empty response");
-    } else {
-      let request = {};
-      if (this.state.name != "") request["name"] = this.state.name;
-      if (this.state.url != "") request["url"] = this.state.url;
-      let param = this.props.project._id;
-      console.log("request", request, param);
-    }
-  };*/
-
   updateData = async (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -46,17 +34,18 @@ export default class Project extends React.Component {
       this.fileInput.current.files[0].name
     );
     console.log(formData);
-    // const url=process.env.REACT_APP_BASE_URL
-    // url="https://ahmadbadawiportfolio.onrender.com"
 
+    const cookie=new Cookies()
+    let bearer=cookie.get("auth-token")
     try {
       const response = await axios.put(
-        `https://ahmadbadawiportfolio.onrender.com/dashboard/projects/update/withimg/${this.state.id}`,
+        `${this.props.backendLink}/dashboard/projects/update/withimg/${this.state.id}`,
         formData,
         {
           headers: {
             "Accept-Language": "en-US,en;q=0.8",
             "Content-Type": `multipart/form-data`,
+            "auth-token":bearer
           },
         }
       );
@@ -80,13 +69,12 @@ export default class Project extends React.Component {
 
   deleteData = async (id) => {
     id = this.state.id;
-    // const url=process.env.REACT_APP_BASE_URL
-    // url="https://ahmadbadawiportfolio.onrender.com"
-
+    const cookie=new Cookies()
+    let bearer=cookie.get("auth-token")
 
     try {
       const response = await axios.delete(
-        `https://ahmadbadawiportfolio.onrender.com/dashboard/projects/delete/${id}`
+        `${this.props.backendLink}/dashboard/projects/delete/${id}`, {headers:{"auth-token":bearer}}
       );
       console.log(response.data.response);
     } catch (error) {
@@ -102,9 +90,7 @@ export default class Project extends React.Component {
     console.log(event.target.name);
   };
   render() {
-    // let url=process.env.REACT_APP_BASE_URL
-    // url="https://ahmadbadawiportfolio.onrender.com"
-
+    let backendLink=this.props.backendLink
     return (
       <div className="dashboard-card">
         <section className="container-row-to-col flex-center">
@@ -129,7 +115,7 @@ export default class Project extends React.Component {
               justifyContent: "center",
               alignItems: "center",
             }}
-              src={`https://ahmadbadawiportfolio.onrender.com/${this.props.project.img}`}
+              src={`${backendLink}/${this.props.project.img}`}
             />
           </div>
           {!this.state.isEditMode && (

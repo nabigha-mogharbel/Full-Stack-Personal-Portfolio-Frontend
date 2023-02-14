@@ -3,7 +3,7 @@ import edit from "../edit.svg"
 import trash from "../trash.svg"
 import send from "../send.svg"
 import axios from "axios";
-
+import Cookies from "universal-cookie"
 export default class Category extends React.Component {
   constructor(props) {
     super(props);
@@ -36,14 +36,13 @@ export default class Category extends React.Component {
       name: this.state.name,
     };
     console.log(dataCategories + "\n" + id);
-    // const url=process.env.REACT_APP_BASE_URL
-    // url="https://ahmadbadawiportfolio.onrender.com"
-
+    const cookie=new Cookies()
+    let bearer=cookie.get("auth-token")
 
     try {
       const response = await axios.put(
-        `https://ahmadbadawiportfolio.onrender.com/dashboard/categories/update/${id}`,
-        dataCategories
+        `${this.props.backendLink}/dashboard/categories/update/${id}`,
+        dataCategories, {headers:{"auth-token":bearer}}
       );
 
       this.setState({ data: response.data.response });
@@ -55,13 +54,11 @@ export default class Category extends React.Component {
 
   deleteData = async (id) => {
     id = this.state.id;
-    // const url=process.env.REACT_APP_BASE_URL
-    // url="https://ahmadbadawiportfolio.onrender.com"
-
-
+    const cookie=new Cookies()
+    let bearer=cookie.get("auth-token")
     try {
       const response = await axios.delete(
-        `https://ahmadbadawiportfolio.onrender.com/dashboard/categories/delete/${id}`
+        `${this.props.backendLink}/dashboard/categories/delete/${id}`,{headers:{"auth-token":bearer}}
       );
       console.log(response.data.response);
       window.location.reload(false)

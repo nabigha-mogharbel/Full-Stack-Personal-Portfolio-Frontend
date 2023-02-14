@@ -3,7 +3,11 @@ import edit from "../edit.svg";
 import trash from "../trash.svg";
 import send from "../send.svg";
 import axios from "axios";
+import Cookies from "universal-cookie"
 class Expirence extends React.Component {
+  constructor(props){
+    super(props)
+  }
   state = {
     isvisible: true,
     id: this.props.Expir._id,
@@ -30,32 +34,25 @@ class Expirence extends React.Component {
       companyName: this.state.data.companyName,
       description: this.state.data.description,
     };
-    console.log(experienceData + "\n" + id);
-    // const url=process.env.REACT_APP_BASE_URL
-    // url="https://ahmadbadawiportfolio.onrender.com"
-
-
+    const cookie=new Cookies()
+    let bearer=cookie.get("auth-token")
     try {
       const response = await axios.put(
-        `https://ahmadbadawiportfolio.onrender.com/dashboard/experience/update/${id}`,
-        experienceData
+        `${this.props.backendLink}/dashboard/experience/update/${id}`,
+        experienceData, {headers:{"auth-token":bearer}}
       );
       window.location.reload(false)
-      console.log(response.data.response);
     } catch (error) {
       console.error(error);
     }
   };
 
-  deleteData = async (id) => {
-    // id = this.state.id;
-    // const url=process.env.REACT_APP_BASE_URL
-    // url="https://ahmadbadawiportfolio.onrender.com"
-
-
+  deleteData = async () => {
+    const cookie=new Cookies()
+    let bearer=cookie.get("auth-token")
     try {
       const response = await axios.delete(
-        `https://ahmadbadawiportfolio.onrender.com/dashboard/experience/delete/${id}`
+        `${this.props.backendLink}/dashboard/experience/delete/${this.props.Expir._id}`, {headers:{"auth-token":bearer}}
       );
       console.log(response.data.response);
       window.location.reload(false)
@@ -89,12 +86,6 @@ class Expirence extends React.Component {
             <h3>{this.formatDate(this.props.Expir.startDate)}</h3>
             <h3> {this.formatDate(this.props.Expir.endDate)}</h3>
           </div>
-          {/* <div className="container-column">
-            <h3>{this.props.Expir.name}</h3>
-            <h3> {this.props.Expir.companyName}</h3>
-            <h3> {this.props.Expir.startDate}</h3>
-            <h3> {this.props.Expir.endDate}</h3>
-          </div> */}
           {this.state.isvisible && (
             <div className="container-column">
               <button

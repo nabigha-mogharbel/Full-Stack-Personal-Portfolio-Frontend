@@ -26,7 +26,6 @@ export default class Category extends React.Component {
       if (this.state.name != "") request["name"] = this.state.name;
       if (this.state.url != "") request["url"] = this.state.url;
       let param = this.props.project._id;
-      console.log("request", request, param);
     }
   };
 
@@ -35,7 +34,6 @@ export default class Category extends React.Component {
     const dataCategories = {
       name: this.state.name,
     };
-    console.log(dataCategories + "\n" + id);
     const cookie=new Cookies()
     let bearer=cookie.get("auth-token")
 
@@ -46,7 +44,6 @@ export default class Category extends React.Component {
       );
 
       this.setState({ data: response.data.response });
-      console.log(response.data.response);
     } catch (error) {
       console.error(error);
     }

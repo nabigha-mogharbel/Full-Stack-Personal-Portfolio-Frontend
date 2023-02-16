@@ -22,13 +22,11 @@ export default class DashboardProject extends React.Component {
   toggleEdit = (key) => {
     if (key === "isProjectAddMode") {
       this.setState({ isProjectAddMode: true });
-      console.log("batata", this.state);
     }
     if (key === "isCategoryAddMode") {
       this.setState({ isCategoryAddMode: true });
     }
     if (key === "close") {
-      console.log("close");
       this.setState({ isProjectAddMode: false, isCategoryAddMode: false });
     }
   };
@@ -46,7 +44,6 @@ export default class DashboardProject extends React.Component {
         `${this.props.backendLink}/dashboard/projects/`, {headers:{"auth-token": bearer }}
       );
       this.setState({ projects: response.data.response });
-      console.log("btbtat", response.data.response);
     } catch (error) {
       console.error(error);
     }
@@ -60,7 +57,6 @@ try {
         `${this.props.backendLink}/dashboard/categories/`, {headers:{"auth-token": bearer }}
       );
       let bb=response
-      console.log("data", bb)
       this.setState({ categories:bb.data.response });
     } catch (error) {
       console.error(error);
@@ -72,7 +68,6 @@ try {
     const addCatergory = {
       name: this.state.nameCategory,
     };
-    console.log("Newwwww" + this.state.name);
     const cookie=new Cookies()
     let bearer=cookie.get("auth-token")
     try {
@@ -80,7 +75,6 @@ try {
         `${this.props.backendLink}/dashboard/categories/create`, addCatergory, {headers:{"auth-token": bearer }}
       );
 
-      console.log("Done");
       //this.getData();
       window.location.reload(false)
     } catch (error) {
@@ -99,7 +93,6 @@ try {
       this.fileInput.current.files[0],
       //this.fileInput.current.files[0].name
     );
-    console.log("sent data",formData);
     const cookie=new Cookies()
     let bearer=cookie.get("auth-token")
     try {
@@ -120,8 +113,6 @@ try {
       function (error) {
         alert("something went wrong");
       })
-     // console.log("sent from back",response.data);
-      //window.location.reload(false)
     } catch (error) {
       console.error(error);
     }
@@ -131,7 +122,6 @@ try {
     this.setState({
       [event.target.name]: event.target.value,
     });
-    console.log(event.target.name);
   };
   handleCategoryOption = (event) => {
     this.setState({ selectedCategory: event.target.value });

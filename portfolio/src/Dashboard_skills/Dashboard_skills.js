@@ -65,7 +65,6 @@ class DashbordSkills extends React.Component {
   };
   handleInput = (event, key) => {
     this.setState({ [key]: event.target.value });
-    console.log(this.state);
   };
 
   render() {

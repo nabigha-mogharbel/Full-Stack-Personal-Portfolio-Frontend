@@ -44,12 +44,10 @@ class Skills extends React.Component {
       const response = await axios.delete(
         `${this.props.backendLink}/dashboard/skills/delete/${id}`, {headers:{"auth-token":bearer}}
       );
-      console.log("Done");
       window.location.reload(false)
 
     } catch (error) {
       console.log("error deleting dashboard", error);
-      console.error(error);
     }
   };
 /**

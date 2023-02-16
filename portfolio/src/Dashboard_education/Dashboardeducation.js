@@ -54,9 +54,7 @@ class DashboardEducation extends React.Component {
       );
       this.setState({success:true,failed:false});
       window.location.reload(false)
-      console.log("Done");
     } catch (error) {
-      console.error(error);
       this.setState({success:false,failed:true});
     }
   };

@@ -11,14 +11,15 @@ class SkillsProgress extends React.Component {
     state = {
        value:0
     }
-    count  =  setInterval(() => {
+    componentDidMount(){
+    const count  =  setInterval(() => {
             
                 this.setState({value:this.state.value +1})
                 if (this.state.value === this.props.skil.percentage) {
                   this.setState({ value: this.props.skil.percentage });
                 }
           
-        }, 40);
+        }, 40);}
         
     render() {
 

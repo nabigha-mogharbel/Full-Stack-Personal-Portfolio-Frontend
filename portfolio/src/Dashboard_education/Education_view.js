@@ -41,7 +41,6 @@ class Education extends React.Component {
       institute: this.state.data.institute,
       degree: this.state.data.degree,
     };
-    console.log(educationData + "\n" + id);
 
     const cookie=new Cookies()
     let bearer=cookie.get("auth-token")
@@ -54,9 +53,7 @@ class Education extends React.Component {
       this.setState({ data: response.data.response });
       this.setState({success:true,failed:false});
 
-      console.log(response.data.response);
     } catch (error) {
-      console.error(error);
       this.setState({success:false,failed:true});
 
     }
@@ -81,12 +78,10 @@ class Education extends React.Component {
       const response = await axios.delete(
         `${this.props.backendLink}/dashboard/education/delete/${id}`, {headers:{"auth-token": bearer }}
       );
-      console.log(response.data.response);
-      console.log("Hello, ");
+
       window.location.reload(false)
     } catch (error) {
       console.log("error deleting dashboard", error);
-      console.error(error);
     }
   };
 

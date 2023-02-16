@@ -33,7 +33,6 @@ export default class Project extends React.Component {
       this.fileInput.current.files[0],
       this.fileInput.current.files[0].name
     );
-    console.log(formData);
 
     const cookie=new Cookies()
     let bearer=cookie.get("auth-token")
@@ -49,8 +48,6 @@ export default class Project extends React.Component {
           },
         }
       );
-      console.log(response.data);
-      alert("yay data");
     } catch (error) {
       console.error(error);
     }
@@ -78,8 +75,7 @@ export default class Project extends React.Component {
       );
       console.log(response.data.response);
     } catch (error) {
-      console.log("error deleting dashboard", error);
-      console.error(error);
+      console.log("error deleting dashboard");
     }
   };
 
@@ -87,7 +83,6 @@ export default class Project extends React.Component {
     this.setState({
       [event.target.name]: event.target.value,
     });
-    console.log(event.target.name);
   };
   render() {
     let backendLink=this.props.backendLink

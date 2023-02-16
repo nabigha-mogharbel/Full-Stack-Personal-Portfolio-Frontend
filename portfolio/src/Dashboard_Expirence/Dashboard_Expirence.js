@@ -44,7 +44,6 @@ class DashboardExpirience extends React.Component {
         `${this.props.backendLink}/dashboard/experience/`, {headers:{"auth-token":bearer}}
       );
       this.setState({ data: response.data.response });
-      console.log(response.data.response);
     } catch (error) {
       console.error(error);
     }
@@ -66,8 +65,6 @@ class DashboardExpirience extends React.Component {
         `${this.props.backendLink}/dashboard/experience/create`,
         newExperience, {headers:{"auth-token":bearer}}
       );
-
-      console.log("Done");
       this.getData()
     } catch (error) {
       console.error(error);

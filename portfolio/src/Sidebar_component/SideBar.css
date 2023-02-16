@@ -6,7 +6,6 @@
   /* background-color: var(--white); */
   border-radius: 50%;
   box-shadow: 1px -1px 9px 6px #00000073;
-  margin-left: 3px;
   transition: all 0.1s;
 }
 .menu:active{
@@ -76,4 +75,19 @@
   .nav a:hover {
     color:var(--Darkgrey);
   }
- 
+  @media only screen and (min-width: 1200px) {
+    .side_bar{
+    margin-left: 50px;
+  }}
+  @media only screen and (min-width: 992px) and (max-width:1199px) {  .side_bar{
+    margin-left: 30px;
+  }}
+  @media only screen and (min-width: 768px) and (max-width:991px) {  .side_bar{
+    margin-left: 20px;
+  }}
+  @media only screen and (min-width: 600px) and (max-width:767px)  {  .side_bar{
+    margin-left: 10px;
+  }}
+  @media only screen and (max-width: 600px) {  .side_bar{
+    margin-left: 5px;
+  }}

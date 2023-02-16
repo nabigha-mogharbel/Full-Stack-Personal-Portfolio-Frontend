@@ -22,27 +22,25 @@ class About extends React.Component {
         }));
     };
     componentDidMount(){
-        console.log(this.state.data)
     }
     render() {
         const { isVisible } = this.state;
         return (
             <div className="about">
                 <div className="content_info">
-                    <div className="information-about">
+                    <div className="information-about big-screen">
                         <h1>Ahmad Badawi</h1>
                         <p>{this.props.aboData.expertise}</p>
                         <p>{this.props.aboData.bio}</p>
+                        <div className="findme" onClick={this.toggleVisibility}>
+                            <button>Find Me</button> 
+                        </div>
                     </div>
                     <div className="imageone">
                         <img
                             src={portfolioImg}
                             alt=""
                         ></img>
-
-                        <div className="findme" onClick={this.toggleVisibility}>
-                            <button>Find Me</button> 
-                        </div>
                         <CSSTransition
                             in={!isVisible}
                             timeout={300}

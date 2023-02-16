@@ -13,7 +13,6 @@ export default class DashboardSidebar extends React.Component {
   }
   toggleSidebar() {
     if (this.state.isShown === true) {
-      console.log("lets hide");
       this.setState({ isShown: false });
     } else {
       this.setState({ isShown: true });

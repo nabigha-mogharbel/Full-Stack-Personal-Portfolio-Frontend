@@ -25,8 +25,7 @@ class Admin extends React.Component {
         password: this.state.password
       }, {headers:{"auth-token": bearer }});
       this.setState({success: true});
-      console.log("success");
-      console.log(response.data);
+
     } catch (error) {
       
       console.error(error);
@@ -38,18 +37,6 @@ class Admin extends React.Component {
       [event.target.name]: event.target.value,
     });
   };
-   /*toggelvisible = () => {
-    cPassword:"",
-    username: "",
-  };
-
-  /*toggelvisible = () => {
-        this.setState({ isvisible: false })
-        if (this.state.isvisible == false){
-            this.setState({isvisible:true})
-        }
-        
-    }*/
   confirmations = (e) => {
     const { password, newpassword1 } = this.state;
     if (password !== newpassword1) {

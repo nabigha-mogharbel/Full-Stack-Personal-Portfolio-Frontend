@@ -51,11 +51,8 @@ export default class DashboardAbout extends React.Component {
         `${this.props.backendLink}/dashboard/about/`, {headers:{"auth-token": bearer }}
       );
       this.setState({data:response.data[0], isLoaded:true})
-      console.log(this.state.data);
     } catch (error) {
       this.setState({success:false,failed:true});
-
-      console.error(error);
     }
   };
 
@@ -67,7 +64,6 @@ export default class DashboardAbout extends React.Component {
     formData.append(
       "images",this.fileInput.current.files[0],this.fileInput.current.files[0].name
     );
-    console.log(formData);
     const cookie=new Cookies()
     let bearer=cookie.get("auth-token")
     try {
@@ -82,13 +78,11 @@ export default class DashboardAbout extends React.Component {
           },
         }
       );
-      console.log(response.data);
       this.setState({success:true});
 
       alert("yay data");
     } catch (error) {
       this.setState({success:false,failed:true});
-      console.error(error);
     }
   };
 

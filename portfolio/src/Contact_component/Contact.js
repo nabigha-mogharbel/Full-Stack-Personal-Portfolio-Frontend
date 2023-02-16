@@ -26,7 +26,6 @@ export default class Contact extends Component {
     emailjs.send('service_71z4ebl', 'template_jzjfp3t', this.state,'2Z71ko7VLhOKMSIV6')
       .then((response) => {
         this.setState({ status: response.status });
-        console.log('SUCCESS!', response.status, response.text);
         Swal({
           title: 'Success',
           text: 'The email was sent successfully!',
@@ -34,8 +33,6 @@ export default class Contact extends Component {
         });
       }, (error) => {
         this.setState({ status: error });
-        console.log(this.state.status);
-        console.log('FAILED...', error);
         Swal({
           title: 'Error',
           text: 'There was an error sending the email. Please try again later.',

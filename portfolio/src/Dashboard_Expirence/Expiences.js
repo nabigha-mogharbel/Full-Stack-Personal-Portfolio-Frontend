@@ -54,11 +54,9 @@ class Expirence extends React.Component {
       const response = await axios.delete(
         `${this.props.backendLink}/dashboard/experience/delete/${this.props.Expir._id}`, {headers:{"auth-token":bearer}}
       );
-      console.log(response.data.response);
       window.location.reload(false)
     } catch (error) {
-      console.log("error deleting dashboard", error);
-      console.error(error);
+      console.log("error deleting dashboard");
     }
   };
   handleChange = (event) => {

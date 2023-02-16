@@ -31,19 +31,14 @@ export default class Portfolio extends React.Component{
           );
           this.setState({ Portfolio: response.data.response[0]});
           this.setState({isLoaded:true})
-          console.log("klshi data", this.state.Portfolio)
-          console.log(response.data.response[0]);
         } catch (error) {
-          console.error(error);
           this.setState({isLoaded:false});
         }
       };
     
   handleScroll(e) {
-    console.log("hhhiiii");
     if (e.deltaY > 0) {
       if (this.state.component === 4) {
-        console.log("the end");
         return;
       } else {
         this.setState({ component: this.state.component + 1 });
@@ -51,7 +46,6 @@ export default class Portfolio extends React.Component{
     }
     if (e.deltaY < 0) {
       if (this.state.component === 0) {
-        console.log("the start");
         return;
       } else {
         this.setState({ component: this.state.component - 1 });
@@ -68,7 +62,6 @@ export default class Portfolio extends React.Component{
     }
   };
   captureStart = (event) => {
-    console.log("cpture", event.touches[0].screenY);
     this.initialY = event.touches[0].screenY;
   };
   sidebarClick=(index)=>{
@@ -84,37 +77,37 @@ export default class Portfolio extends React.Component{
         {!this.state.isLoaded && <Loading></Loading>}
         {this.state.isLoaded && 
         <>
-        <About
+        {this.state.component===0 && <About
           scroll={this.handleScroll}
           touchStart={this.captureStart}
           touchEnd={this.captureEnd}
           aboData={this.state.Portfolio.about[0]}
           linkData={this.state.Portfolio.link}
-        />
-        <Project
+        />}
+         {this.state.component===1 && <Project
           scroll={this.handleScroll}
           touchStart={this.captureStart}
           touchEnd={this.captureEnd}
           proData={[...this.state.Portfolio.project]}
-        />
-         <Skills
+        />}
+        {this.state.component===2 && <Skills
         scroll={this.handleScroll}
         touchStart={this.captureStart}
         touchEnd={this.captureEnd}
         skillData={[...this.state.Portfolio.skill]}
-      />
-      <Resume
+      />}
+      {this.state.component===3&&<Resume
           scroll={this.handleScroll}
           touchStart={this.captureStart}
           touchEnd={this.captureEnd}
           expData={[...this.state.Portfolio.experience]}
           eduData={[...this.state.Portfolio.education]}
-        />
-        <Contact
+        />}
+        {this.state.component===4 &&<Contact
           scroll={this.handleScroll}
           touchStart={this.captureStart}
           touchEnd={this.captureEnd}
-        />
+        />}
         </>
         }
         {this.state.isLoaded && <Sidebar click={this.sidebarClick} />}

@@ -29,6 +29,18 @@
       margin-right: -759px;
       margin-top: -358px;
   }
+
+  .title-text {
+    width: -moz-fit-content;
+    width: fit-content;
+    position: absolute;
+    /* right: 462px; */
+    padding-right: 616px;
+    right: -279px;
+    top: 452px;
+    /* font-size: 10px; */
+}
+
 }
 
 
@@ -91,7 +103,6 @@ label input, label textarea{
 label textarea{
   max-width: 100%;
   max-height: 200px;
-  min-width: 200px;
   min-height: 100px;
 }
 

@@ -63,7 +63,7 @@ backdrop-filter: blur(8px);
 
 .contact-title{
   color: #ccc;
-  font-size: 3rem;
+  font-size: 2rem;
   font-family: Raleway;
 }
 
@@ -156,7 +156,7 @@ label textarea:focus{
     font-size: 30px;
     width: fit-content;
 position: absolute;
-right: 428px;
+right: 700px;
    
   }
  
@@ -172,7 +172,7 @@ right: 428px;
 
 
   .typing {
-    width: 20ch;
+    width: 50ch;
     animation: typing 2s steps(22), blink .5s step-end infinite alternate;
     white-space: nowrap;
     overflow: hidden;

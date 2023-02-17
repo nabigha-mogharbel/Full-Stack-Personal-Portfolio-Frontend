@@ -45,7 +45,7 @@ export default class Contact extends Component {
       <div className="contact">
  
         <div className="title-text"><h2 className="contact-title typing">
-          Do you have a project? <br/>
+          Do you have a project? 
           I would love  to help.
         </h2>
         </div>

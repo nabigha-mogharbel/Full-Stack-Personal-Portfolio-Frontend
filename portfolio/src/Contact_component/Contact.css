@@ -15,6 +15,32 @@
     html {
         font-size:14px
     }
+
+    .title-text{
+
+      width: fit-content;
+      position: absolute;
+      /* right: 656px; */
+      top: 75px;
+
+    }
+
+    .contact-title{
+      margin-right: -759px;
+      margin-top: -358px;
+  }
+
+  .title-text {
+    width: -moz-fit-content;
+    width: fit-content;
+    position: absolute;
+    /* right: 462px; */
+    padding-right: 616px;
+    right: -279px;
+    top: 452px;
+    /* font-size: 10px; */
+}
+
 }
 
 
@@ -37,7 +63,7 @@ backdrop-filter: blur(8px);
 
 .contact-title{
   color: #ccc;
-  font-size: 3rem;
+  font-size: 2rem;
   font-family: Raleway;
 }
 
@@ -50,8 +76,9 @@ backdrop-filter: blur(8px);
   border-radius: 1rem;
   background: #252525;
   /*max-width: 550px;*/
-width: 100%;
-  
+width: 35%;
+  position:fixed;
+  right: 40px;
 }
 
 label{
@@ -76,7 +103,6 @@ label input, label textarea{
 label textarea{
   max-width: 100%;
   max-height: 200px;
-  min-width: 200px;
   min-height: 100px;
 }
 
@@ -116,7 +142,7 @@ label textarea:focus{
     background: linear-gradient(90deg, var(--secondaryContact) 75%, var(--accentContact) 100%);
 }
 
-@media screen and (max-width: 750px){
+@media screen and (max-width: 750px) and  (min-width:466px){
 
   html {
     font-size:15px
@@ -128,6 +154,9 @@ label textarea:focus{
   .contact-title{
     text-align: center; 
     font-size: 30px;
+    width: fit-content;
+position: absolute;
+right: 700px;
    
   }
  
@@ -143,7 +172,7 @@ label textarea:focus{
 
 
   .typing {
-    width: 20ch;
+    width: 50ch;
     animation: typing 2s steps(22), blink .5s step-end infinite alternate;
     white-space: nowrap;
     overflow: hidden;
@@ -164,6 +193,10 @@ label textarea:focus{
 
 .title-text {
 width: fit-content;
+position: absolute;
+right: 307px;
+padding-right: 547px;
+    /* right: 640px; */
 }
 
 
